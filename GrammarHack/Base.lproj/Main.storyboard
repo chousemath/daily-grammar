@@ -21,14 +21,6 @@
                                 <color key="textColor" red="0.74509803921568629" green="0.62352941176470589" blue="0.88235294117647056" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or3-nd-Lt7">
-                                <rect key="frame" x="150.5" y="602" width="74" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="submitted:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdG-eD-gOI"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exerciseSubtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUd-LL-ZqB">
                                 <rect key="frame" x="24" y="89.5" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -72,7 +64,6 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="liU-kR-cnI" secondAttribute="trailing" constant="24" id="0bI-FA-kxS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NUd-LL-ZqB" secondAttribute="trailing" constant="24" id="1p7-pb-dvf"/>
-                            <constraint firstItem="or3-nd-Lt7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="28w-n2-oSE"/>
                             <constraint firstItem="oo7-Dx-Zfn" firstAttribute="top" secondItem="liU-kR-cnI" secondAttribute="bottom" constant="8" id="3Ct-C5-eA9"/>
                             <constraint firstItem="T6P-Sm-STF" firstAttribute="top" secondItem="25j-hH-3kf" secondAttribute="bottom" constant="8" id="4Th-nN-SEk"/>
                             <constraint firstItem="gHF-eC-TCf" firstAttribute="top" secondItem="T6P-Sm-STF" secondAttribute="bottom" constant="8" id="5wp-gL-Tw4"/>
@@ -92,7 +83,6 @@
                             <constraint firstItem="hdM-Kl-xma" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="23" identifier="ExerciseTitleHor" id="mu3-Ta-oP4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T6P-Sm-STF" secondAttribute="trailing" constant="24" id="rWs-mZ-gZz"/>
                             <constraint firstItem="oo7-Dx-Zfn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="vJg-OZ-t7d"/>
-                            <constraint firstItem="or3-nd-Lt7" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-24" id="zZL-PB-7vY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -104,7 +94,6 @@
                         <outlet property="phraseStart" destination="25j-hH-3kf" id="bHh-IO-Q5q"/>
                         <outlet property="responseBody" destination="oo7-Dx-Zfn" id="Pq8-gP-Mfn"/>
                         <outlet property="responseTitle" destination="liU-kR-cnI" id="bIL-aQ-l8S"/>
-                        <outlet property="submitButton" destination="or3-nd-Lt7" id="aXt-ZF-kda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

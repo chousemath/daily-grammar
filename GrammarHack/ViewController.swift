@@ -7,16 +7,16 @@
 //
 
 import UIKit
-
-class Question {
+class Quest {
     var title = "";
     var subtitle = "";
     var category = "";
-    var phraseStart = "";
-    var phraseEnd = "";
     var answer = "";
     var kor = "";
-    var options: Array<String> = Array(repeating: "", count: 5);
+    var phraseStart = "";
+    var phraseEnd = "";
+    var options: Array<String> = [];
+    
     init(
         title: String,
         subtitle: String,
@@ -36,28 +36,124 @@ class Question {
         self.kor = kor;
         self.options = options;
     }
+    
+    func match(answer: String) -> Bool {
+        return answer == self.answer;
+    }
+}
+class WithOnAbout: Quest {
+    init(
+        title: String,
+        subtitle: String,
+        category: String,
+        phraseStart: String,
+        phraseEnd: String,
+        answer: String,
+        kor: String
+    ) {
+        super.init(
+            title: title,
+            subtitle: subtitle,
+            category: category,
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer,
+            kor: kor,
+            options: ["with", "on", "about"]
+        )
+    }
 }
 
-var questions: Array<Question> = [
-    Question(
-        title: "Prepositions",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
-        phraseStart: "Why don't you cut the paper",
-        phraseEnd: "scissors?",
-        answer: "with",
-        kor: "그 종이는 가위로 자르느 게 어때요?",
-        options: ["with", "on", "about", "", ""]
-    ),
-    Question(
-        title: "Prepositions",
+var questions: [Quest] = [
+    WithOnAbout(
+        title: "Prepositions (전치사)",
         subtitle: "with / on / about",
         category: "select-withonabout",
         phraseStart: "May I fill out the form",
         phraseEnd: "a pencil?",
         answer: "with",
-        kor: "이 서식을 연필로 작성해도 될까요?",
-        options: ["with", "on", "about", "", ""]
+        kor: "이 서식을 연필로 작성해도 될까요?"
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "My presentation is",
+        phraseEnd: "American history.",
+        answer: "about",
+        kor: "제 프레젠테이션은 미국 문화에 관한 것입니다."
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "You can draw a picture",
+        phraseEnd: "this paper.",
+        answer: "on",
+        kor: "이 종이 위해 그림을 그리렴."
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "This font size is too small, but I can read it",
+        phraseEnd: "glasses.",
+        answer: "with",
+        kor: "활자체가 너무 작아. 하지만 안경을 쓰면 읽을 수 있겠어."
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "Why don't you cut the paper",
+        phraseEnd: "scissors?",
+        answer: "with",
+        kor: "그 종이는 가위로 자르느 게 어때요?"
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "We are",
+        phraseEnd: "the same page!",
+        answer: "on",
+        kor: "우린 서로 같은 생각이야!"
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "I got the author's autograph",
+        phraseEnd: "this book cover.",
+        answer: "on",
+        kor: "그 책 표지에 저자의 사인을 받았어."
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "Who wrote the words",
+        phraseEnd: "the whiteboard?",
+        answer: "on",
+        kor: "칠판에 저거 쓴 사람 누구야?"
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "What is your thesis",
+        phraseEnd: "?",
+        answer: "about",
+        kor: "너의 논문은 무엇에 관한 거지?"
+    ),
+    WithOnAbout(
+        title: "Prepositions (전치사)",
+        subtitle: "with / on / about",
+        category: "select-withonabout",
+        phraseStart: "Today's newspaper is all",
+        phraseEnd: "the Olympics",
+        answer: "about",
+        kor: "오늘 신문은 올림픽에 관한 모든 것이 실렸어."
     )
 ]
 
@@ -67,14 +163,8 @@ class ViewController: UIViewController {
     @IBOutlet var phraseStart: UILabel!
     @IBOutlet var phraseEnd: UILabel!
     @IBOutlet var optionButton: UIButton!
-    @IBOutlet var submitButton: UIButton!
     @IBOutlet var responseTitle: UILabel!
     @IBOutlet var responseBody: UILabel!
-    
-    var options: Array<String> = []
-    var answerCorrect: String = ""
-    var answerSelected: String = ""
-    var kor: String = ""
     
     var qindex: Int = 0
     let limit: Int = questions.count - 1
@@ -90,28 +180,26 @@ class ViewController: UIViewController {
         // pick a random question to begin with
         questions.shuffle()
         
-        setQuestion(question: questions[qindex])
+        setQuestion()
         
     }
     
-    func setQuestion(question qst: Question) {
-        responseTitle.text = ""
-        responseBody.text = ""
-        answerSelected = ""
-        exerciseTitle.text = qst.title
-        exerciseSubtitle.text = qst.subtitle
-        phraseStart.text = qst.phraseStart
-        phraseEnd.text = qst.phraseEnd
-        options = qst.options;
-        answerCorrect = qst.answer;
-        kor = qst.kor;
-        
+    func advanceIndex() {
         if qindex < limit {
             qindex += 1
         } else {
             qindex = 0
             questions.shuffle()
         }
+    }
+    
+    func setQuestion() {
+        responseTitle.text = ""
+        responseBody.text = ""
+        exerciseTitle.text = questions[qindex].title
+        exerciseSubtitle.text = questions[qindex].subtitle
+        phraseStart.text = questions[qindex].phraseStart
+        phraseEnd.text = questions[qindex].phraseEnd
     }
     
     @IBAction func selectorPressed(_ sender: UIButton) {
@@ -126,7 +214,7 @@ class ViewController: UIViewController {
             style: .cancel,
             handler: nil
         )
-        for opt in options {
+        for opt in questions[qindex].options {
             if opt == "" {
                 continue
             }
@@ -134,34 +222,33 @@ class ViewController: UIViewController {
                 title: opt,
                 style: .default,
                 handler: { action in
-                    self.answerSelected = opt
                     self.optionButton.setTitle(opt, for: .normal)
+                    print(opt)
+                    print(questions[self.qindex].answer)
+                    print("=====")
+                    if questions[self.qindex].match(answer: opt) {
+                        self.responseTitle.textColor = UIColor.green
+                        self.responseTitle.text = "정답입니다!"
+                        self.responseBody.text = questions[self.qindex].kor
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            self.optionButton.setTitle("__________", for: .normal)
+                            self.advanceIndex()
+                            self.setQuestion()
+                        }
+                    } else {
+                        self.responseTitle.textColor = UIColor.red
+                        self.responseTitle.text = "응답이 올바르지 않습니다~"
+                        self.responseBody.text = "Please try again!"
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            self.responseTitle.text = ""
+                            self.responseBody.text = ""
+                        }
+                    }
             }
             ))
         }
         aSheet.addAction(cancel)
-        
         present(aSheet, animated: true, completion: nil)
-    }
-    
-    @IBAction func submitted(_ sender: UIButton) {
-        if answerSelected == "" {
-            return
-        }
-        if answerSelected == answerCorrect {
-            self.responseTitle.text = "정답입니다!"
-            self.responseBody.text = kor
-            self.submitButton.isEnabled = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.optionButton.setTitle("__________", for: .normal)
-                self.setQuestion(question: questions[self.qindex])
-                self.submitButton.isEnabled = true
-            }
-        } else {
-            self.responseTitle.text = "응답이 올바르지 않습니다~"
-            self.responseBody.text = "Please try again!"
-            return
-        }
     }
     
 }
