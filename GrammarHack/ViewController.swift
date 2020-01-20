@@ -15,7 +15,7 @@ class Quest {
     var kor = "";
     var phraseStart = "";
     var phraseEnd = "";
-    var options: Array<String> = [];
+    var options: [String] = [];
     
     init(
         title: String,
@@ -27,14 +27,21 @@ class Quest {
         kor: String,
         options: Array<String>
     ) {
+        assert(!title.isEmpty, "title variable is empty")
+        assert(!subtitle.isEmpty, "subtitle variable is empty")
+        assert(!category.isEmpty, "category variable is empty")
+        assert(!phraseStart.isEmpty, "phraseStart variable is empty")
+        assert(!phraseEnd.isEmpty, "phraseEnd variable is empty")
+        assert(!answer.isEmpty, "answer variable is empty")
+        
         self.title = title;
         self.subtitle = subtitle;
         self.category = category;
         self.phraseStart = phraseStart;
         self.phraseEnd = phraseEnd;
         self.answer = answer;
-        self.kor = kor;
-        self.options = options;
+        self.kor = kor.isEmpty ? "한국어 버전은 아직 없습니다." : kor;
+        self.options = options.shuffled();
     }
     
     func match(answer: String) -> Bool {
@@ -43,18 +50,15 @@ class Quest {
 }
 class WithOnAbout: Quest {
     init(
-        title: String,
-        subtitle: String,
-        category: String,
         phraseStart: String,
         phraseEnd: String,
         answer: String,
         kor: String
     ) {
         super.init(
-            title: title,
-            subtitle: subtitle,
-            category: category,
+            title: "Prepositions (전치사)",
+            subtitle: "with / on / about",
+            category: "select-withonabout",
             phraseStart: phraseStart,
             phraseEnd: phraseEnd,
             answer: answer,
@@ -64,96 +68,178 @@ class WithOnAbout: Quest {
     }
 }
 
+class AdjOrAdv: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: String,
+        kor: String,
+        options: [String]
+    ) {
+        super.init(
+            title: "Adjective or Adverb",
+            subtitle: "형용사 또는 부사",
+            category: "select-adjoradv",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer,
+            kor: kor,
+            options: options
+        )
+    }
+}
+
 var questions: [Quest] = [
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "May I fill out the form",
         phraseEnd: "a pencil?",
         answer: "with",
         kor: "이 서식을 연필로 작성해도 될까요?"
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "My presentation is",
         phraseEnd: "American history.",
         answer: "about",
         kor: "제 프레젠테이션은 미국 문화에 관한 것입니다."
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "You can draw a picture",
         phraseEnd: "this paper.",
         answer: "on",
         kor: "이 종이 위해 그림을 그리렴."
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "This font size is too small, but I can read it",
         phraseEnd: "glasses.",
         answer: "with",
         kor: "활자체가 너무 작아. 하지만 안경을 쓰면 읽을 수 있겠어."
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "Why don't you cut the paper",
         phraseEnd: "scissors?",
         answer: "with",
         kor: "그 종이는 가위로 자르느 게 어때요?"
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "We are",
         phraseEnd: "the same page!",
         answer: "on",
         kor: "우린 서로 같은 생각이야!"
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "I got the author's autograph",
         phraseEnd: "this book cover.",
         answer: "on",
         kor: "그 책 표지에 저자의 사인을 받았어."
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "Who wrote the words",
         phraseEnd: "the whiteboard?",
         answer: "on",
         kor: "칠판에 저거 쓴 사람 누구야?"
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "What is your thesis",
         phraseEnd: "?",
         answer: "about",
         kor: "너의 논문은 무엇에 관한 거지?"
     ),
     WithOnAbout(
-        title: "Prepositions (전치사)",
-        subtitle: "with / on / about",
-        category: "select-withonabout",
         phraseStart: "Today's newspaper is all",
         phraseEnd: "the Olympics",
         answer: "about",
         kor: "오늘 신문은 올림픽에 관한 모든 것이 실렸어."
+    ),
+    AdjOrAdv(
+        phraseStart: "He",
+        phraseEnd: "reads a book.",
+        answer: "quickly",
+        kor: "",
+        options: ["quick", "quicker", "quickest", "quickly"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Sue is a",
+        phraseEnd: "girl working at Starbucks.",
+        answer: "pretty",
+        kor: "",
+        options: ["pretty", "prettily", "prettiness", "prettyish"]
+    ),
+    AdjOrAdv(
+        phraseStart: "My biology class is",
+        phraseEnd: "loud today.",
+        answer: "terribly",
+        kor: "",
+        options: ["terrible", "terribly", "terribleness"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Today was a",
+        phraseEnd: "day. I lost my wallet.",
+        answer: "terrible",
+        kor: "",
+        options: ["terrible", "terribly", "terribleness"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Jeremy is so strong, he can",
+        phraseEnd: "open this can of soup.",
+        answer: "easily",
+        kor: "",
+        options: ["easy", "easily", "easier", "easiest"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Joanna drives slowly because she is a",
+        phraseEnd: "driver.",
+        answer: "careful",
+        kor: "",
+        options: ["careful", "carefully", "carefulness", "carefree"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Whenever it rains, Jim drives very",
+        phraseEnd: "because he wants to be safe.",
+        answer: "carefully",
+        kor: "",
+        options: ["careful", "carefully", "carefulness", "carefree"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Be very",
+        phraseEnd: "with this glass of milk. It's hot.",
+        answer: "careful",
+        kor: "",
+        options: ["careful", "carefully", "carefulness", "carefree"]
+    ),
+    AdjOrAdv(
+        phraseStart: "The dog across the street barks",
+        phraseEnd: "whenever I walk near his home.",
+        answer: "loudly",
+        kor: "",
+        options: ["loud", "loudly"]
+    ),
+    AdjOrAdv(
+        phraseStart: "The bus driver was",
+        phraseEnd: "injured in the accident.",
+        answer: "seriously",
+        kor: "",
+        options: ["serious", "seriously", "seriousness"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Kevin is",
+        phraseEnd: "clever. He solved the math problem in under 5 minutes.",
+        answer: "extremely",
+        kor: "",
+        options: ["extreme", "extremely", "extremism", "extremist"]
+    ),
+    AdjOrAdv(
+        phraseStart: "This hamburger tastes",
+        phraseEnd: ". I will never return to this restaurant.",
+        answer: "awful",
+        kor: "",
+        options: ["awful", "awfully", "awfulness"]
+    ),
+    AdjOrAdv(
+        phraseStart: "Robin looks",
+        phraseEnd: ". What's the matter with him?",
+        answer: "sad",
+        kor: "",
+        options: ["sad", "sadden", "saddened"]
     )
 ]
 
