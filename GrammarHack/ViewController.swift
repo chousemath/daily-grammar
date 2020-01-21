@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 class Quest {
     var title = "";
     var subtitle = "";
@@ -16,6 +17,8 @@ class Quest {
     var phraseStart = "";
     var phraseEnd = "";
     var options: [String] = [];
+    var noKor: Bool = false
+    var delay: Double = 3.0
     
     init(
         title: String,
@@ -40,8 +43,12 @@ class Quest {
         self.phraseStart = phraseStart;
         self.phraseEnd = phraseEnd;
         self.answer = answer;
-        self.kor = kor.isEmpty ? "한국어 버전은 아직 없습니다." : kor;
+        self.noKor = kor.isEmpty
+        self.kor = self.noKor ? "*한국어 버전은 아직 없습니다*" : kor;
         self.options = options.shuffled();
+        if self.noKor {
+            self.delay = 1.0
+        }
     }
     
     func match(answer: String) -> Bool {
@@ -66,6 +73,24 @@ class WithOnAbout: Quest {
             options: ["with", "on", "about"]
         )
     }
+}
+class AdjOrAdvType: Quest {
+    init(
+        phraseStart: String,
+        answer: String,
+        kor: String
+    ) {
+           super.init(
+               title: "Adjectives/Adverbs",
+               subtitle: "Ending with -ly",
+               category: "select-adjoradvtype",
+               phraseStart: phraseStart,
+               phraseEnd: "",
+               answer: answer,
+               kor: kor,
+               options: ["adjective (형용사)", "adverb (부사)", "both (형용사+부사)"]
+           )
+       }
 }
 
 class AdjOrAdv: Quest {
@@ -240,7 +265,113 @@ var questions: [Quest] = [
         answer: "sad",
         kor: "",
         options: ["sad", "sadden", "saddened"]
+    ),
+    AdjOrAdvType(
+        phraseStart: "slowly",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "carefully",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "quickly",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "heavily",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "badly",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "suddenly",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "hungrily",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "generally",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "fully",
+        answer: "adverb (부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "friendly",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "lonely",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "ugly",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "lovely",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "silly",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "lively",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "unlikely",
+        answer: "adjective (형용사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "daily",
+        answer: "both (형용사+부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "weekly",
+        answer: "both (형용사+부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "yearly",
+        answer: "both (형용사+부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "monthly",
+        answer: "both (형용사+부사)",
+        kor: ""
+    ),
+    AdjOrAdvType(
+        phraseStart: "early",
+        answer: "both (형용사+부사)",
+        kor: ""
     )
+    //    options: ["adjective (형용사)", "adverb (부사)", "both (형용사+부사)"]
 ]
 
 class ViewController: UIViewController {
@@ -309,14 +440,12 @@ class ViewController: UIViewController {
                 style: .default,
                 handler: { action in
                     self.optionButton.setTitle(opt, for: .normal)
-                    print(opt)
-                    print(questions[self.qindex].answer)
-                    print("=====")
-                    if questions[self.qindex].match(answer: opt) {
+                    let q = questions[self.qindex]
+                    if q.match(answer: opt) {
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
-                        self.responseBody.text = questions[self.qindex].kor
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self.responseBody.text = q.kor
+                        DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
                             self.optionButton.setTitle("__________", for: .normal)
                             self.advanceIndex()
                             self.setQuestion()
@@ -325,7 +454,7 @@ class ViewController: UIViewController {
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.responseTitle.text = ""
                             self.responseBody.text = ""
                         }
