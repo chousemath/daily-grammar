@@ -114,6 +114,71 @@ class AdjOrAdv: Quest {
     }
 }
 
+class AdvFreq: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: String,
+        kor: String,
+        options: [String]
+    ) {
+        super.init(
+            title: "Adverbs of Frequency",
+            subtitle: "올바른 옵션을 선택하세요",
+            category: "select-advfreq",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer,
+            kor: kor,
+            options: options
+        )
+    }
+}
+
+class QuestPos: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: Int,
+        kor: String,
+        count: Int
+    ) {
+        assert(count > 1, "count value is too small")
+        let options = (1...count).map { "Position (\($0))" }
+        super.init(
+            title: "Word Position",
+            subtitle: "단어의 올바른 위치를 선택하세요",
+            category: "select-position",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: "Position (\(answer))",
+            kor: kor,
+            options: options
+        )
+    }
+}
+
+class AdjComp: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: String,
+        kor: String,
+        options: [String]
+    ) {
+        super.init(
+            title: "Adjective Comparison",
+            subtitle: "올바른 옵션을 선택하세요",
+            category: "select-adjcomp",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer,
+            kor: kor,
+            options: options
+        )
+    }
+}
+
 var questions: [Quest] = [
     WithOnAbout(
         phraseStart: "May I fill out the form",
@@ -370,8 +435,182 @@ var questions: [Quest] = [
         phraseStart: "early",
         answer: "both (형용사+부사)",
         kor: ""
+    ),
+    AdvFreq(
+        phraseStart: "We",
+        phraseEnd: "to school by bus.",
+        answer: "always go",
+        kor: "",
+        options: ["always go", "go always"]
+    ),
+    AdvFreq(
+        phraseStart: "I",
+        phraseEnd: "my room on Saturdays.",
+        answer: "often clean",
+        kor: "",
+        options: ["often clean", "clean often"]
+    ),
+    AdvFreq(
+        phraseStart: "They",
+        phraseEnd: "tablets in the classroom.",
+        answer: "sometimes use",
+        kor: "",
+        options: ["sometimes use", "use sometimes"]
+    ),
+    AdvFreq(
+        phraseStart: "He",
+        phraseEnd: "home before 8 pm.",
+        answer: "never gets",
+        kor: "",
+        options: ["never gets", "gets never"]
+    ),
+    AdvFreq(
+        phraseStart: "The children",
+        phraseEnd: "YouTube videos.",
+        answer: "often watch",
+        kor: "",
+        options: ["often watch", "watch often"]
+    ),
+    AdvFreq(
+        phraseStart: "I",
+        phraseEnd: "my bed on Saturday mornings.",
+        answer: "seldom make",
+        kor: "",
+        options: ["seldom make", "make seldom"]
+    ),
+    AdvFreq(
+        phraseStart: "Do they",
+        phraseEnd: "to the supermarket?",
+        answer: "never walk",
+        kor: "",
+        options: ["never walk", "walk never"]
+    ),
+    AdvFreq(
+        phraseStart: "We don't",
+        phraseEnd: "coffee for breakfast.",
+        answer: "always have",
+        kor: "",
+        options: ["always have", "have always"]
+    ),
+    AdvFreq(
+        phraseStart: "She",
+        phraseEnd: "basketball in the afternoon.",
+        answer: "always plays",
+        kor: "",
+        options: ["always plays", "plays always"]
+    ),
+    AdvFreq(
+        phraseStart: "I",
+        phraseEnd: "a shower when I get home in the evening.",
+        answer: "often have",
+        kor: "",
+        options: ["often have", "have often"]
+    ),
+    AdvFreq(
+        phraseStart: "We",
+        phraseEnd: "fishing at the lake.",
+        answer: "sometimes go",
+        kor: "",
+        options: ["sometimes go", "go sometimes"]
+    ),
+    AdvFreq(
+        phraseStart: "They",
+        phraseEnd: "enough time to finish their homework.",
+        answer: "never have",
+        kor: "",
+        options: ["never have", "have never"]
+    ),
+    AdvFreq(
+        phraseStart: "Where do you",
+        phraseEnd: "your summer holidays?",
+        answer: "usually spend",
+        kor: "",
+        options: ["usually spend", "spend usually"]
+    ),
+    AdjComp(
+        phraseStart: "This is a nice cat. It's much",
+        phraseEnd: "than my friend's cat.",
+        answer: "nicer",
+        kor: "",
+        options: ["nice", "nicest", "nicer", "mean", "meaner", "meanest"]
+    ),
+    AdjComp(
+        phraseStart: "Here is Emily. She's six years old. Her brother is nine, so he is",
+        phraseEnd: ".",
+        answer: "older",
+        kor: "",
+        options: ["older", "younger"]
+    ),
+    QuestPos(
+        phraseStart: "Our (1) friends must (2) take (3) a test.",
+        phraseEnd: "(also)",
+        answer: 2,
+        kor: "Our friends must also take a test.",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "I (1) was (2) joking.",
+        phraseEnd: "(only)",
+        answer: 2,
+        kor: "I was only joking.",
+        count: 2
+    ),
+    QuestPos(
+        phraseStart: "Did (1) you (2) enjoy (3) the flight?",
+        phraseEnd: "(both)",
+        answer: 2,
+        kor: "Did you both enjoy the flight?",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "Mary (1) watches (2) TV.",
+        phraseEnd: "(hardly ever)",
+        answer: 1,
+        kor: "Mary hardly ever watches TV.",
+        count: 2
+    ),
+    QuestPos(
+        phraseStart: "He drives (1) his (2) car (3).",
+        phraseEnd: "(carefully)",
+        answer: 3,
+        kor: "He drives his car carefully.",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "The children (1) play (2) football (3).",
+        phraseEnd: "(in the garden)",
+        answer: 3,
+        kor: "The children play football in the garden.",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "We (1) went to the (2) cinema (3).",
+        phraseEnd: "(yesterday)",
+        answer: 3,
+        kor: "We went to the cinema yesterday.",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "John (1) fell (2) off (3) the bike.",
+        phraseEnd: "(almost)",
+        answer: 1,
+        kor: "John almost fell off the bike.",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "Her (1) boyfriend will (2) buy her some (3) flowers.",
+        phraseEnd: "(probably)",
+        answer: 2,
+        kor: "Her boyfriend will probably buy her some flowers.",
+        count: 3
+    ),
+    QuestPos(
+        phraseStart: "My uncle is (1) moving (2) to Stockholm soon (3).",
+        phraseEnd: "(definitely)",
+        answer: 1,
+        kor: "My uncle is definitely moving to Stockholm soon.",
+        count: 3
     )
-    //    options: ["adjective (형용사)", "adverb (부사)", "both (형용사+부사)"]
 ]
 
 class ViewController: UIViewController {
