@@ -34,7 +34,6 @@ class Quest {
         assert(!subtitle.isEmpty, "subtitle variable is empty")
         assert(!category.isEmpty, "category variable is empty")
         assert(!phraseStart.isEmpty, "phraseStart variable is empty")
-        assert(!phraseEnd.isEmpty, "phraseEnd variable is empty")
         assert(!answer.isEmpty, "answer variable is empty")
         
         self.title = title;
@@ -187,83 +186,83 @@ var questions: [Quest] = [
         kor: "이 서식을 연필로 작성해도 될까요?"
     ),
     WithOnAbout(
-        phraseStart: "My presentation is",
+        phraseStart: "My final presentation is",
         phraseEnd: "American history.",
         answer: "about",
         kor: "제 프레젠테이션은 미국 문화에 관한 것입니다."
     ),
     WithOnAbout(
         phraseStart: "You can draw a picture",
-        phraseEnd: "this paper.",
+        phraseEnd: "this piece of paper.",
         answer: "on",
         kor: "이 종이 위해 그림을 그리렴."
     ),
     WithOnAbout(
         phraseStart: "This font size is too small, but I can read it",
-        phraseEnd: "glasses.",
+        phraseEnd: "glasses. Please make it bigger!",
         answer: "with",
         kor: "활자체가 너무 작아. 하지만 안경을 쓰면 읽을 수 있겠어."
     ),
     WithOnAbout(
         phraseStart: "Why don't you cut the paper",
-        phraseEnd: "scissors?",
+        phraseEnd: "scissors instead of using a knife?",
         answer: "with",
         kor: "그 종이는 가위로 자르느 게 어때요?"
     ),
     WithOnAbout(
-        phraseStart: "We are",
+        phraseStart: "I think that we are definitely",
         phraseEnd: "the same page!",
         answer: "on",
         kor: "우린 서로 같은 생각이야!"
     ),
     WithOnAbout(
-        phraseStart: "I got the author's autograph",
-        phraseEnd: "this book cover.",
+        phraseStart: "I finally got my favorite author's autograph",
+        phraseEnd: "on the cover of my book. I am so excited!",
         answer: "on",
         kor: "그 책 표지에 저자의 사인을 받았어."
     ),
     WithOnAbout(
-        phraseStart: "Who wrote the words",
+        phraseStart: "Who wrote this beautiful poem",
         phraseEnd: "the whiteboard?",
         answer: "on",
         kor: "칠판에 저거 쓴 사람 누구야?"
     ),
     WithOnAbout(
-        phraseStart: "What is your thesis",
-        phraseEnd: "?",
+        phraseStart: "What is your class report",
+        phraseEnd: "? It is so complicated!",
         answer: "about",
         kor: "너의 논문은 무엇에 관한 거지?"
     ),
     WithOnAbout(
         phraseStart: "Today's newspaper is all",
-        phraseEnd: "the Olympics",
+        phraseEnd: "the Winter Olympics.",
         answer: "about",
         kor: "오늘 신문은 올림픽에 관한 모든 것이 실렸어."
     ),
     AdjOrAdv(
-        phraseStart: "He",
-        phraseEnd: "reads a book.",
+        phraseStart: "John can",
+        phraseEnd: "read books about chemistry because that was his major in college.",
         answer: "quickly",
         kor: "",
         options: ["quick", "quicker", "quickest", "quickly"]
     ),
     AdjOrAdv(
         phraseStart: "Sue is a",
-        phraseEnd: "girl working at Starbucks.",
+        phraseEnd: "girl working at Starbucks. I want to get her phone number!",
         answer: "pretty",
         kor: "",
         options: ["pretty", "prettily", "prettiness", "prettyish"]
     ),
     AdjOrAdv(
         phraseStart: "My biology class is",
-        phraseEnd: "loud today.",
+        phraseEnd: "loud today. I wish everyone would be quiet.",
         answer: "terribly",
         kor: "",
         options: ["terrible", "terribly", "terribleness"]
     ),
     AdjOrAdv(
         phraseStart: "Today was a",
-        phraseEnd: "day. I lost my wallet.",
+        phraseEnd: "day. I lost my wallet and a large amount of cash.",
         answer: "terrible",
         kor: "",
         options: ["terrible", "terribly", "terribleness"]
@@ -277,7 +276,7 @@ var questions: [Quest] = [
     ),
     AdjOrAdv(
         phraseStart: "Joanna drives slowly because she is a",
-        phraseEnd: "driver.",
+        phraseEnd: "and considerate driver.",
         answer: "careful",
         kor: "",
         options: ["careful", "carefully", "carefulness", "carefree"]
@@ -325,8 +324,8 @@ var questions: [Quest] = [
         options: ["awful", "awfully", "awfulness"]
     ),
     AdjOrAdv(
-        phraseStart: "Robin looks",
-        phraseEnd: ". What's the matter with him?",
+        phraseStart: "Robin looks so",
+        phraseEnd: "today. What's the matter with him?",
         answer: "sad",
         kor: "",
         options: ["sad", "sadden", "saddened"]
@@ -472,49 +471,49 @@ var questions: [Quest] = [
         options: ["often watch", "watch often"]
     ),
     AdvFreq(
-        phraseStart: "I",
-        phraseEnd: "my bed on Saturday mornings.",
-        answer: "seldom make",
+        phraseStart: "James, my roommate,",
+        phraseEnd: "his bed on Saturday mornings. It drives me crazy!",
+        answer: "seldom makes",
         kor: "",
-        options: ["seldom make", "make seldom"]
+        options: ["seldom makes", "makes seldom"]
     ),
     AdvFreq(
         phraseStart: "Do they",
-        phraseEnd: "to the supermarket?",
+        phraseEnd: "to the supermarket? It's so close to their house!",
         answer: "never walk",
         kor: "",
         options: ["never walk", "walk never"]
     ),
     AdvFreq(
         phraseStart: "We don't",
-        phraseEnd: "coffee for breakfast.",
+        phraseEnd: "coffee for breakfast. Sometimes we have juice instead!",
         answer: "always have",
         kor: "",
         options: ["always have", "have always"]
     ),
     AdvFreq(
-        phraseStart: "She",
+        phraseStart: "Sally, my neighbor,",
         phraseEnd: "basketball in the afternoon.",
         answer: "always plays",
         kor: "",
         options: ["always plays", "plays always"]
     ),
     AdvFreq(
-        phraseStart: "I",
-        phraseEnd: "a shower when I get home in the evening.",
-        answer: "often have",
+        phraseStart: "My friend, Mrs. Johnson,",
+        phraseEnd: "a shower when she gets home in the evening.",
+        answer: "often takes",
         kor: "",
-        options: ["often have", "have often"]
+        options: ["often takes", "takes often"]
     ),
     AdvFreq(
-        phraseStart: "We",
+        phraseStart: "My wife and I",
         phraseEnd: "fishing at the lake.",
         answer: "sometimes go",
         kor: "",
         options: ["sometimes go", "go sometimes"]
     ),
     AdvFreq(
-        phraseStart: "They",
+        phraseStart: "Jeremy and Jinho",
         phraseEnd: "enough time to finish their homework.",
         answer: "never have",
         kor: "",
@@ -537,7 +536,7 @@ var questions: [Quest] = [
     AdjComp(
         phraseStart: "Here is Emily. She's six years old. Her brother is nine, so he is",
         phraseEnd: ".",
-        answer: "older",
+        answer: "older than she is.",
         kor: "",
         options: ["older", "younger"]
     ),
