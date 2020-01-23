@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class Quest {
     var title = "";
@@ -28,7 +29,8 @@ class Quest {
         phraseEnd: String,
         answer: String,
         kor: String,
-        options: Array<String>
+        options: Array<String>,
+        shuffled: Bool
     ) {
         assert(!title.isEmpty, "title variable is empty")
         assert(!subtitle.isEmpty, "subtitle variable is empty")
@@ -44,7 +46,11 @@ class Quest {
         self.answer = answer;
         self.noKor = kor.isEmpty
         self.kor = self.noKor ? "*한국어 버전은 아직 없습니다*" : kor;
-        self.options = options.shuffled();
+        if shuffled {
+            self.options = options.shuffled();
+        } else {
+            self.options = options;
+        }
         if self.noKor {
             self.delay = 1.0
         }
@@ -69,7 +75,8 @@ class WithOnAbout: Quest {
             phraseEnd: phraseEnd,
             answer: answer,
             kor: kor,
-            options: ["with", "on", "about"]
+            options: ["with", "on", "about"],
+            shuffled: true
         )
     }
 }
@@ -87,7 +94,8 @@ class AdjOrAdvType: Quest {
                phraseEnd: "",
                answer: answer,
                kor: kor,
-               options: ["adjective (형용사)", "adverb (부사)", "both (형용사+부사)"]
+               options: ["adjective (형용사)", "adverb (부사)", "both (형용사+부사)"],
+               shuffled: true
            )
        }
 }
@@ -108,7 +116,8 @@ class AdjOrAdv: Quest {
             phraseEnd: phraseEnd,
             answer: answer,
             kor: kor,
-            options: options
+            options: options,
+            shuffled: true
         )
     }
 }
@@ -129,7 +138,8 @@ class AdvFreq: Quest {
             phraseEnd: phraseEnd,
             answer: answer,
             kor: kor,
-            options: options
+            options: options,
+            shuffled: true
         )
     }
 }
@@ -152,7 +162,8 @@ class QuestPos: Quest {
             phraseEnd: phraseEnd,
             answer: "Position (\(answer))",
             kor: kor,
-            options: options
+            options: options,
+            shuffled: false
         )
     }
 }
@@ -173,7 +184,8 @@ class AdjComp: Quest {
             phraseEnd: phraseEnd,
             answer: answer,
             kor: kor,
-            options: options
+            options: options,
+            shuffled: true
         )
     }
 }
@@ -217,7 +229,7 @@ var questions: [Quest] = [
     ),
     WithOnAbout(
         phraseStart: "I finally got my favorite author's autograph",
-        phraseEnd: "on the cover of my book. I am so excited!",
+        phraseEnd: "the cover of my book. I am so excited!",
         answer: "on",
         kor: "그 책 표지에 저자의 사인을 받았어."
     ),
@@ -538,7 +550,7 @@ var questions: [Quest] = [
         phraseEnd: ".",
         answer: "older than she is.",
         kor: "",
-        options: ["older", "younger"]
+        options: ["older than she is.", "younger than she is."]
     ),
     QuestPos(
         phraseStart: "Our (1) friends must (2) take (3) a test.",
@@ -624,6 +636,7 @@ class ViewController: UIViewController {
     
     var qindex: Int = 0
     var scoreVal: Int = 0
+    var player: AVAudioPlayer?
     let limit: Int = questions.count - 1
     let scoreLimit: Int = 20
     
@@ -637,9 +650,42 @@ class ViewController: UIViewController {
         
         // pick a random question to begin with
         questions.shuffle()
-        
         setQuestion()
-        
+        setScore()
+    }
+    
+    let successSounds = [
+        "coin",
+        "msgBlock"
+    ]
+    
+    let failureSounds = [
+        "peng01"
+    ]
+    
+    func playSuccessSound() {
+        if let fileName = successSounds.randomElement() {
+            playSound(fileName: fileName)
+        }
+    }
+    
+    func playFailureSound() {
+        if let fileName = failureSounds.randomElement() {
+            playSound(fileName: fileName)
+        }
+    }
+    
+    func playSound(fileName: String) {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "mp3") else {
+            print("\(fileName).mp3 could not be found.")
+            return
+        }
+        do {
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player?.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func advanceIndex() {
@@ -664,6 +710,7 @@ class ViewController: UIViewController {
     func setScore() {
         if scoreVal >= scoreLimit {
             scoreVal = 0
+            playSound(fileName: "cheer01")
         }
         score.text = "\(scoreVal)/\(scoreLimit)"
     }
@@ -696,6 +743,7 @@ class ViewController: UIViewController {
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
                         self.setScore()
+                        self.playSuccessSound()
                         DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
                             self.optionButton.setTitle("__________", for: .normal)
                             self.advanceIndex()
@@ -706,6 +754,7 @@ class ViewController: UIViewController {
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"
+                        self.playFailureSound()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.responseTitle.text = ""
                             self.responseBody.text = ""

@@ -13,6 +13,10 @@
 		C85D58E823D3DAEE007967AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85D58E623D3DAEE007967AF /* Main.storyboard */; };
 		C85D58EA23D3DAF2007967AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85D58E923D3DAF2007967AF /* Assets.xcassets */; };
 		C85D58ED23D3DAF2007967AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85D58EB23D3DAF2007967AF /* LaunchScreen.storyboard */; };
+		C8D5798723D9731300546868 /* cheer01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798623D9731300546868 /* cheer01.mp3 */; };
+		C8D5798E23D9775300546868 /* msgBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798923D9775300546868 /* msgBlock.mp3 */; };
+		C8D5799123D9775300546868 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798C23D9775300546868 /* coin.mp3 */; };
+		C8D5799323D97B5C00546868 /* peng01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5799223D97B5C00546868 /* peng01.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,13 @@
 		C85D58E923D3DAF2007967AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C85D58EC23D3DAF2007967AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C85D58EE23D3DAF2007967AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8D5798623D9731300546868 /* cheer01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheer01.mp3; sourceTree = "<group>"; };
+		C8D5798823D9775300546868 /* oneUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oneUp.mp3; sourceTree = "<group>"; };
+		C8D5798923D9775300546868 /* msgBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msgBlock.mp3; sourceTree = "<group>"; };
+		C8D5798A23D9775300546868 /* stomp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stomp.mp3; sourceTree = "<group>"; };
+		C8D5798B23D9775300546868 /* itemStore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itemStore.mp3; sourceTree = "<group>"; };
+		C8D5798C23D9775300546868 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
+		C8D5799223D97B5C00546868 /* peng01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = peng01.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +51,13 @@
 		C85D58D423D3DAED007967AF = {
 			isa = PBXGroup;
 			children = (
+				C8D5799223D97B5C00546868 /* peng01.mp3 */,
+				C8D5798C23D9775300546868 /* coin.mp3 */,
+				C8D5798B23D9775300546868 /* itemStore.mp3 */,
+				C8D5798923D9775300546868 /* msgBlock.mp3 */,
+				C8D5798823D9775300546868 /* oneUp.mp3 */,
+				C8D5798A23D9775300546868 /* stomp.mp3 */,
+				C8D5798623D9731300546868 /* cheer01.mp3 */,
 				C85D58DF23D3DAEE007967AF /* GrammarHack */,
 				C85D58DE23D3DAEE007967AF /* Products */,
 			);
@@ -125,6 +143,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D5799323D97B5C00546868 /* peng01.mp3 in Resources */,
+				C8D5798E23D9775300546868 /* msgBlock.mp3 in Resources */,
+				C8D5799123D9775300546868 /* coin.mp3 in Resources */,
+				C8D5798723D9731300546868 /* cheer01.mp3 in Resources */,
 				C85D58ED23D3DAF2007967AF /* LaunchScreen.storyboard in Resources */,
 				C85D58EA23D3DAF2007967AF /* Assets.xcassets in Resources */,
 				C85D58E823D3DAEE007967AF /* Main.storyboard in Resources */,
