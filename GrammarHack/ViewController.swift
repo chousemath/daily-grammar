@@ -620,9 +620,12 @@ class ViewController: UIViewController {
     @IBOutlet var optionButton: UIButton!
     @IBOutlet var responseTitle: UILabel!
     @IBOutlet var responseBody: UILabel!
+    @IBOutlet var score: UILabel!
     
     var qindex: Int = 0
+    var scoreVal: Int = 0
     let limit: Int = questions.count - 1
+    let scoreLimit: Int = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -649,12 +652,13 @@ class ViewController: UIViewController {
     }
     
     func setQuestion() {
+        let q = questions[qindex]
         responseTitle.text = ""
         responseBody.text = ""
-        exerciseTitle.text = questions[qindex].title
-        exerciseSubtitle.text = questions[qindex].subtitle
-        phraseStart.text = questions[qindex].phraseStart
-        phraseEnd.text = questions[qindex].phraseEnd
+        exerciseTitle.text = q.title
+        exerciseSubtitle.text = q.subtitle
+        phraseStart.text = q.phraseStart
+        phraseEnd.text = q.phraseEnd
     }
     
     @IBAction func selectorPressed(_ sender: UIButton) {
@@ -680,13 +684,19 @@ class ViewController: UIViewController {
                     self.optionButton.setTitle(opt, for: .normal)
                     let q = questions[self.qindex]
                     if q.match(answer: opt) {
+                        self.scoreVal += 1
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
+                        self.score.text = "\(self.scoreVal)/\(self.scoreLimit)"
                         DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
                             self.optionButton.setTitle("__________", for: .normal)
                             self.advanceIndex()
                             self.setQuestion()
+                            if self.scoreVal >= self.scoreLimit {
+                                self.scoreVal = 0
+                                self.score.text = "\(self.scoreVal)/\(self.scoreLimit)"
+                            }
                         }
                     } else {
                         self.responseTitle.textColor = UIColor.red
