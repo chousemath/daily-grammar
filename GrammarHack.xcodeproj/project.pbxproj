@@ -29,10 +29,7 @@
 		C85D58EC23D3DAF2007967AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C85D58EE23D3DAF2007967AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D5798623D9731300546868 /* cheer01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheer01.mp3; sourceTree = "<group>"; };
-		C8D5798823D9775300546868 /* oneUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oneUp.mp3; sourceTree = "<group>"; };
 		C8D5798923D9775300546868 /* msgBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msgBlock.mp3; sourceTree = "<group>"; };
-		C8D5798A23D9775300546868 /* stomp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stomp.mp3; sourceTree = "<group>"; };
-		C8D5798B23D9775300546868 /* itemStore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itemStore.mp3; sourceTree = "<group>"; };
 		C8D5798C23D9775300546868 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
 		C8D5799223D97B5C00546868 /* peng01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = peng01.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,10 +50,7 @@
 			children = (
 				C8D5799223D97B5C00546868 /* peng01.mp3 */,
 				C8D5798C23D9775300546868 /* coin.mp3 */,
-				C8D5798B23D9775300546868 /* itemStore.mp3 */,
 				C8D5798923D9775300546868 /* msgBlock.mp3 */,
-				C8D5798823D9775300546868 /* oneUp.mp3 */,
-				C8D5798A23D9775300546868 /* stomp.mp3 */,
 				C8D5798623D9731300546868 /* cheer01.mp3 */,
 				C85D58DF23D3DAEE007967AF /* GrammarHack */,
 				C85D58DE23D3DAEE007967AF /* Products */,
