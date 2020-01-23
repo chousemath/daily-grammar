@@ -661,6 +661,13 @@ class ViewController: UIViewController {
         phraseEnd.text = q.phraseEnd
     }
     
+    func setScore() {
+        if scoreVal >= scoreLimit {
+            scoreVal = 0
+        }
+        score.text = "\(scoreVal)/\(scoreLimit)"
+    }
+    
     @IBAction func selectorPressed(_ sender: UIButton) {
         print("Option selector was pressed.")
         let aSheet = UIAlertController(
@@ -688,15 +695,12 @@ class ViewController: UIViewController {
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
-                        self.score.text = "\(self.scoreVal)/\(self.scoreLimit)"
+                        self.setScore()
                         DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
                             self.optionButton.setTitle("__________", for: .normal)
                             self.advanceIndex()
                             self.setQuestion()
-                            if self.scoreVal >= self.scoreLimit {
-                                self.scoreVal = 0
-                                self.score.text = "\(self.scoreVal)/\(self.scoreLimit)"
-                            }
+                            self.setScore()
                         }
                     } else {
                         self.responseTitle.textColor = UIColor.red
