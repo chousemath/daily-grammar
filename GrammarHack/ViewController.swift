@@ -715,8 +715,24 @@ class ViewController: UIViewController {
         score.text = "\(scoreVal)/\(scoreLimit)"
     }
     
+    func showReadingPopup() {
+        let pop = ReadingPopup()
+        pop.setValues(title: "Habanero", content: "Peppers", onSuccess: advanceQuestion)
+        view.addSubview(pop)
+    }
+    
+    func advanceQuestion(fromModal: Bool) -> () {
+        if fromModal {
+            scoreVal += 1
+            playSuccessSound()
+        }
+        optionButton.setTitle("__________", for: .normal)
+        advanceIndex()
+        setScore()
+        setQuestion()
+    }
+    
     @IBAction func selectorPressed(_ sender: UIButton) {
-        print("Option selector was pressed.")
         let aSheet = UIAlertController(
             title: "가능한 답변입니다",
             message: "아래 답변 중 하나를 선택하세요",
@@ -742,19 +758,21 @@ class ViewController: UIViewController {
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
+                        /*
+                                        in the case where the score limit is reached, I still want the user
+                                        to briefly see that he/she has reached that limit before resetting to 0
+                                       */
                         self.setScore()
                         self.playSuccessSound()
                         DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
-                            self.optionButton.setTitle("__________", for: .normal)
-                            self.advanceIndex()
-                            self.setQuestion()
-                            self.setScore()
+                            self.advanceQuestion(fromModal: false)
                         }
                     } else {
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"
                         self.playFailureSound()
+                        self.showReadingPopup()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.responseTitle.text = ""
                             self.responseBody.text = ""

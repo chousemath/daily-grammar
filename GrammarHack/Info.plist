@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This feature is required for allowing Siri to access you microphone for English pronunciation training.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This feature is required for practicing English pronunciation using Siri.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
