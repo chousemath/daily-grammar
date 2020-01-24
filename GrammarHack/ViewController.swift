@@ -32,10 +32,7 @@ class Quest {
         options: Array<String>,
         shuffled: Bool
     ) {
-        assert(!title.isEmpty, "title variable is empty")
-        assert(!subtitle.isEmpty, "subtitle variable is empty")
         assert(!category.isEmpty, "category variable is empty")
-        assert(!phraseStart.isEmpty, "phraseStart variable is empty")
         assert(!answer.isEmpty, "answer variable is empty")
         
         self.title = title;
@@ -163,6 +160,22 @@ class QuestPos: Quest {
             answer: "Position (\(answer))",
             kor: kor,
             options: options,
+            shuffled: false
+        )
+    }
+}
+
+class Reading: Quest {
+    init(answer: String, kor: String) {
+        super.init(
+            title: "",
+            subtitle: "",
+            category: "reading",
+            phraseStart: "",
+            phraseEnd: "",
+            answer: answer,
+            kor: kor,
+            options: [],
             shuffled: false
         )
     }
@@ -621,6 +634,130 @@ var questions: [Quest] = [
         answer: 1,
         kor: "My uncle is definitely moving to Stockholm soon.",
         count: 3
+    ),
+    Reading(
+        answer: "I am frequently late, so my teacher doesn’t like me.",
+        kor: "저는 지각을 많이 해서, 선생님 눈 밖에 났어요."
+    ),
+    Reading(
+        answer: "If you are tired, get some sleep.",
+        kor: "피곤하면 눈 좀 붙여요."
+    ),
+    Reading(
+        answer: "Take me to the hospital.",
+        kor: "병원에 가주세요."
+    ),
+    Reading(
+        answer: "I need a doctor.",
+        kor: "의사가 필요해요."
+    ),
+    Reading(
+        answer: "Have a nice day!",
+        kor: "좋은 하루 보내세요!"
+    ),
+    Reading(
+        answer: "Have a good trip!",
+        kor: "여행 잘하세요!"
+    ),
+    Reading(
+        answer: "Where is the bathroom?",
+        kor: "화장실은 어디에 있어요?"
+    ),
+    Reading(
+        answer: "Please repeat that.",
+        kor: "다시 말해 주세요."
+    ),
+    Reading(
+        answer: "Please speak slowly.",
+        kor: "천천히 말해 주세요."
+    ),
+    Reading(
+        answer: "Please write it down.",
+        kor: "적어 주세요."
+    ),
+    Reading(
+        answer: "I understand.",
+        kor: "이해해요."
+    ),
+    Reading(
+        answer: "I don’t understand.",
+        kor: "이해 못해요."
+    ),
+    Reading(
+        answer: "I don’t know.",
+        kor: "몰라요."
+    ),
+    Reading(
+        answer: "Can you speak Korean?",
+        kor: "한국말을 할 수 있어요?"
+    ),
+    Reading(
+        answer: "I can speak a little Korean.",
+        kor: "한국말을 조금 할 수 있어요."
+    ),
+    Reading(
+        answer: "I can’t speak Korean.",
+        kor: "한국말을 못해요."
+    ),
+    Reading(
+        answer: "How much is this?",
+        kor: "이거 얼마예요?"
+    ),
+    Reading(
+        answer: "I’ll be right back!",
+        kor: "금방 갔다 올거예요!"
+    ),
+    Reading(
+        answer: "What is this?",
+        kor: "이게 뭐예요?"
+    ),
+    Reading(
+        answer: "Don’t worry!",
+        kor: "걱정 하지 마세요!"
+    ),
+    Reading(
+        answer: "No problem!",
+        kor: "문제 없어요!"
+    ),
+    Reading(
+        answer: "Please give me a menu.",
+        kor: "메뉴판 주세요."
+    ),
+    Reading(
+        answer: "Do you have vegetarian dishes?",
+        kor: "채식주의자용 식사 있어요?"
+    ),
+    Reading(
+        answer: "Is this spicy?",
+        kor: "이거 매워요?"
+    ),
+    Reading(
+        answer: "Please do not make this spicy.",
+        kor: "맵지 않게 요리해 주세요."
+    ),
+    Reading(
+        answer: "It’s delicious!",
+        kor: "맛있어요!"
+    ),
+    Reading(
+        answer: "It was a delicious meal!",
+        kor: "잘 먹었습니다!"
+    ),
+    Reading(
+        answer: "What time do you close?",
+        kor: "몇시에 문 닫아요?"
+    ),
+    Reading(
+        answer: "Do you take credit cards?",
+        kor: "카드 돼요?"
+    ),
+    Reading(
+        answer: "I’d like to eat here.",
+        kor: "여기서 먹고 갈게요."
+    ),
+    Reading(
+        answer: "Please throw away my receipt",
+        kor: "영수증은 버려 주세요."
     )
 ]
 
@@ -699,6 +836,16 @@ class ViewController: UIViewController {
     
     func setQuestion() {
         let q = questions[qindex]
+        if q.category == "reading" {
+            responseTitle.text = ""
+            responseBody.text = ""
+            exerciseTitle.text = ""
+            exerciseSubtitle.text = ""
+            phraseStart.text = ""
+            phraseEnd.text = ""
+            showReadingPopup(answer: q.answer, kor: q.kor)
+            return
+        }
         responseTitle.text = ""
         responseBody.text = ""
         exerciseTitle.text = q.title
@@ -715,21 +862,27 @@ class ViewController: UIViewController {
         score.text = "\(scoreVal)/\(scoreLimit)"
     }
     
-    func showReadingPopup() {
+    func showReadingPopup(answer: String, kor: String) {
         let pop = ReadingPopup()
-        pop.setValues(title: "Habanero", content: "Peppers", onSuccess: advanceQuestion)
+        pop.setValues(content: answer, kor: kor, onSuccess: advanceQuestionFromModal)
         view.addSubview(pop)
     }
     
-    func advanceQuestion(fromModal: Bool) -> () {
-        if fromModal {
-            scoreVal += 1
-            playSuccessSound()
-        }
+    func advanceQuestion() -> () {
         optionButton.setTitle("__________", for: .normal)
         advanceIndex()
         setScore()
         setQuestion()
+    }
+    
+    func advanceQuestionFromModal(skipped: Bool) -> () {
+        if skipped {
+            playFailureSound()
+        } else {
+            scoreVal += 1
+            playSuccessSound()
+        }
+        self.advanceQuestion()
     }
     
     @IBAction func selectorPressed(_ sender: UIButton) {
@@ -765,14 +918,13 @@ class ViewController: UIViewController {
                         self.setScore()
                         self.playSuccessSound()
                         DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
-                            self.advanceQuestion(fromModal: false)
+                            self.advanceQuestion()
                         }
                     } else {
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"
                         self.playFailureSound()
-                        self.showReadingPopup()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.responseTitle.text = ""
                             self.responseBody.text = ""
