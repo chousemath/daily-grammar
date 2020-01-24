@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Speech
 
 class Quest {
     var title = "";
@@ -168,7 +169,7 @@ class QuestPos: Quest {
 class Reading: Quest {
     init(answer: String, kor: String) {
         super.init(
-            title: "",
+            title: "영어 발음 연습",
             subtitle: "",
             category: "reading",
             phraseStart: "",
@@ -758,10 +759,99 @@ var questions: [Quest] = [
     Reading(
         answer: "Please throw away my receipt",
         kor: "영수증은 버려 주세요."
+    ),
+    Reading(
+        answer: "Do you have electrical outlets?",
+        kor: "콘센트 있어요?"
+    ),
+    Reading(
+        answer: "Where are your electrical outlets?",
+        kor: "콘센트 어디에 있어요?"
+    ),
+    Reading(
+        answer: "Please give me a receipt.",
+        kor: "영수증 주세요."
+    ),
+    Reading(
+        answer: "Please give me a discount.",
+        kor: "좀 깎아 주세요."
+    ),
+    Reading(
+        answer: "How much is it?",
+        kor: "얼마예요?"
+    ),
+    Reading(
+        answer: "Please give me a refund.",
+        kor: "환불해 주세요."
+    ),
+    Reading(
+        answer: "Please exchange this.",
+        kor: "교환해 주세요."
+    ),
+    Reading(
+        answer: "Please wrap it for me.",
+        kor: "포장해 주세요."
+    ),
+    Reading(
+        answer: "Please dry clean this for me.",
+        kor: "드라이 해 주세요."
+    ),
+    Reading(
+        answer: "Please iron this for me.",
+        kor: "다림질 해 주세요."
+    ),
+    Reading(
+        answer: "Please make this longer.",
+        kor: "기장을 늘려 주세요."
+    ),
+    Reading(
+        answer: "Please make this shorter.",
+        kor: "기장을 줄여 주세요."
+    ),
+    Reading(
+        answer: "Please sew on this button.",
+        kor: "단추 붙여주세요."
+    ),
+    Reading(
+        answer: "Can you remove this stain?",
+        kor: "얼룩 뺄 수 있어요?"
+    ),
+    Reading(
+        answer: "When can I pick up my clothes?",
+        kor: "옷을 언제 받을 수 있어요?"
+    ),
+    Reading(
+        answer: "I’m here to pick up my clothes.",
+        kor: "제 옷을 찾으러 왔어요."
+    ),
+    Reading(
+        answer: "How much is the total?",
+        kor: "모두 얼마예요?"
+    ),
+    Reading(
+        answer: "I would like to open a new bank account.",
+        kor: "통장을 만들고 싶어요."
+    ),
+    Reading(
+        answer: "I would like an check card",
+        kor: "체크 카드를 만들고 싶어요."
     )
 ]
 
 class ViewController: UIViewController {
+    var speechEnabled: Bool = false
+    var transcript: String = ""
+    let audioEngine = AVAudioEngine()
+    let speechRecognizer = SFSpeechRecognizer()
+    let request = SFSpeechAudioBufferRecognitionRequest()
+    var recognitionTask: SFSpeechRecognitionTask?
+    var qindex: Int = 0
+    var scoreVal: Int = 0
+    var player: AVAudioPlayer?
+    var readAnswer: String = ""
+    let limit: Int = questions.count - 1
+    let scoreLimit: Int = 20
+    
     @IBOutlet var exerciseTitle: UILabel!
     @IBOutlet var exerciseSubtitle: UILabel!
     @IBOutlet var phraseStart: UILabel!
@@ -770,12 +860,7 @@ class ViewController: UIViewController {
     @IBOutlet var responseTitle: UILabel!
     @IBOutlet var responseBody: UILabel!
     @IBOutlet var score: UILabel!
-    
-    var qindex: Int = 0
-    var scoreVal: Int = 0
-    var player: AVAudioPlayer?
-    let limit: Int = questions.count - 1
-    let scoreLimit: Int = 20
+    @IBOutlet var recordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -789,6 +874,103 @@ class ViewController: UIViewController {
         questions.shuffle()
         setQuestion()
         setScore()
+        
+        SFSpeechRecognizer.requestAuthorization{ (authStatus) in
+            switch authStatus {
+            case .authorized:
+                self.speechEnabled = true
+            case .denied:
+                self.speechEnabled = false
+            case .restricted:
+                self.speechEnabled = false
+            case .notDetermined:
+                self.speechEnabled = false
+            @unknown default:
+                return
+            }
+        }
+        
+        
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSession.RecordPermission.granted:
+            print("Permission granted")
+        case AVAudioSession.RecordPermission.denied:
+            print("Pemission denied")
+        case AVAudioSession.RecordPermission.undetermined:
+            print("Request permission here")
+            AVAudioSession.sharedInstance().requestRecordPermission({ (granted) in
+                // Handle granted
+            })
+        @unknown default:
+            return
+        }
+    }
+    
+    func normalize(text: String) -> String {
+        let okayChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
+        return String(text.filter {okayChars.contains($0) }).lowercased()
+    }
+    
+    func startRecording() {
+        do {
+            let node = audioEngine.inputNode
+            node.removeTap(onBus: 0)
+            let recordingFormat = node.outputFormat(forBus: 0)
+            node.installTap(onBus: 0, bufferSize: 1024,
+                            format: recordingFormat) { [unowned self]
+                                (buffer, _) in
+                                self.request.append(buffer)
+            }
+            audioEngine.prepare()
+            try audioEngine.start()
+            var matched = false
+            recognitionTask = speechRecognizer?.recognitionTask(with: request) {
+                [unowned self]
+                (result, _) in
+                if let transcription = result?.bestTranscription {
+                    self.responseBody.text = transcription.formattedString
+                    self.transcript = self.normalize(text: transcription.formattedString)
+                    if self.transcript == self.readAnswer {
+                        self.stopRecording()
+                        matched = true
+                        self.scoreVal += 1
+                        self.responseTitle.textColor = UIColor.green
+                        self.responseTitle.text = "정답입니다!"
+                        self.setScore()
+                        self.playSuccessSound()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.advanceQuestion()
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                if matched {
+                    return
+                }
+                self.stopRecording()
+                self.responseTitle.textColor = UIColor.red
+                self.responseTitle.text = "응답이 올바르지 않습니다~"
+                self.playFailureSound()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.advanceQuestion()
+                }
+            }
+        } catch let error {
+            print("There was problem recording \(error.localizedDescription)")
+        }
+    }
+    
+    func stopRecording() {
+        audioEngine.stop()
+        request.endAudio()
+        recognitionTask?.cancel()
+        print("Recording stopped")
+    }
+    
+    func skip() {
+        self.stopRecording()
     }
     
     let successSounds = [
@@ -839,13 +1021,18 @@ class ViewController: UIViewController {
         if q.category == "reading" {
             responseTitle.text = ""
             responseBody.text = ""
-            exerciseTitle.text = ""
-            exerciseSubtitle.text = ""
-            phraseStart.text = ""
-            phraseEnd.text = ""
-            showReadingPopup(answer: q.answer, kor: q.kor)
+            exerciseTitle.text = q.title
+            exerciseSubtitle.text = q.subtitle
+            phraseStart.text = q.answer
+            phraseEnd.text = q.kor
+            readAnswer = normalize(text: q.answer)
+            recordButton.isEnabled = true
+            recordButton.isHidden = false
+            optionButton.isHidden = true
             return
         }
+        optionButton.isHidden = false
+        recordButton.isHidden = true
         responseTitle.text = ""
         responseBody.text = ""
         exerciseTitle.text = q.title
@@ -862,12 +1049,6 @@ class ViewController: UIViewController {
         score.text = "\(scoreVal)/\(scoreLimit)"
     }
     
-    func showReadingPopup(answer: String, kor: String) {
-        let pop = ReadingPopup()
-        pop.setValues(content: answer, kor: kor, onSuccess: advanceQuestionFromModal)
-        view.addSubview(pop)
-    }
-    
     func advanceQuestion() -> () {
         optionButton.setTitle("__________", for: .normal)
         advanceIndex()
@@ -875,14 +1056,9 @@ class ViewController: UIViewController {
         setQuestion()
     }
     
-    func advanceQuestionFromModal(skipped: Bool) -> () {
-        if skipped {
-            playFailureSound()
-        } else {
-            scoreVal += 1
-            playSuccessSound()
-        }
-        self.advanceQuestion()
+    @IBAction func recordPressed(_ sender: UIButton) {
+        recordButton.isEnabled = false
+        startRecording()
     }
     
     @IBAction func selectorPressed(_ sender: UIButton) {

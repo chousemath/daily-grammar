@@ -33,7 +33,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6P-Sm-STF">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6P-Sm-STF">
                                 <rect key="frame" x="24" y="193.66666666666666" width="366" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="__________"/>
@@ -65,6 +65,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-b7-k04">
+                                <rect key="frame" x="24" y="665.66666666666663" width="176" height="46.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="목소리 녹음하기"/>
+                                <connections>
+                                    <action selector="recordPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Upu-Kb-jlH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -79,6 +87,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gHF-eC-TCf" secondAttribute="trailing" constant="24" id="Dej-tZ-L5g"/>
                             <constraint firstItem="T6P-Sm-STF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="FQk-QJ-w7a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="25j-hH-3kf" secondAttribute="trailing" constant="24" id="NPO-Ro-znt"/>
+                            <constraint firstItem="noJ-b7-k04" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Nid-Zv-NRy"/>
                             <constraint firstItem="NUd-LL-ZqB" firstAttribute="top" secondItem="06h-Af-5R6" secondAttribute="bottom" constant="24.5" id="Zbt-1c-KCf"/>
                             <constraint firstItem="06h-Af-5R6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="aP2-Iq-SNm"/>
                             <constraint firstItem="hdM-Kl-xma" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" identifier="ExerciseTitleVer" id="bUd-bw-KUi"/>
@@ -90,7 +99,9 @@
                             <constraint firstItem="25j-hH-3kf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="mIf-xL-XuD"/>
                             <constraint firstItem="hdM-Kl-xma" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="23" identifier="ExerciseTitleHor" id="mu3-Ta-oP4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T6P-Sm-STF" secondAttribute="trailing" constant="24" id="rWs-mZ-gZz"/>
+                            <constraint firstItem="noJ-b7-k04" firstAttribute="top" relation="lessThanOrEqual" secondItem="oo7-Dx-Zfn" secondAttribute="bottom" constant="352.32999999999998" id="sb1-qn-Sqq"/>
                             <constraint firstItem="oo7-Dx-Zfn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="vJg-OZ-t7d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="noJ-b7-k04" secondAttribute="bottom" constant="24" id="xLH-pe-uNq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="06h-Af-5R6" secondAttribute="trailing" constant="24" id="zbn-eC-7nE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -101,6 +112,7 @@
                         <outlet property="optionButton" destination="T6P-Sm-STF" id="Qk2-2y-wkC"/>
                         <outlet property="phraseEnd" destination="gHF-eC-TCf" id="7Ai-Cm-weY"/>
                         <outlet property="phraseStart" destination="25j-hH-3kf" id="bHh-IO-Q5q"/>
+                        <outlet property="recordButton" destination="noJ-b7-k04" id="4FG-JF-h7X"/>
                         <outlet property="responseBody" destination="oo7-Dx-Zfn" id="Pq8-gP-Mfn"/>
                         <outlet property="responseTitle" destination="liU-kR-cnI" id="bIL-aQ-l8S"/>
                         <outlet property="score" destination="06h-Af-5R6" id="UC7-Im-oLT"/>

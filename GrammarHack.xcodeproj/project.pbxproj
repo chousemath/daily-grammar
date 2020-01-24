@@ -13,7 +13,6 @@
 		C85D58E823D3DAEE007967AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85D58E623D3DAEE007967AF /* Main.storyboard */; };
 		C85D58EA23D3DAF2007967AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85D58E923D3DAF2007967AF /* Assets.xcassets */; };
 		C85D58ED23D3DAF2007967AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85D58EB23D3DAF2007967AF /* LaunchScreen.storyboard */; };
-		C887ECED23DA4BAF00B1B4A1 /* ReadingPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887ECEC23DA4BAF00B1B4A1 /* ReadingPopup.swift */; };
 		C8D5798723D9731300546868 /* cheer01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798623D9731300546868 /* cheer01.mp3 */; };
 		C8D5798E23D9775300546868 /* msgBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798923D9775300546868 /* msgBlock.mp3 */; };
 		C8D5799123D9775300546868 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798C23D9775300546868 /* coin.mp3 */; };
@@ -29,7 +28,6 @@
 		C85D58E923D3DAF2007967AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C85D58EC23D3DAF2007967AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C85D58EE23D3DAF2007967AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C887ECEC23DA4BAF00B1B4A1 /* ReadingPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingPopup.swift; sourceTree = "<group>"; };
 		C8D5798623D9731300546868 /* cheer01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheer01.mp3; sourceTree = "<group>"; };
 		C8D5798923D9775300546868 /* msgBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msgBlock.mp3; sourceTree = "<group>"; };
 		C8D5798C23D9775300546868 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				C85D58E923D3DAF2007967AF /* Assets.xcassets */,
 				C85D58EB23D3DAF2007967AF /* LaunchScreen.storyboard */,
 				C85D58EE23D3DAF2007967AF /* Info.plist */,
-				C887ECEC23DA4BAF00B1B4A1 /* ReadingPopup.swift */,
 			);
 			path = GrammarHack;
 			sourceTree = "<group>";
@@ -160,7 +157,6 @@
 				C85D58E523D3DAEE007967AF /* ViewController.swift in Sources */,
 				C85D58E123D3DAEE007967AF /* AppDelegate.swift in Sources */,
 				C85D58E323D3DAEE007967AF /* SceneDelegate.swift in Sources */,
-				C887ECED23DA4BAF00B1B4A1 /* ReadingPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
