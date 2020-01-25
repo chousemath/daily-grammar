@@ -107,6 +107,7 @@ class ViewController: UIViewController {
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.setScore()
+                        self.readCount = 0
                         playSuccessSound()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self.advanceQuestion()
