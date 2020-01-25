@@ -66,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noJ-b7-k04">
-                                <rect key="frame" x="24" y="665.66666666666663" width="176" height="46.333333333333371"/>
+                                <rect key="frame" x="119" y="665.66666666666663" width="176" height="46.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="목소리 녹음하기"/>
                                 <connections>
@@ -78,6 +78,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="liU-kR-cnI" secondAttribute="trailing" constant="24" id="0bI-FA-kxS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NUd-LL-ZqB" secondAttribute="trailing" constant="24" id="1p7-pb-dvf"/>
+                            <constraint firstItem="noJ-b7-k04" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2ae-hR-tbu"/>
                             <constraint firstItem="oo7-Dx-Zfn" firstAttribute="top" secondItem="liU-kR-cnI" secondAttribute="bottom" constant="8" id="3Ct-C5-eA9"/>
                             <constraint firstItem="T6P-Sm-STF" firstAttribute="top" secondItem="25j-hH-3kf" secondAttribute="bottom" constant="8" id="4Th-nN-SEk"/>
                             <constraint firstItem="gHF-eC-TCf" firstAttribute="top" secondItem="T6P-Sm-STF" secondAttribute="bottom" constant="8" id="5wp-gL-Tw4"/>
@@ -87,7 +88,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gHF-eC-TCf" secondAttribute="trailing" constant="24" id="Dej-tZ-L5g"/>
                             <constraint firstItem="T6P-Sm-STF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="FQk-QJ-w7a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="25j-hH-3kf" secondAttribute="trailing" constant="24" id="NPO-Ro-znt"/>
-                            <constraint firstItem="noJ-b7-k04" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Nid-Zv-NRy"/>
                             <constraint firstItem="NUd-LL-ZqB" firstAttribute="top" secondItem="06h-Af-5R6" secondAttribute="bottom" constant="24.5" id="Zbt-1c-KCf"/>
                             <constraint firstItem="06h-Af-5R6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="aP2-Iq-SNm"/>
                             <constraint firstItem="hdM-Kl-xma" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" identifier="ExerciseTitleVer" id="bUd-bw-KUi"/>

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var recognitionTask: SFSpeechRecognitionTask?
     var scoreVal: Int = 0
     var readAnswer: String = ""
+    var readDelay: Double = 5
     var readCount: Int = 0
     let readLimit: Int = 3
     let scoreLimit: Int = 20
@@ -77,7 +78,7 @@ class ViewController: UIViewController {
     
     func normalize(text: String) -> String {
         let okayChars : Set<Character> =
-            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
+            Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
         return String(text.filter {okayChars.contains($0) }).lowercased()
     }
     
@@ -115,7 +116,7 @@ class ViewController: UIViewController {
                     }
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.readDelay) {
                 if matched {
                     return
                 }
@@ -151,7 +152,7 @@ class ViewController: UIViewController {
     
     func setQuestion() {
         let q = Quest.current
-        if q.category == "reading" {
+        if q.category == "reading" || q.category == "reading-tonguetwister" {
             responseTitle.text = ""
             responseBody.text = ""
             exerciseTitle.text = q.title
@@ -159,6 +160,7 @@ class ViewController: UIViewController {
             phraseStart.text = q.answer
             phraseEnd.text = q.kor
             readAnswer = normalize(text: q.answer)
+            readDelay = q.category == "reading" ? 5 : 8
             recordButton.isEnabled = true
             recordButton.isHidden = false
             optionButton.isHidden = true
