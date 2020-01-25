@@ -7,6 +7,11 @@
 //
 
 class Quest {
+    class var current: Quest {
+        get {
+            return questions[qindex]
+        }
+    }
     var title = "";
     var subtitle = "";
     var category = "";
@@ -1415,3 +1420,13 @@ var questions: [Quest] = [
 ].shuffled()
 
 let questionLimit: Int = questions.count - 1
+var qindex: Int = 0
+
+func advanceIndex() {
+    if qindex < questionLimit {
+        qindex += 1
+    } else {
+        qindex = 0
+        questions.shuffle()
+    }
+}

@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     let speechRecognizer = SFSpeechRecognizer()
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
-    var qindex: Int = 0
     var scoreVal: Int = 0
     var readAnswer: String = ""
     var readCount: Int = 0
@@ -149,17 +148,8 @@ class ViewController: UIViewController {
         self.stopRecording()
     }
     
-    func advanceIndex() {
-        if qindex < questionLimit {
-            qindex += 1
-        } else {
-            qindex = 0
-            questions.shuffle()
-        }
-    }
-    
     func setQuestion() {
-        let q = questions[qindex]
+        let q = Quest.current
         if q.category == "reading" {
             responseTitle.text = ""
             responseBody.text = ""
@@ -214,7 +204,7 @@ class ViewController: UIViewController {
             style: .cancel,
             handler: nil
         )
-        guard let opts = questions[qindex].options else {
+        guard let opts = Quest.current.options else {
             return
         }
         for opt in opts {
@@ -226,7 +216,7 @@ class ViewController: UIViewController {
                 style: .default,
                 handler: { action in
                     self.optionButton.setTitle(opt, for: .normal)
-                    let q = questions[self.qindex]
+                    let q = Quest.current
                     if q.match(answer: opt) {
                         self.scoreVal += 1
                         self.responseTitle.textColor = UIColor.green
