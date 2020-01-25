@@ -226,7 +226,7 @@ class MathFractions: Quest {
                 "one-fourth", "two-fourths", "three-fourths",
                 "one-third", "two-thirds",
             ],
-            shuffled: true
+            shuffled: false
         )
     }
 }
@@ -281,7 +281,7 @@ class Reading: Quest {
     init(answer: String, kor: String) {
         super.init(
             title: "영어 발음 연습",
-            subtitle: "아래의 영어 문장을 읽어보십시오",
+            subtitle: "아래의 영어 문장을 읽어보십시오. 버튼을 누르면 총 5초 동안 이 작업을 완료할 수 있습니다. 정확하게 읽어주세요.",
             category: "reading",
             phraseStart: "",
             phraseEnd: "",
@@ -297,7 +297,7 @@ class Twister: Quest {
     init(answer: String) {
         super.init(
             title: "영어 발음 연습",
-            subtitle: "아래의 영어 문장을 읽어보십시오",
+            subtitle: "아래의 영어 문장을 읽어보십시오. 버튼을 누르면 총 8초 동안 이 작업을 완료할 수 있습니다. 천천히 정확하게 읽어주세요.",
             category: "reading-tonguetwister",
             phraseStart: "",
             phraseEnd: "",
@@ -2185,6 +2185,9 @@ var questions: [Quest] = [
         kor: "맛을 보다가 혀를 데었어요."
     ),
     Twister(answer: "She sells seashells by the seashore."),
+    Twister(answer: "How many sheets could a sheet slitter slit if a sheet slitter could slit sheets?"),
+    Twister(answer: "How much pot, could a pot roast roast, if a pot roast could roast pot?"),
+    Twister(answer: "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"),
     Twister(answer: "How can a clam cram in a clean cream can?"),
     Twister(answer: "I scream, you scream, we all scream for ice cream"),
     Twister(answer: "I saw a kitten eating chicken in the kitchen."),
@@ -2195,9 +2198,20 @@ var questions: [Quest] = [
     Twister(answer: "We surely shall see the sun shine soon."),
     Twister(answer: "Quizzical quiz, kiss me quick."),
     Twister(answer: "A proper copper coffee pot."),
-    Twister(answer: "Stupid superstition."),
-    Twister(answer: "Truly rural."),
-    Twister(answer: "She sees cheese.")
+    Twister(answer: "Stupid superstition, Stupid superstition."),
+    Twister(answer: "Truly rural, Truly rural."),
+    Twister(answer: "Real rock wall, real rock wall, real rock wall."),
+    Twister(answer: "Supposed to be pistachio, supposed to be pistachio."),
+    Twister(answer: "The queen in green screamed."),
+    Twister(answer: "Rolling Red Wagons, Rolling Red Wagons."),
+    Twister(answer: "You cuss, I cuss, we all cuss, for asparagus!"),
+    Twister(answer: "Round the rough and rugged rock the ragged rascal rudely ran."),
+    Twister(answer: "She sees cheese, She sees cheese."),
+    Twister(answer: "Black Background, Brown Background, Black Background, Brown Background."),
+    Twister(answer: "World Wide Web, World Wide Web, World Wide Web."),
+    Twister(answer: "Pirates Private Property, Pirates Private Property."),
+    Twister(answer: "Tiny timid toads trying to trot to town."),
+    Twister(answer: "Sick sticky skeletons, sick sticky skeletons, sick sticky skeletons.")
     ].shuffled()
 
 let questionLimit: Int = questions.count - 1

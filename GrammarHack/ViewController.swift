@@ -36,10 +36,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        exerciseSubtitle.numberOfLines = 0
         phraseStart.numberOfLines = 0
         phraseEnd.numberOfLines = 0
         responseTitle.numberOfLines = 0
         responseBody.numberOfLines = 0
+        recordButton.layer.cornerRadius = 8
         
         // pick a random question to begin with
         setQuestion()
@@ -133,6 +135,8 @@ class ViewController: UIViewController {
                     }
                 } else {
                     self.recordButton.isEnabled = true
+                    self.recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
+                    self.recordButton.backgroundColor = .systemBlue
                 }
             }
         } catch let error {
@@ -162,6 +166,8 @@ class ViewController: UIViewController {
             readAnswer = normalize(text: q.answer)
             readDelay = q.category == "reading" ? 5 : 8
             recordButton.isEnabled = true
+            recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
+            recordButton.backgroundColor = .systemBlue
             recordButton.isHidden = false
             optionButton.isHidden = true
             return
@@ -193,6 +199,8 @@ class ViewController: UIViewController {
     
     @IBAction func recordPressed(_ sender: UIButton) {
         recordButton.isEnabled = false
+        recordButton.setTitle("🎤 녹음 중...", for: .normal)
+        recordButton.backgroundColor = .orange
         startRecording()
     }
     
