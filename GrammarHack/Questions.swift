@@ -1936,242 +1936,167 @@ var questions: [Quest] = [
         answer: "Would you like to leave a message?",
         kor: "메시지를 남기시겠어요?"
     ),
-    Reading(
-        answer: "Can I take a message?",
-        kor: "메시지를 받을 수 있어요?"
-    ),
-    Reading(
-        answer: "Please repeat that for me.",
-        kor: "다시 말해 주세요."
-    ),
-    Reading(
-        answer: "Please speak up a little for me.",
-        kor: "좀 더 크게 말해 주세요."
-    ),
-    Reading(
-        answer: "I will call you back.",
-        kor: "제가 다시 걸게요."
-    ),
-    Reading(
-        answer: "When shall I call?",
-        kor: "언제쯤 통화가 가능할까요?"
-    ),
-    Reading(
-        answer: "Please charge my mobile phone for me.",
-        kor: "휴대폰 충전해 주세요."
-    ),
-    Reading(
-        answer: "Do you sell mobile phone cases?",
-        kor: "휴대폰 케이스 팔아요?"
-    ),
-    Reading(
-        answer: "Do you sell cell phone chargers?",
-        kor: "휴대폰 충전기 팔아요?"
-    ),
-    Reading(
-        answer: "Can I buy a data plan for my phone?",
-        kor: "휴대폰 데이터 플랜랜 살 수 있어요?"
-    ),
-    Reading(
-        answer: "Can you repair my mobile phone?",
-        kor: "휴대폰 고칠 수 있어요?"
-    ),
-    Reading(
-        answer: "How much will the repair cost?",
-        kor: "고치는 비용 얼마예요?"
-    ),
-    Reading(
-        answer: "When can I pick up my phone?",
-        kor: "휴대폰 언제 찾으러 올 수 있어요?"
-    ),
-    Reading(
-        answer: "Oh my goodness!",
-        kor: "아이고!"
-    ),
-    Reading(
-        answer: "Did a package arrive for me?",
-        kor: "소포 왔어요?"
-    ),
-    Reading(
-        answer: "I expect a package to arrive tomorrow.",
-        kor: "내일 소포가 올거예요."
-    ),
-    Reading(
-        answer: "My hot water doesn’t work.",
-        kor: "뜨거운 물이 안 나와요."
-    ),
-    Reading(
-        answer: "My hot water heater is broken.",
-        kor: "보일러가 고장났어요."
-    ),
-    Reading(
-        answer: "My sink is clogged.",
-        kor: "제 싱크대가 막혔어요."
-    ),
-    Reading(
-        answer: "My toilet is clogged.",
-        kor: "제 변기 막혔어요."
-    ),
-    Reading(
-        answer: "The lights don’t work.",
-        kor: "불이 안 켜져요."
-    ),
-    Reading(
-        answer: "The air conditioning isn’t cold.",
-        kor: "에어컨이 안 시원해요."
-    ),
-    Reading(
-        answer: "The neighbors are too loud.",
-        kor: "이웃이 너무 시끄러워요."
-    ),
-    Reading(
-        answer: "The neighbor's dog keeps barking.",
-        kor: "이웃집 강아지가 계속 짖어요."
-    ),
-    Reading(
-        answer: "I would like to find housing around here.",
-        kor: "이 근처의 집을 구하고 싶어요."
-    ),
-    Reading(
-        answer: "I would like to find a studio apartment.",
-        kor: "원룸 구하고 싶어요."
-    ),
-    Reading(
-        answer: "How much is the monthly rent?",
-        kor: "월세 얼마예요?"
-    ),
-    Reading(
-        answer: "How much is the deposit?",
-        kor: "보증금 얼마예요?"
-    ),
-    Reading(
-        answer: "How far is it from the subway station?",
-        kor: "지하철역에서 얼마나 걸려요?"
-    ),
-    Reading(
-        answer: "This is too small.",
-        kor: "너무 작아요."
-    ),
-    Reading(
-        answer: "This is too big.",
-        kor: "너무 커요."
-    ),
-    Reading(
-        answer: "This is too expensive.",
-        kor: "너무 비싸요."
-    ),
-    Reading(
-        answer: "I don’t really like it.",
-        kor: "별로 안 좋아요."
-    ),
-    Reading(
-        answer: "I like this house a lot.",
-        kor: "이 집 마음 들어요."
-    ),
-    Reading(
-        answer: "What is your phone number?",
-        kor: "핸드폰 번호가 뭐예요?"
-    ),
-    Reading(
-        answer: "Do you have time this weekend?",
-        kor: "주말에 시간 있어요?"
-    ),
-    Reading(
-        answer: "Shall we go on a date together?",
-        kor: "우리 데이트 할까요?"
-    ),
-    Reading(
-        answer: "Shall we get dinner together sometime?",
-        kor: "언제 우리 같이 저녁 먹을까요?"
-    ),
-    Reading(
-        answer: "You are pretty!",
-        kor: "예쁘네요!"
-    ),
-    Reading(
-        answer: "You are handsome!",
-        kor: "잘 생겼어요!"
-    ),
-    Reading(
-        answer: "You are charming!",
-        kor: "매력적이네요!"
-    ),
-    Reading(
-        answer: "When shall we meet again?",
-        kor: "언제 다시 볼까요?"
-    ),
-    Reading(
-        answer: "I will give you the address.",
-        kor: "주소를 알려 드릴게요."
-    ),
-    Reading(
-        answer: "This is an emergency.",
-        kor: "아주 급해요."
-    ),
-    Reading(
-        answer: "Where is the nearest police station?",
-        kor: "제일 가까운 경찰서는 어디예요?"
-    ),
-    Reading(
-        answer: "Where is the closest hospital?",
-        kor: "가장 가까운 병원은 어디예요?"
-    ),
-    Reading(
-        answer: "Please call an ambulance.",
-        kor: "구급차를 불러 주세요."
-    ),
-    Reading(
-        answer: "Please take me to the hospital.",
-        kor: "병원에 데려가 주세요."
-    ),
-    Reading(
-        answer: "Please help me.",
-        kor: "도와주세요."
-    ),
-    Reading(
-        answer: "Where can I get help?",
-        kor: "어디에서 도움을 구할 수 있어요?"
-    ),
-    Reading(
-        answer: "I am a diabetic.",
-        kor: "저는 당뇨가 있어요."
-    ),
-    Reading(
-        answer: "You can do it!",
-        kor: "잘할 수 있어요!"
-    ),
-    Reading(
-        answer: "Don’t give up.",
-        kor: "포기 하지마세요."
-    ),
-    Reading(
-        answer: "Cross your fingers for me.",
-        kor: "포기 하지마세요."
-    ),
-    Reading(
-        answer: "Look at this.",
-        kor: "이것 좀 보세요."
-    ),
-    Reading(
-        answer: "I have never seen anything like this before.",
-        kor: "이런 거 처음 봐요."
-    ),
-    Reading(
-        answer: "I have to take a test tomorrow.",
-        kor: "내일 시험 봐야 돼요."
-    ),
-    Reading(
-        answer: "Why do you keep looking at your watch?",
-        kor: "왜 시계를 자꾸 봐요?"
-    ),
-    Reading(
-        answer: "I will definitely read this book later.",
-        kor: "이 책 나중에 꼭 볼 거예요."
-    ),
-    Reading(
-        answer: "I burned my tongue while I was tasting the food.",
-        kor: "맛을 보다가 혀를 데었어요."
-    ),
+    Reading(answer: "Can I take a message?", kor: "메시지를 받을 수 있어요?"),
+    Reading(answer: "Please repeat that for me.", kor: "다시 말해 주세요."),
+    Reading(answer: "Please speak up a little for me.", kor: "좀 더 크게 말해 주세요."),
+    Reading(answer: "I will call you back.", kor: "제가 다시 걸게요."),
+    Reading(answer: "When shall I call?", kor: "언제쯤 통화가 가능할까요?"),
+    Reading(answer: "When should I call you?", kor: "언제쯤 통화가 가능할까요?"),
+    Reading(answer: "When can I call you?", kor: "언제쯤 통화가 가능할까요?"),
+    Reading(answer: "Please charge my mobile phone for me.", kor: "휴대폰 충전해 주세요."),
+    Reading(answer: "Do you sell mobile phone cases?", kor: "휴대폰 케이스 팔아요?"),
+    Reading(answer: "Do you sell cell phone chargers?", kor: "휴대폰 충전기 팔아요?"),
+    Reading(answer: "Can I buy a data plan for my phone?", kor: "휴대폰 데이터 플랜랜 살 수 있어요?"),
+    Reading(answer: "Can you repair my mobile phone?", kor: "휴대폰 고칠 수 있어요?"),
+    Reading(answer: "How much will the repair cost?", kor: "고치는 비용 얼마예요?"),
+    Reading(answer: "When can I pick up my phone?", kor: "휴대폰 언제 찾으러 올 수 있어요?"),
+    Reading(answer: "Oh my goodness!", kor: "아이고!"),
+    Reading(answer: "Did a package arrive for me?", kor: "소포 왔어요?"),
+    Reading(answer: "I expect a package to arrive tomorrow.", kor: "내일 소포가 올거예요."),
+    Reading(answer: "My hot water doesn’t work.", kor: "뜨거운 물이 안 나와요."),
+    Reading(answer: "My hot water heater is broken.", kor: "보일러가 고장났어요."),
+    Reading(answer: "My sink is clogged.", kor: "제 싱크대가 막혔어요."),
+    Reading(answer: "My toilet is clogged.", kor: "제 변기 막혔어요."),
+    Reading(answer: "The lights don’t work.", kor: "불이 안 켜져요."),
+    Reading(answer: "The air conditioning isn’t cold.", kor: "에어컨이 안 시원해요."),
+    Reading(answer: "The neighbors are too loud.", kor: "이웃이 너무 시끄러워요."),
+    Reading(answer: "The neighbor's dog keeps barking.", kor: "이웃집 강아지가 계속 짖어요."),
+    Reading(answer: "I would like to find housing around here.", kor: "이 근처의 집을 구하고 싶어요."),
+    Reading(answer: "I would like to find a studio apartment.", kor: "원룸 구하고 싶어요."),
+    Reading(answer: "How much is the monthly rent?", kor: "월세 얼마예요?"),
+    Reading(answer: "How much is the deposit?", kor: "보증금 얼마예요?"),
+    Reading(answer: "How far is it from the subway station?", kor: "지하철역에서 얼마나 걸려요?"),
+    Reading(answer: "This is too small.", kor: "너무 작아요."),
+    Reading(answer: "This is too big.", kor: "너무 커요."),
+    Reading(answer: "This is too expensive.", kor: "너무 비싸요."),
+    Reading(answer: "I don’t really like it.", kor: "별로 안 좋아요."),
+    Reading(answer: "I like this house a lot.", kor: "이 집 마음 들어요."),
+    Reading(answer: "What is your phone number?", kor: "핸드폰 번호가 뭐예요?"),
+    Reading(answer: "Do you have time this weekend?", kor: "주말에 시간 있어요?"),
+    Reading(answer: "Shall we go on a date together?", kor: "우리 데이트 할까요?"),
+    Reading(answer: "Shall we get dinner together sometime?", kor: "언제 우리 같이 저녁 먹을까요?"),
+    Reading(answer: "You are pretty!", kor: "예쁘네요!"),
+    Reading(answer: "You are handsome!", kor: "잘 생겼어요!"),
+    Reading(answer: "You are charming!", kor: "매력적이네요!"),
+    Reading(answer: "When shall we meet again?", kor: "언제 다시 볼까요?"),
+    Reading(answer: "I will give you the address.", kor: "주소를 알려 드릴게요."),
+    Reading(answer: "This is an emergency.", kor: "아주 급해요."),
+    Reading(answer: "Where is the nearest police station?", kor: "제일 가까운 경찰서는 어디예요?"),
+    Reading(answer: "Where is the closest hospital?", kor: "가장 가까운 병원은 어디예요?"),
+    Reading(answer: "Please call an ambulance.", kor: "구급차를 불러 주세요."),
+    Reading(answer: "Please take me to the hospital.", kor: "병원에 데려가 주세요."),
+    Reading(answer: "Please help me.", kor: "도와주세요."),
+    Reading(answer: "Where can I get help?", kor: "어디에서 도움을 구할 수 있어요?"),
+    Reading(answer: "I am a diabetic.", kor: "저는 당뇨가 있어요."),
+    Reading(answer: "You can do it!", kor: "잘할 수 있어요!"),
+    Reading(answer: "Don’t give up.", kor: "포기 하지마세요."),
+    Reading(answer: "Do not give up.", kor: "포기 하지마세요."),
+    Reading(answer: "Cross your fingers for me.", kor: "포기 하지마세요."),
+    Reading(answer: "Look at this.", kor: "이것 좀 보세요."),
+    Reading(answer: "I have never seen anything like this before.", kor: "이런 거 처음 봐요."),
+    Reading(answer: "I have to take a test tomorrow.", kor: "내일 시험 봐야 돼요."),
+    Reading(answer: "Why do you keep looking at your watch?", kor: "왜 시계를 자꾸 봐요?"),
+    Reading(answer: "I'll definitely read this book later.", kor: "이 책 나중에 꼭 볼 거예요."),
+    Reading(answer: "I will definitely read this book later.", kor: "이 책 나중에 꼭 볼 거예요."),
+    Reading(answer: "I burned my tongue while I was tasting the food.", kor: "맛을 보다가 혀를 데었어요."),
+    Reading(answer: "Yesterday, I watched a movie with my friend.", kor: "어제 친구랑 영화를 봤어요."),
+    Reading(answer: "The more I see it, the more I like it.", kor: "보면 볼수록 마음에 들어요."),
+    
+    Reading(answer: "I haven’t become accustomed to the work yet, so it takes me a long time.", kor: "아직 일이 손에 익지 않아서, 시간이 오래 걸려요."),
+    Reading(answer: "I have not become accustomed to the work yet, so it takes me a long time.", kor: "아직 일이 손에 익지 않아서, 시간이 오래 걸려요."),
+    Reading(answer: "It’s been a long time since I quit doing that.", kor: " 저는 그 일에서 손 씻은 지 오래 됐어요."),
+    Reading(answer: "It has been a long time since I quit doing that.", kor: " 저는 그 일에서 손 씻은 지 오래 됐어요."),
+    Reading(answer: "My mother has an open hand, so she always cooks too much food.", kor: " 저희 어머니는 손이 커서 항상 음식을 너무 많이 하세요."),
+    Reading(answer: "The soccer match was a lot of fun, so I felt really thrilled while watching it.", kor: "축구 경기가 너무 재미있어서 정말 손에 땀을 쥐고 봤어요."),
+    Reading(answer: "The soccer match was a lot of fun and I was really on the edge of my seat.", kor: "축구 경기가 너무 재미있어서 정말 손에 땀을 쥐고 봤어요."),
+    Reading(answer: "I can’t concentrate on work because I am worried.", kor: "걱정돼서 일이 손에 안 잡혀요."),
+    Reading(answer: "I cannot concentrate on work because I am worried.", kor: "걱정돼서 일이 손에 안 잡혀요."),
+    Reading(answer: "Recently, I haven’t been making any videos.", kor: "요즘 비디오 만드는 것에 손을 놓고 있었어요."),
+    Reading(answer: "Recently, I have not been making any videos.", kor: "요즘 비디오 만드는 것에 손을 놓고 있었어요."),
+    Reading(answer: "I begged and begged, but he still said no.", kor: "손이 닳도록 빌었는데도, 안 된다고 했어요."),
+    Reading(answer: "I will pull out of this project.", kor: "저는 이 일에서 손 뗄게요."),
+    Reading(answer: "I will stop being involved in this project.", kor: "저는 이 일에서 손 뗄게요."),
+    Reading(answer: "I’ve finished everything!", kor: "다 끝내 버렸어요!"),
+    Reading(answer: "I have finished everything!", kor: "다 끝내 버렸어요!"),
+    Reading(answer: "I was hesitating, but I’ve finally bought it!", kor: "고민하다가, 사 버렸어요!"),
+    Reading(answer: "I was hesitating, but I have finally bought it!", kor: "고민하다가, 사 버렸어요!"),
+    Reading(answer: "I lost it", kor: "잃어 버렸어요."),
+    Reading(answer: "I dropped it.", kor: "떨어져 버렸어요."),
+    Reading(answer: "I lost the cell phone I bought yesterday.", kor: "어제 산 핸드폰을 잃어 버렸어요."),
+    Reading(answer: "I’ve forgotten all the bad things.", kor: "안 좋은 일은 다 잊어 버렸어요."),
+    Reading(answer: "Get it over with quickly.", kor: "빨리 끝내 버리세요."),
+    Reading(answer: "Finish it quickly and be done with it already.", kor: "빨리 끝내 버리세요."),
+    Reading(answer: "I’ve already told them everything.", kor: "벌써 다 말해 버렸어요."),
+    Reading(answer: "I have already told them everything.", kor: "벌써 다 말해 버렸어요."),
+    Reading(answer: "I didn’t like what I wrote yesterday, so I’ve erased it all.", kor: "어제 쓴 글이 마음에 안 들어서 다 지워 버렸어요."),
+    Reading(answer: "I did not like what I wrote yesterday, so I have erased it all.", kor: "어제 쓴 글이 마음에 안 들어서 다 지워 버렸어요."),
+    Reading(answer: "My computer has stopped.", kor: "컴퓨터가 멈춰 버렸어요."),
+    Reading(answer: "Now that we’ve started it, why don’t we just get it all done today?", kor: "시작한 김에 오늘 다 끝내 버리는 거 어때요?"),
+    Reading(answer: "Oh, no! The movie has already begun!", kor: "영화가 벌써 시작해 버렸어요."),
+    Reading(answer: "I’m feeling terrible today.", kor: "오늘 기분이 너무 안 좋아요."),
+    Reading(answer: "I am feeling terrible today.", kor: "오늘 기분이 너무 안 좋아요."),
+    Reading(answer: "I’m so upset today.", kor: "오늘 기분이 너무 안 좋아요."),
+    Reading(answer: "I am so upset today.", kor: "오늘 기분이 너무 안 좋아요."),
+    Reading(answer: "I’m in no mood to do that.", kor: "지금 그럴 기분 아니에요."),
+    Reading(answer: "I am in no mood to do that.", kor: "지금 그럴 기분 아니에요."),
+    Reading(answer: "I’m not in the mood to talk now.", kor: "지금 이야기할 기분 아니에요."),
+    Reading(answer: "I am not in the mood to talk now.", kor: "지금 이야기할 기분 아니에요."),
+    Reading(answer: "Please leave me alone.", kor: "말 시키지 마세요."),
+    Reading(answer: "Something really upsetting happened.", kor: "진짜 열 받는 일이 있었어요."),
+    Reading(answer: "I’m so upset now because of what happened earlier.", kor: "진짜 열 받는 일이 있었어요."),
+    Reading(answer: "I am so upset now because of what happened earlier.", kor: "진짜 열 받는 일이 있었어요."),
+    Reading(answer: "How can someone be so mean?", kor: "사람이 어떻게 그래요?"),
+    Reading(answer: "How can they do that to me?", kor: "사람이 어떻게 그래요?"),
+    Reading(answer: "I don’t even know what to say.", kor: "진짜 어이가 없네"),
+    Reading(answer: "I do not even know what to say.", kor: "진짜 어이가 없네"),
+    Reading(answer: "I’m so upset now but I’m trying not to show it.", kor: "저 지금 너무 화 나는데 참고 있는 거예요."),
+    Reading(answer: "I am so upset now but I am trying not to show it.", kor: "저 지금 너무 화 나는데 참고 있는 거예요."),
+    Reading(answer: "I’m so upset.", kor: "진짜 속상해요."),
+    Reading(answer: "I am so upset.", kor: "진짜 속상해요."),
+    Reading(answer: "I’m so sad.", kor: "진짜 속상해요."),
+    Reading(answer: "I am so sad.", kor: "진짜 속상해요."),
+    Reading(answer: "I’m so disappointed.", kor: "너무 서운해요."),
+    Reading(answer: "I am so disappointed.", kor: "너무 서운해요."),
+    Reading(answer: "I trusted them this time but I am really disappointed.", kor: "이번에는 믿고 있었는데 완전 실망했어요."),
+    Reading(answer: "I fell asleep.", kor: "잠들었어요."),
+    Reading(answer: "I was studying but then I fell asleep.", kor: "공부를 하다가 잠들고 말았어요."),
+    Reading(answer: "I caught a cold.", kor: "감기에 걸렸어요."),
+    Reading(answer: "I ended up catching a cold.", kor: "감기에 걸리고 말았어요."),
+    Reading(answer: "I ended up using all my energy and became exhausted.", kor: "결국 힘이 다 빠지고 말았어요."),
+    Reading(answer: "This place has also turned into a desert.", kor: "이곳도 사막이 되고 말았어요."),
+    Reading(answer: "It was too dark, so I ended up hitting my head against the wall.", kor: "너무 어두워서 머리를 벽에 부딪히고 말았어요."),
+    Reading(answer: "I went after the criminal, but I lost him.", kor: "범인을 쫓아갔지만 놓치고 말았어요."),
+    Reading(answer: "I ended up promising to go.", kor: "가겠다는 약속을 하고 말았어요."),
+    Reading(answer: "I’m worried.", kor: "걱정 돼요."),
+    Reading(answer: "I am worried.", kor: "걱정 돼요."),
+    Reading(answer: "It worries me.", kor: "걱정 돼요."),
+    Reading(answer: "I am anxious.", kor: "불안해요."),
+    Reading(answer: "I feel anxious.", kor: "불안해요."),
+    Reading(answer: "I’m worried to death.", kor: "걱정돼 죽겠어요."),
+    Reading(answer: "I am worried to death.", kor: "걱정돼 죽겠어요."),
+    Reading(answer: "I’m so worried.", kor: "걱정돼 죽겠어요."),
+    Reading(answer: "I am so worried.", kor: "걱정돼 죽겠어요."),
+    Reading(answer: "I’m so anxious that it’s driving me crazy.", kor: "불안해 미치겠어요."),
+    Reading(answer: "I am so anxious that it is driving me crazy.", kor: "불안해 미치겠어요."),
+    Reading(answer: "What should we do?", kor: "어떻게 하면 좋죠?"),
+    Reading(answer: "I don’t feel at ease.", kor: "마음이 안 놓여요."),
+    Reading(answer: "I do not feel at ease.", kor: "마음이 안 놓여요."),
+    Reading(answer: "I can’t stop worrying.", kor: "마음이 안 놓여요."),
+    Reading(answer: "I cannot stop worrying.", kor: "마음이 안 놓여요."),
+    Reading(answer: "I hope the problem is solved.", kor: "잘 해결됐으면 좋겠어요."),
+    Reading(answer: "I hope the problem gets solved.", kor: "잘 해결됐으면 좋겠어요."),
+    Reading(answer: "That’s not good.", kor: "큰일이네요."),
+    Reading(answer: "That is not good.", kor: "큰일이네요."),
+    Reading(answer: "That’s a big problem.", kor: "큰일이네요."),
+    Reading(answer: "That is a big problem.", kor: "큰일이네요."),
+    Reading(answer: "How can you not worry in this situation?", kor: "이 상황에서 어떻게 걱정이 안 돼요?"),
+    Reading(answer: "I think he’s really well-connected.", kor: "그 사람은 발이 진짜 넓은 것 같아요."),
+    Reading(answer: "I think he is really well-connected.", kor: "그 사람은 발이 진짜 넓은 것 같아요."),
+    Reading(answer: "There is no one that he doesn’t know.", kor: "모르는 사람이 없어요."),
+    Reading(answer: "There is no one that he does not know.", kor: "모르는 사람이 없어요."),
+    Reading(answer: "A lot of people went out of their way to help us.", kor: "많은 사람들이 우리를 돕기 위해서 발 벗고 나서 줬어요."),
+    Reading(answer: "I ran to get on the train before the door closed, but I fell a step behind.", kor: "지하철 문이 닫히기 전에 타려고 뛰었는데 한 발 늦었어요."),
+    Reading(answer: "This is nothing compared to what happened last time.", kor: "이번 일에 비하면 지난 번 일은 정말 새 발의 피예요."),
     Twister(answer: "She sells seashells by the seashore."),
     Twister(answer: "How many sheets could a sheet slitter slit if a sheet slitter could slit sheets?"),
     Twister(answer: "How much pot, could a pot roast roast, if a pot roast could roast pot?"),
