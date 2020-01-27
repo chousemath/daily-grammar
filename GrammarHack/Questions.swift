@@ -2130,7 +2130,7 @@ var questions: [Quest] = [
 struct Quiz {
     var quests: [Quest] = questions
     var index: Int = 0
-    var limitScore = 20
+    var limitScore = 2
     var limitQuest: Int = questions.count - 1
     var limitRead: Int = 3
     
@@ -2140,11 +2140,20 @@ struct Quiz {
     
     var timeRead: Float = 0
     
+    var attempts: Int = 0
     var score: Int = 0
     var current: Quest {
         get {
             return quests[index]
         }
+    }
+    
+    mutating func attemptsInc() {
+        attempts += 1
+    }
+    
+    mutating func attemptsReset() {
+        attempts = 0
     }
     
     mutating func timeReadInc() {
@@ -2170,8 +2179,8 @@ struct Quiz {
         }
     }
     
-    mutating func setScore(_ value: Int) {
-        score = value
+    mutating func scoreReset() {
+        score = 0
     }
     
     mutating func scoreInc() {

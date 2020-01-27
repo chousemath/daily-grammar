@@ -10,7 +10,7 @@ import UIKit
 import Speech
 
 class ViewController: UIViewController {
-    let sboard = UIStoryboard(name: "Main", bundle: nil)
+    let sboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     var speechEnabled: Bool = false
     var transcript: String = ""
     let audioEngine = AVAudioEngine()
@@ -127,6 +127,7 @@ class ViewController: UIViewController {
     
     func startRecording() {
         do {
+            quiz.attemptsInc()
             let node = audioEngine.inputNode
             node.removeTap(onBus: 0)
             let recordingFormat = node.outputFormat(forBus: 0)
@@ -218,10 +219,14 @@ class ViewController: UIViewController {
     
     func setScore() {
         if quiz.score >= quiz.limitScore {
-            quiz.setScore(0)
             playSound(fileName: "cheer01")
-            let vCtrl = sboard.instantiateViewController(withIdentifier: "QuizSuccess")
-            self.present(vCtrl, animated: true, completion: nil)
+            guard let vc = sboard.instantiateViewController(withIdentifier: "QuizSuccess") as? QuizSuccess else {
+                return
+            }
+            present(vc, animated: true, completion: nil)
+            vc.labelAcc.text = "\(quiz.score)/\(quiz.attempts)"
+            quiz.scoreReset()
+            quiz.attemptsReset()
         }
         score.text = "\(quiz.score)/\(quiz.limitScore)"
     }
@@ -267,6 +272,7 @@ class ViewController: UIViewController {
                 title: opt,
                 style: .default,
                 handler: { action in
+                    self.quiz.attemptsInc()
                     self.optionButton.setTitle(opt, for: .normal)
                     let q = self.quiz.current
                     if q.match(answer: opt) {
