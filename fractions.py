@@ -2,16 +2,34 @@ from fraction.Fraction import Fraction as frac
 from random import choice
 
 frac_map = {}
-for i in range(1, 20):
+lowest_common = {}
+for i in range(1, 100):
+    frac_map[f'{frac(i * 1, i * 2)}'] = 'one-half'
+    lowest_common[f'{frac(i * 1, i * 2)}'] = '1/2'
+
     frac_map[f'{frac(i * 1, i * 3)}'] = 'one-third'
+    lowest_common[f'{frac(i * 1, i * 3)}'] = '1/3'
+
     frac_map[f'{frac(i * 2, i * 3)}'] = 'two-thirds'
+    lowest_common[f'{frac(i * 2, i * 3)}'] = '2/3'
+
     frac_map[f'{frac(i * 1, i * 4)}'] = 'one-fourth'
-    frac_map[f'{frac(i * 1, i * 2)}'] = 'two-fourths'
+    lowest_common[f'{frac(i * 1, i * 4)}'] = '1/4'
+
     frac_map[f'{frac(i * 3, i * 4)}'] = 'three-fourths'
+    lowest_common[f'{frac(i * 3, i * 4)}'] = '3/4'
+
     frac_map[f'{frac(i * 1, i * 5)}'] = 'one-fifth'
+    lowest_common[f'{frac(i * 1, i * 5)}'] = '1/5'
+
     frac_map[f'{frac(i * 2, i * 5)}'] = 'two-fifths'
+    lowest_common[f'{frac(i * 2, i * 5)}'] = '2/5'
+
     frac_map[f'{frac(i * 3, i * 5)}'] = 'three-fifths'
+    lowest_common[f'{frac(i * 3, i * 5)}'] = '3/5'
+
     frac_map[f'{frac(i * 4, i * 5)}'] = 'four-fifths'
+    lowest_common[f'{frac(i * 4, i * 5)}'] = '4/5'
 
 ones = ['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
 
@@ -38,7 +56,7 @@ def gen_questions(base: int, interval: int):
         print(f'\tphraseEnd: "of the {food} during the party.",')
         key = f'{frac(div, base)}'
         print('\tanswer: "' + frac_map[key] + '",')
-        print(f'\tkor: "({base} ➖ {rem}) ➗ {base} = {key}"')
+        print(f'\tkor: "({base} ➖ {rem}) ➗ {base} = {lowest_common[key]}"')
         print('),')
 
         food = choice(foods)
@@ -47,7 +65,7 @@ def gen_questions(base: int, interval: int):
         print(f'\tphraseEnd: "of the {food} was left over after the party.",')
         key = f'{frac(rem, base)}'
         print('\tanswer: "' + frac_map[key] + '",')
-        print(f'\tkor: "({base} ➖ {div}) ➗ {base} = {key}"')
+        print(f'\tkor: "({base} ➖ {div}) ➗ {base} = {lowest_common[key]}"')
         print('),')
 
 gen_questions(3, 1)

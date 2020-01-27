@@ -10,18 +10,18 @@ import UIKit
 import Speech
 
 class ViewController: UIViewController {
+    let sboard = UIStoryboard(name: "Main", bundle: nil)
     var speechEnabled: Bool = false
     var transcript: String = ""
     let audioEngine = AVAudioEngine()
     let speechRecognizer = SFSpeechRecognizer()
     let request = SFSpeechAudioBufferRecognitionRequest()
     var recognitionTask: SFSpeechRecognitionTask?
-    var scoreVal: Int = 0
     var readAnswer: String = ""
-    var readDelay: Double = 5
     var readCount: Int = 0
-    let readLimit: Int = 3
-    let scoreLimit: Int = 20
+    var timer: Timer = Timer()
+    
+    var quiz = Quiz()
     
     @IBOutlet var exerciseTitle: UILabel!
     @IBOutlet var exerciseSubtitle: UILabel!
@@ -32,9 +32,15 @@ class ViewController: UIViewController {
     @IBOutlet var responseBody: UILabel!
     @IBOutlet var score: UILabel!
     @IBOutlet var recordButton: UIButton!
+    @IBOutlet var progressRead: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
         exerciseSubtitle.numberOfLines = 0
         phraseStart.numberOfLines = 0
@@ -42,6 +48,9 @@ class ViewController: UIViewController {
         responseTitle.numberOfLines = 0
         responseBody.numberOfLines = 0
         recordButton.layer.cornerRadius = 8
+        
+        responseTitle.text = ""
+        responseBody.text = ""
         
         // pick a random question to begin with
         setQuestion()
@@ -84,6 +93,38 @@ class ViewController: UIViewController {
         return String(text.filter {okayChars.contains($0) }).lowercased()
     }
     
+    @objc func handleReadDelay() {
+        let delay = Float(self.quiz.delayRead)
+        if self.quiz.timeRead < delay {
+            self.quiz.timeReadInc()
+            progressRead.progress = self.quiz.timeRead / delay
+            return
+        }
+        self.timer.invalidate()
+        progressRead.progress = 0
+        self.quiz.timeReadReset()
+        self.stopRecording()
+        self.readCount += 1
+        self.responseTitle.textColor = UIColor.red
+        self.responseTitle.text = "올바르지 않습니다 (\(self.quiz.limitRead - self.readCount)번의 시도 남음)"
+        playFailureSound()
+        
+        if self.readCount >= 3 {
+            self.readCount = 0
+            Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(self.advanceQuestion),
+                userInfo: nil,
+                repeats: false
+            )
+        } else {
+            self.recordButton.isEnabled = true
+            self.recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
+            self.recordButton.backgroundColor = .systemBlue
+        }
+    }
+    
     func startRecording() {
         do {
             let node = audioEngine.inputNode
@@ -96,7 +137,6 @@ class ViewController: UIViewController {
             }
             audioEngine.prepare()
             try audioEngine.start()
-            var matched = false
             recognitionTask = speechRecognizer?.recognitionTask(with: request) {
                 [unowned self]
                 (result, _) in
@@ -105,40 +145,32 @@ class ViewController: UIViewController {
                     self.transcript = self.normalize(text: transcription.formattedString)
                     if self.transcript == self.readAnswer {
                         self.stopRecording()
-                        matched = true
-                        self.scoreVal += 1
+                        self.timer.invalidate()
+                        self.progressRead.progress = 0
+                        self.quiz.timeReadReset()
+                        self.quiz.scoreInc()
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.setScore()
                         self.readCount = 0
                         playSuccessSound()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.advanceQuestion()
-                        }
+                        Timer.scheduledTimer(
+                            timeInterval: 1.0,
+                            target: self,
+                            selector: #selector(self.advanceQuestion),
+                            userInfo: nil,
+                            repeats: false
+                        )
                     }
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + self.readDelay) {
-                if matched {
-                    return
-                }
-                self.stopRecording()
-                self.readCount += 1
-                self.responseTitle.textColor = UIColor.red
-                self.responseTitle.text = "올바르지 않습니다 (\(self.readLimit - self.readCount)번의 시도 남음)"
-                playFailureSound()
-                
-                if self.readCount >= 3 {
-                    self.readCount = 0
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.advanceQuestion()
-                    }
-                } else {
-                    self.recordButton.isEnabled = true
-                    self.recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
-                    self.recordButton.backgroundColor = .systemBlue
-                }
-            }
+            timer = Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(self.handleReadDelay),
+                userInfo: nil,
+                repeats: true
+            )
         } catch let error {
             print("There was problem recording \(error.localizedDescription)")
         }
@@ -155,7 +187,7 @@ class ViewController: UIViewController {
     }
     
     func setQuestion() {
-        let q = Quest.current
+        let q = quiz.current
         if q.category == "reading" || q.category == "reading-tonguetwister" {
             responseTitle.text = ""
             responseBody.text = ""
@@ -164,15 +196,17 @@ class ViewController: UIViewController {
             phraseStart.text = q.answer
             phraseEnd.text = q.kor
             readAnswer = normalize(text: q.answer)
-            readDelay = q.category == "reading" ? 5 : 8
+            quiz.setDelayReadByCat(q.category)
             recordButton.isEnabled = true
             recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
             recordButton.backgroundColor = .systemBlue
             recordButton.isHidden = false
             optionButton.isHidden = true
+            progressRead.isHidden = false
             return
         }
         optionButton.isHidden = false
+        progressRead.isHidden = true
         recordButton.isHidden = true
         responseTitle.text = ""
         responseBody.text = ""
@@ -183,16 +217,18 @@ class ViewController: UIViewController {
     }
     
     func setScore() {
-        if scoreVal >= scoreLimit {
-            scoreVal = 0
+        if quiz.score >= quiz.limitScore {
+            quiz.setScore(0)
             playSound(fileName: "cheer01")
+            let vCtrl = sboard.instantiateViewController(withIdentifier: "QuizSuccess")
+            self.present(vCtrl, animated: true, completion: nil)
         }
-        score.text = "\(scoreVal)/\(scoreLimit)"
+        score.text = "\(quiz.score)/\(quiz.limitScore)"
     }
     
-    func advanceQuestion() -> () {
+    @objc func advanceQuestion() -> () {
         optionButton.setTitle("__________", for: .normal)
-        advanceIndex()
+        quiz.next()
         setScore()
         setQuestion()
     }
@@ -202,6 +238,11 @@ class ViewController: UIViewController {
         recordButton.setTitle("🎤 녹음 중...", for: .normal)
         recordButton.backgroundColor = .orange
         startRecording()
+    }
+    
+    @objc func clearQuest() {
+        responseTitle.text = ""
+        responseBody.text = ""
     }
     
     @IBAction func selectorPressed(_ sender: UIButton) {
@@ -215,7 +256,7 @@ class ViewController: UIViewController {
             style: .cancel,
             handler: nil
         )
-        guard let opts = Quest.current.options else {
+        guard let opts = quiz.current.options else {
             return
         }
         for opt in opts {
@@ -227,9 +268,9 @@ class ViewController: UIViewController {
                 style: .default,
                 handler: { action in
                     self.optionButton.setTitle(opt, for: .normal)
-                    let q = Quest.current
+                    let q = self.quiz.current
                     if q.match(answer: opt) {
-                        self.scoreVal += 1
+                        self.quiz.scoreInc()
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
@@ -239,18 +280,25 @@ class ViewController: UIViewController {
                                        */
                         self.setScore()
                         playSuccessSound()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + q.delay) {
-                            self.advanceQuestion()
-                        }
+                        Timer.scheduledTimer(
+                            timeInterval: 2.0,
+                            target: self,
+                            selector: #selector(self.advanceQuestion),
+                            userInfo: nil,
+                            repeats: false
+                        )
                     } else {
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"
                         playFailureSound()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.responseTitle.text = ""
-                            self.responseBody.text = ""
-                        }
+                        Timer.scheduledTimer(
+                            timeInterval: 1.0,
+                            target: self,
+                            selector: #selector(self.clearQuest),
+                            userInfo: nil,
+                            repeats: false
+                        )
                     }
             }
             ))
