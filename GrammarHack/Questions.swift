@@ -2130,13 +2130,13 @@ var questions: [Quest] = [
 struct Quiz {
     var quests: [Quest] = questions
     var index: Int = 0
-    var limitScore = 2
+    var limitScore = 20
     var limitQuest: Int = questions.count - 1
     var limitRead: Int = 3
     
     var delayRead: Double = 5 // time limit for reading
-    var delayReadRegular: Double = 5 // time limit for reading regular pronunciation exercises
-    var delayReadTwister: Double = 8 // time limit for reading tongue twisters
+    var delayReadRegular: Double = 7 // time limit for reading regular pronunciation exercises
+    var delayReadTwister: Double = 9 // time limit for reading tongue twisters
     
     var timeRead: Float = 0
     
