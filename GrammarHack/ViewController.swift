@@ -224,11 +224,11 @@ class ViewController: UIViewController {
                 return
             }
             present(vc, animated: true, completion: nil)
-            vc.labelAcc.text = "\(quiz.score)/\(quiz.attempts)"
+            vc.labelAcc.text = "🐠 \(quiz.score)/\(quiz.attempts)"
             quiz.scoreReset()
             quiz.attemptsReset()
         }
-        score.text = "\(quiz.score)/\(quiz.limitScore)"
+        score.text = "🐟 \(quiz.score)/\(quiz.limitScore)"
     }
     
     @objc func advanceQuestion() -> () {
