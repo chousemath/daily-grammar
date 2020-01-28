@@ -217,6 +217,12 @@ class ViewController: UIViewController {
         phraseEnd.text = q.phraseEnd
     }
     
+    func navigateTo(_ pageName: String) {
+        print(pageName)
+//        let vc = sboard.instantiateViewController(withIdentifier: pageName)
+//        present(vc, animated: true, completion: nil)
+    }
+    
     func setScore() {
         if quiz.score >= quiz.limitScore {
             playSound(fileName: "cheer01")
@@ -236,6 +242,36 @@ class ViewController: UIViewController {
         quiz.next()
         setScore()
         setQuestion()
+    }
+    
+    struct SettingsOption {
+        let title: String
+        let pageName: String
+    }
+    let settingsOptions: [SettingsOption] = []
+    
+    @IBAction func handleSettingsPress(_ sender: UIButton) {
+        let aSheet = UIAlertController(
+            title: "Settings",
+            message: "Navigate to the page that you want",
+            preferredStyle: .actionSheet
+        )
+        let cancel = UIAlertAction(
+            title: "취소",
+            style: .cancel,
+            handler: nil
+        )
+        for opt in settingsOptions {
+            aSheet.addAction(UIAlertAction(
+                title: opt.title,
+                style: .default,
+                handler: { action in
+                    self.navigateTo(opt.pageName)
+                }
+            ))
+        }
+        aSheet.addAction(cancel)
+        present(aSheet, animated: true, completion: nil)
     }
     
     @IBAction func recordPressed(_ sender: UIButton) {

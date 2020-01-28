@@ -1372,114 +1372,33 @@ var questions: [Quest] = [
         answer: "I am frequently late, so my teacher doesn’t like me.",
         kor: "저는 지각을 많이 해서, 선생님 눈 밖에 났어요."
     ),
-    Reading(
-        answer: "If you are tired, get some sleep.",
-        kor: "피곤하면 눈 좀 붙여요."
-    ),
-    Reading(
-        answer: "Take me to the hospital.",
-        kor: "병원에 가주세요."
-    ),
-    Reading(
-        answer: "I need a doctor.",
-        kor: "의사가 필요해요."
-    ),
-    Reading(
-        answer: "Have a nice day!",
-        kor: "좋은 하루 보내세요!"
-    ),
-    Reading(
-        answer: "Have a good trip!",
-        kor: "여행 잘하세요!"
-    ),
-    Reading(
-        answer: "Where is the bathroom?",
-        kor: "화장실은 어디에 있어요?"
-    ),
-    Reading(
-        answer: "Please repeat that.",
-        kor: "다시 말해 주세요."
-    ),
-    Reading(
-        answer: "Please speak slowly.",
-        kor: "천천히 말해 주세요."
-    ),
-    Reading(
-        answer: "Please write it down.",
-        kor: "적어 주세요."
-    ),
-    Reading(
-        answer: "I understand.",
-        kor: "이해해요."
-    ),
-    Reading(
-        answer: "I don’t understand.",
-        kor: "이해 못해요."
-    ),
-    Reading(
-        answer: "I don’t know.",
-        kor: "몰라요."
-    ),
-    Reading(
-        answer: "Can you speak Korean?",
-        kor: "한국말을 할 수 있어요?"
-    ),
-    Reading(
-        answer: "I can speak a little Korean.",
-        kor: "한국말을 조금 할 수 있어요."
-    ),
-    Reading(
-        answer: "I can’t speak Korean.",
-        kor: "한국말을 못해요."
-    ),
-    Reading(
-        answer: "How much is this?",
-        kor: "이거 얼마예요?"
-    ),
-    Reading(
-        answer: "I’ll be right back!",
-        kor: "금방 갔다 올거예요!"
-    ),
-    Reading(
-        answer: "What is this?",
-        kor: "이게 뭐예요?"
-    ),
-    Reading(
-        answer: "Don’t worry!",
-        kor: "걱정 하지 마세요!"
-    ),
-    Reading(
-        answer: "No problem!",
-        kor: "문제 없어요!"
-    ),
-    Reading(
-        answer: "Please give me a menu.",
-        kor: "메뉴판 주세요."
-    ),
-    Reading(
-        answer: "Do you have vegetarian dishes?",
-        kor: "채식주의자용 식사 있어요?"
-    ),
-    Reading(
-        answer: "Is this spicy?",
-        kor: "이거 매워요?"
-    ),
-    Reading(
-        answer: "Please do not make this spicy.",
-        kor: "맵지 않게 요리해 주세요."
-    ),
-    Reading(
-        answer: "It’s delicious!",
-        kor: "맛있어요!"
-    ),
-    Reading(
-        answer: "It was a delicious meal!",
-        kor: "잘 먹었습니다!"
-    ),
-    Reading(
-        answer: "What time do you close?",
-        kor: "몇시에 문 닫아요?"
-    ),
+    Reading(answer: "If you are tired, get some sleep.", kor: "피곤하면 눈 좀 붙여요."),
+    Reading(answer: "Take me to the hospital.", kor: "병원에 가주세요."),
+    Reading(answer: "I need a doctor.", kor: "의사가 필요해요."),
+    Reading(answer: "Have a nice day!", kor: "좋은 하루 보내세요!"),
+    Reading(answer: "Have a good trip!", kor: "여행 잘하세요!"),
+    Reading(answer: "Where is the bathroom?", kor: "화장실은 어디에 있어요?"),
+    Reading(answer: "Please repeat that.", kor: "다시 말해 주세요."),
+    Reading(answer: "Please speak slowly.", kor: "천천히 말해 주세요."),
+    Reading(answer: "Please write it down.", kor: "적어 주세요."),
+    Reading(answer: "I understand.", kor: "이해해요."),
+    Reading(answer: "I don’t understand.", kor: "이해 못해요."),
+    Reading(answer: "I don’t know.", kor: "몰라요."),
+    Reading(answer: "Can you speak Korean?", kor: "한국말을 할 수 있어요?"),
+    Reading(answer: "I can speak a little Korean.", kor: "한국말을 조금 할 수 있어요."),
+    Reading(answer: "I can’t speak Korean.", kor: "한국말을 못해요."),
+    Reading(answer: "How much is this?", kor: "이거 얼마예요?"),
+    Reading(answer: "I’ll be right back!", kor: "금방 갔다 올거예요!"),
+    Reading(answer: "What is this?", kor: "이게 뭐예요?"),
+    Reading(answer: "Don’t worry!", kor: "걱정 하지 마세요!"),
+    Reading(answer: "No problem!", kor: "문제 없어요!"),
+    Reading(answer: "Please give me a menu.", kor: "메뉴판 주세요."),
+    Reading(answer: "Do you have vegetarian dishes?", kor: "채식주의자용 식사 있어요?"),
+    Reading(answer: "Is this spicy?", kor: "이거 매워요?"),
+    Reading(answer: "Please do not make this spicy.", kor: "맵지 않게 요리해 주세요."),
+    Reading(answer: "It’s delicious!", kor: "맛있어요!"),
+    Reading(answer: "It was a delicious meal!", kor: "잘 먹었습니다!"),
+    Reading(answer: "What time do you close?", kor: "몇시에 문 닫아요?"),
     Reading(
         answer: "Do you take credit cards?",
         kor: "카드 돼요?"
@@ -1552,18 +1471,9 @@ var questions: [Quest] = [
         answer: "I’m here to pick up my clothes.",
         kor: "제 옷을 찾으러 왔어요."
     ),
-    Reading(
-        answer: "How much is the total?",
-        kor: "모두 얼마예요?"
-    ),
-    Reading(
-        answer: "I would like to open a new bank account.",
-        kor: "통장을 만들고 싶어요."
-    ),
-    Reading(
-        answer: "I would like an check card",
-        kor: "체크 카드를 만들고 싶어요."
-    ),
+    Reading(answer: "How much is the total?", kor: "모두 얼마예요?"),
+    Reading(answer: "I would like to open a new bank account.", kor: "통장을 만들고 싶어요."),
+    Reading(answer: "I would like a check card", kor: "체크 카드를 만들고 싶어요."),
     Reading(
         answer: "I need to reset my password.",
         kor: "비밀번호를 재발급 하고 싶어요."
@@ -1628,14 +1538,10 @@ var questions: [Quest] = [
         answer: "I have a cold.",
         kor: "감기에 걸렸어요."
     ),
-    Reading(
-        answer: "I don’t have any allergies.",
-        kor: "알레르기가 없어요."
-    ),
-    Reading(
-        answer: "I’m here to make an appointment.",
-        kor: "예약하려고 왔는데요."
-    ),
+    Reading(answer: "I don’t have any allergies.", kor: "알레르기가 없어요."),
+    Reading(answer: "I do not have any allergies.", kor: "알레르기가 없어요."),
+    Reading(answer: "I’m here to make an appointment.", kor: "예약하려고 왔는데요."),
+    Reading(answer: "I am here to make an appointment.", kor: "예약하려고 왔는데요."),
     Reading(
         answer: "How long do I have to wait?",
         kor: "얼마나 기다려야해요?"
@@ -1644,10 +1550,8 @@ var questions: [Quest] = [
         answer: "I am here for a cleaning.",
         kor: "스케일링 하러 왔어요."
     ),
-    Reading(
-        answer: "I'm here for a dental checkup.",
-        kor: "치과 검진 하러 왔어요."
-    ),
+    Reading(answer: "I'm here for a dental checkup.", kor: "치과 검진 하러 왔어요."),
+    Reading(answer: "I am here for a dental checkup.", kor: "치과 검진 하러 왔어요."),
     Reading(
         answer: "My upper tooth hurts.",
         kor: "윗니가 아파요."
@@ -1664,10 +1568,8 @@ var questions: [Quest] = [
         answer: "I think I have a cavity.",
         kor: "충치가 생긴 것 같아요."
     ),
-    Reading(
-        answer: "I don’t have dental insurance.",
-        kor: "치과 보험 없어요."
-    ),
+    Reading(answer: "I don’t have dental insurance.", kor: "치과 보험 없어요."),
+    Reading(answer: "I do not have dental insurance.", kor: "치과 보험 없어요."),
     Reading(
         answer: "I have dental insurance.",
         kor: "치과 보험 있어요."
@@ -1740,10 +1642,8 @@ var questions: [Quest] = [
         answer: "Please give me some bubble wrap.",
         kor: "뽁뽁이 좀 주세요."
     ),
-    Reading(
-        answer: "I’m lost.",
-        kor: "길을 잃어버렸어요."
-    ),
+    Reading(answer: "I’m lost.", kor: "길을 잃어버렸어요."),
+    Reading(answer: "I am lost.", kor: "길을 잃어버렸어요."),
     Reading(
         answer: "How far is it from here?",
         kor: "여기에서 얼마나 걸리는지 아세요?"
@@ -1752,14 +1652,10 @@ var questions: [Quest] = [
         answer: "Is it far from here?",
         kor: "여기에서 멀어요?"
     ),
-    Reading(
-        answer: "It’s quite far.",
-        kor: "꽤 멀어요."
-    ),
-    Reading(
-        answer: "It’s not far.",
-        kor: "멀지 않아요."
-    ),
+    Reading(answer: "It’s quite far.", kor: "꽤 멀어요."),
+    Reading(answer: "It is quite far.", kor: "꽤 멀어요."),
+    Reading(answer: "It’s not far.", kor: "멀지 않아요."),
+    Reading(answer: "It is not far.", kor: "멀지 않아요."),
     Reading(
         answer: "It’s close.",
         kor: "가까워요."
@@ -1945,7 +1841,7 @@ var questions: [Quest] = [
     Reading(answer: "When can I call you?", kor: "언제쯤 통화가 가능할까요?"),
     Reading(answer: "Please charge my mobile phone for me.", kor: "휴대폰 충전해 주세요."),
     Reading(answer: "Do you sell mobile phone cases?", kor: "휴대폰 케이스 팔아요?"),
-    Reading(answer: "Do you sell cell phone chargers?", kor: "휴대폰 충전기 팔아요?"),
+    Reading(answer: "Do you sell mobile phone chargers?", kor: "휴대폰 충전기 팔아요?"),
     Reading(answer: "Can I buy a data plan for my phone?", kor: "휴대폰 데이터 플랜랜 살 수 있어요?"),
     Reading(answer: "Can you repair my mobile phone?", kor: "휴대폰 고칠 수 있어요?"),
     Reading(answer: "How much will the repair cost?", kor: "고치는 비용 얼마예요?"),
@@ -1958,7 +1854,9 @@ var questions: [Quest] = [
     Reading(answer: "My sink is clogged.", kor: "제 싱크대가 막혔어요."),
     Reading(answer: "My toilet is clogged.", kor: "제 변기 막혔어요."),
     Reading(answer: "The lights don’t work.", kor: "불이 안 켜져요."),
+    Reading(answer: "The lights do not work.", kor: "불이 안 켜져요."),
     Reading(answer: "The air conditioning isn’t cold.", kor: "에어컨이 안 시원해요."),
+    Reading(answer: "The air conditioning is not cold.", kor: "에어컨이 안 시원해요."),
     Reading(answer: "The neighbors are too loud.", kor: "이웃이 너무 시끄러워요."),
     Reading(answer: "The neighbor's dog keeps barking.", kor: "이웃집 강아지가 계속 짖어요."),
     Reading(answer: "I would like to find housing around here.", kor: "이 근처의 집을 구하고 싶어요."),
@@ -1970,6 +1868,7 @@ var questions: [Quest] = [
     Reading(answer: "This is too big.", kor: "너무 커요."),
     Reading(answer: "This is too expensive.", kor: "너무 비싸요."),
     Reading(answer: "I don’t really like it.", kor: "별로 안 좋아요."),
+    Reading(answer: "I do not really like it.", kor: "별로 안 좋아요."),
     Reading(answer: "I like this house a lot.", kor: "이 집 마음 들어요."),
     Reading(answer: "What is your phone number?", kor: "핸드폰 번호가 뭐예요?"),
     Reading(answer: "Do you have time this weekend?", kor: "주말에 시간 있어요?"),
