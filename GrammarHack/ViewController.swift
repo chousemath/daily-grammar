@@ -248,19 +248,20 @@ class ViewController: UIViewController {
         let title: String
         let pageName: String
     }
-    let settingsOptions: [SettingsOption] = []
+    let settingsOptions: [SettingsOption] = [
+        SettingsOption(title: "질문 설정을 편집하기", pageName: "questSettings"),
+        SettingsOption(title: "사용/개인 정보 약관", pageName: "terms"),
+        SettingsOption(title: "모바일 앱 정보", pageName: "appInfo"),
+        SettingsOption(title: "기능을 요청하기", pageName: "featureAsk"),
+    ]
     
     @IBAction func handleSettingsPress(_ sender: UIButton) {
         let aSheet = UIAlertController(
-            title: "Settings",
-            message: "Navigate to the page that you want",
+            title: "설정",
+            message: "운명을 선택하세요",
             preferredStyle: .actionSheet
         )
-        let cancel = UIAlertAction(
-            title: "취소",
-            style: .cancel,
-            handler: nil
-        )
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         for opt in settingsOptions {
             aSheet.addAction(UIAlertAction(
                 title: opt.title,
