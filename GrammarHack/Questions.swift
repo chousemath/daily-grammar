@@ -70,6 +70,31 @@ class WithOnAbout: Quest {
         )
     }
 }
+
+enum ChoiceAtInOn: String {
+    case At = "at"
+    case In = "in"
+    case On = "on"
+}
+class AtInOn: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: ChoiceAtInOn
+    ) {
+        super.init(
+            title: "Prepositions (전치사)",
+            subtitle: "at / in / on",
+            category: "select-atinon",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer.rawValue,
+            kor: "",
+            options: [ChoiceAtInOn.At.rawValue, ChoiceAtInOn.In.rawValue, ChoiceAtInOn.On.rawValue],
+            shuffled: true
+        )
+    }
+}
 class AdjOrAdvType: Quest {
     init(
         phraseStart: String,
@@ -2083,6 +2108,9 @@ var questions: [Quest] = [
     Twister(answer: "Tiny timid toads trying to trot to town."),
     Twister(answer: "Sick sticky skeletons, sick sticky skeletons, sick sticky skeletons."),
     Twister(answer: "I want to be a juror on a rural brewery robbery case."),
+    
+    AtInOn(phraseStart: "By eleven o'clock", phraseEnd: "the evening, I am in bed.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "What day were you born", phraseEnd: "?", answer: ChoiceAtInOn.On),
     ].shuffled()
 
 struct Quiz {
