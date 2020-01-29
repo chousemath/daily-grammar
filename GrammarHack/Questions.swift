@@ -197,6 +197,27 @@ class RandomQ: Quest {
     }
 }
 
+class ToeicGrammar: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: String,
+        options: [String]
+    ) {
+        super.init(
+            title: "TOEIC 문법",
+            subtitle: "올바른 옵션을 선택하세요",
+            category: "select-toeicgrammar",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer,
+            kor: "",
+            options: options,
+            shuffled: true
+        )
+    }
+}
+
 class MathFractions: Quest {
     init(
         phraseStart: String,
@@ -600,6 +621,23 @@ var questions: [Quest] = [
         answer: "one-fourth",
         kor: "(8 ➖ 6) ➗ 8 = 1/4"
     ),
+    
+    ToeicGrammar(phraseStart: "When we land, will we have", phraseEnd: "time to catch our connecting flight?", answer: "enough", options: ["much", "few", "too", "enough"]),
+    ToeicGrammar(phraseStart: "We left several messages, but we did not receive", phraseEnd: "reply from the client.", answer: "any", options: ["no", "any", "some", "all"]),
+    ToeicGrammar(phraseStart: "Tim has worked in Atlanta", phraseEnd: "his company relocated there.", answer: "since", options: ["while", "since", "even", "ever"]),
+    ToeicGrammar(phraseStart: "The notebook was hidden", phraseEnd: "all the papers on my desk.", answer: "among", options: ["among", "about", "around", "along"]),
+    ToeicGrammar(phraseStart: "If Jack asks for a discount, tell him we", phraseEnd: "knock 20 percent off for a quick sale.", answer: "can", options: ["must", "should", "can", "ought to"]),
+    ToeicGrammar(phraseStart: "I do not think I have", phraseEnd: "seen such a comprehensive report.", answer: "ever", options: ["yet", "ever", "still", "never"]),
+    ToeicGrammar(phraseStart: "Early results indicate that", phraseEnd: "candidate was successful in the election.", answer: "neither", options: ["each", "both", "either", "neither"]),
+    ToeicGrammar(phraseStart: "As there is", phraseEnd: "capable of maintaining this machine, we cannot use it.", answer: "nobody", options: ["nobody", "anybody", "everybody", "somebody"]),
+    ToeicGrammar(phraseStart: "The more details that emerge about the sponsorship deal, the", phraseEnd: "I like it.", answer: "xxx", options: ["less", "fewer", "lower", "least"]),
+    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
+    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
+    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
+    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
+    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
+    
+    
     RandomQ(
         phraseStart: "It takes Matt four hours to mow two lawns. He can mow",
         phraseEnd: "lawns in ten hours.",
@@ -1656,106 +1694,37 @@ var questions: [Quest] = [
     Reading(answer: "It is quite far.", kor: "꽤 멀어요."),
     Reading(answer: "It’s not far.", kor: "멀지 않아요."),
     Reading(answer: "It is not far.", kor: "멀지 않아요."),
-    Reading(
-        answer: "It’s close.",
-        kor: "가까워요."
-    ),
-    Reading(
-        answer: "It’s not within walking distance.",
-        kor: "걸어갈 만한 거리가 아니예요."
-    ),
-    Reading(
-        answer: "I’m sorry, I’m not from around here.",
-        kor: "미안하지만 저는 이 근처 사람이 아니예요."
-    ),
-    Reading(
-        answer: "Go left.",
-        kor: "왼쪽 가세요."
-    ),
-    Reading(
-        answer: "Go right.",
-        kor: "오른쪽에 가세요."
-    ),
-    Reading(
-        answer: "Go straight.",
-        kor: "쭉 가세요."
-    ),
-    Reading(
-        answer: "Do you have any rooms available?",
-        kor: "빈방 있어요?"
-    ),
-    Reading(
-        answer: "I would like to make a reservation.",
-        kor: "예약을 하고 싶어요."
-    ),
-    Reading(
-        answer: "Did you have a reservation?",
-        kor: "예약은 하셨습니까?"
-    ),
-    Reading(
-        answer: "I have a reservation.",
-        kor: "네, 예약했어요."
-    ),
-    Reading(
-        answer: "I don’t have a reservation.",
-        kor: "아직 예약을 하지 않았어요."
-    ),
-    Reading(
-        answer: "Is breakfast included with the room?",
-        kor: "요금에 조식은 포함되어 있어요?"
-    ),
-    Reading(
-        answer: "How long would you like to stay?",
-        kor: "몇 박을 하실 겁니까?"
-    ),
-    Reading(
-        answer: "May I see the room first?",
-        kor: "방을 먼저 봐도 돼요?"
-    ),
-    Reading(
-        answer: "May I have your name?",
-        kor: "성함을 말씀해주세요?"
-    ),
-    Reading(
-        answer: "I want to check out now.",
-        kor: "지금 체크 아웃하고 싶어요."
-    ),
-    Reading(
-        answer: "Please stop the bus here.",
-        kor: "여기서 세워 주세요."
-    ),
-    Reading(
-        answer: "What time is the last bus?",
-        kor: "마지막 버스 언제예요?"
-    ),
-    Reading(
-        answer: "Where can I charge my bus card?",
-        kor: "버스 카드 어디에 충전할 수 있어요?"
-    ),
-    Reading(
-        answer: "Where does this bus go?",
-        kor: "이 버스는 어디로 가요?"
-    ),
-    Reading(
-        answer: "It doesn’t taste good.",
-        kor: "맛없어요."
-    ),
-    Reading(
-        answer: "I’m hungry.",
-        kor: "배고파요."
-    ),
-    Reading(
-        answer: "I’m thirsty.",
-        kor: "목 말라요."
-    ),
-    Reading(
-        answer: "I’m a vegetarian.",
-        kor: "저는 채식주의자예요."
-    ),
-    Reading(
-        answer: "I don’t eat meat.",
-        kor: "저는 고기를 못 먹어요."
-    ),
+    Reading(answer: "It’s close.", kor: "가까워요."),
+    Reading(answer: "It is close.", kor: "가까워요."),
+    Reading(answer: "It’s not within walking distance.", kor: "걸어갈 만한 거리가 아니예요."),
+    Reading(answer: "I’m sorry, I’m not from around here.", kor: "미안하지만 저는 이 근처 사람이 아니예요."),
+    Reading(answer: "Go left.", kor: "왼쪽 가세요."),
+    Reading(answer: "Go right.", kor: "오른쪽에 가세요."),
+    Reading(answer: "Go straight.", kor: "쭉 가세요."),
+    Reading(answer: "Do you have any rooms available?", kor: "빈방 있어요?"),
+    Reading(answer: "I would like to make a reservation.", kor: "예약을 하고 싶어요."),
+    Reading(answer: "Did you have a reservation?", kor: "예약은 하셨습니까?"),
+    Reading(answer: "I have a reservation.", kor: "네, 예약했어요."),
+    Reading(answer: "I don’t have a reservation.", kor: "아직 예약을 하지 않았어요."),
+    Reading(answer: "Is breakfast included with the room?", kor: "요금에 조식은 포함되어 있어요?"),
+    Reading(answer: "How long would you like to stay?", kor: "몇 박을 하실 겁니까?"),
+    Reading(answer: "May I see the room first?", kor: "방을 먼저 봐도 돼요?"),
+    Reading(answer: "May I have your name?", kor: "성함을 말씀해주세요?"),
+    Reading(answer: "I want to check out now.", kor: "지금 체크 아웃하고 싶어요."),
+    Reading(answer: "Please stop the bus here.", kor: "여기서 세워 주세요."),
+    Reading(answer: "What time is the last bus?", kor: "마지막 버스 언제예요?"),
+    Reading(answer: "Where can I charge my bus card?", kor: "버스 카드 어디에 충전할 수 있어요?"),
+    Reading(answer: "Where does this bus go?", kor: "이 버스는 어디로 가요?"),
+    Reading(answer: "It doesn’t taste good.", kor: "맛없어요."),
+    Reading(answer: "It does not taste good.", kor: "맛없어요."),
+    Reading(answer: "I’m hungry.", kor: "배고파요."),
+    Reading(answer: "I am hungry.", kor: "배고파요."),
+    Reading(answer: "I’m thirsty.", kor: "목 말라요."),
+    Reading(answer: "I am thirsty.", kor: "목 말라요."),
+    Reading(answer: "I’m a vegetarian.", kor: "저는 채식주의자예요."),
+    Reading(answer: "I am a vegetarian.", kor: "저는 채식주의자예요."),
+    Reading(answer: "I don’t eat meat.", kor: "저는 고기를 못 먹어요."),
+    Reading(answer: "I do not eat meat.", kor: "저는 고기를 못 먹어요."),
     Reading(
         answer: "I can eat anything.",
         kor: "다 먹을 수 있어요."
@@ -1900,7 +1869,7 @@ var questions: [Quest] = [
     Reading(answer: "I burned my tongue while I was tasting the food.", kor: "맛을 보다가 혀를 데었어요."),
     Reading(answer: "Yesterday, I watched a movie with my friend.", kor: "어제 친구랑 영화를 봤어요."),
     Reading(answer: "The more I see it, the more I like it.", kor: "보면 볼수록 마음에 들어요."),
-    
+
     Reading(answer: "I haven’t become accustomed to the work yet, so it takes me a long time.", kor: "아직 일이 손에 익지 않아서, 시간이 오래 걸려요."),
     Reading(answer: "I have not become accustomed to the work yet, so it takes me a long time.", kor: "아직 일이 손에 익지 않아서, 시간이 오래 걸려요."),
     Reading(answer: "It’s been a long time since I quit doing that.", kor: " 저는 그 일에서 손 씻은 지 오래 됐어요."),
@@ -1996,8 +1965,8 @@ var questions: [Quest] = [
     Reading(answer: "A lot of people went out of their way to help us.", kor: "많은 사람들이 우리를 돕기 위해서 발 벗고 나서 줬어요."),
     Reading(answer: "I ran to get on the train before the door closed, but I fell a step behind.", kor: "지하철 문이 닫히기 전에 타려고 뛰었는데 한 발 늦었어요."),
     Reading(answer: "This is nothing compared to what happened last time.", kor: "이번 일에 비하면 지난 번 일은 정말 새 발의 피예요."),
-    
-    
+
+
     Reading(answer: "I have a favor to ask.", kor: "부탁이 하나 있어요."),
     Reading(answer: "Let me ask you a favor.", kor: "부탁 하나만 할게요."),
     Reading(answer: "Can you do me a favor?", kor: "제 부탁 하나만 들어 줄 수 있어요?"),
@@ -2053,8 +2022,38 @@ var questions: [Quest] = [
     Reading(answer: "So I’m regretting it now.", kor: "그래서 후회 중이에요."),
     Reading(answer: "I didn’t intend to do it.", kor: "원래 그럴 생각은 없었어요."),
     Reading(answer: "Looking back now, I wonder why I did that back then.", kor: "지금 와서 생각해 보면, 제가 그때 왜 그랬나 싶어요."),
+    Reading(answer: "I have 100 chickens in my backyard", kor: ""),
+    Reading(answer: "I have 90 chickens in my backyard", kor: ""),
     
+    Reading(answer: "Since we’ve already made a public announcement, we can’t cancel it now.", kor: "이미 공식 발표를 한 이상, 이제 취소할 수는 없어요."),
+    Reading(answer: "Now that you’ve boarded the airplane, you can’t get out until you arrive.", kor: "비행기를 탄 이상, 도착할 때까지 내릴 수 없어요."),
+    Reading(answer: "Once you’ve started, you can’t quit in the middle.", kor: "한번 시작한 이상, 중간에 포기할 수 없어요."),
+    Reading(answer: "Since you’ve come this far, don’t give up and keep working hard.", kor: "여기까지 온 이상, 포기하지 말고 열심히 하세요."),
+    Reading(answer: "Once you’ve come into this room, you must play this game.", kor: "이 방에 들어온 이상, 이 게임을 꼭 해야 돼요."),
+    Reading(answer: "Unless you take the airplane, you can’t go that fast.", kor: "비행기를 타지 않는 이상, 그렇게 빨리 갈 수가 없어요."),
+    Reading(answer: "Unless I use a calculator, I can’t do such a complex calculation.", kor: "계산기를 쓰지 않는 이상, 이렇게 복잡한 계산은 못 해요."),
+    Reading(answer: "Unless I’m very sick, I don’t skip classes.", kor: "아주 아프지 않은 이상, 저는 수업에 빠지지 않아요."),
+    Reading(answer: "Unless you’re a staff member here, you can’t go in.", kor: "여기 직원이 아닌 이상, 들어갈 수가 없어요."),
+    Reading(answer: "Unless you are his family, it’s impossible to know such things.", kor: "가족이 아닌 이상, 그런 건 알 수가 없어요."),
+    Reading(answer: "Unless it’s something important, I can’t go out at this hour.", kor: "중요한 일이 아닌 이상, 지금 이 시간에 나갈 수는 없어요."),
+    Reading(answer: "I am worried that I might regret it later.", kor: "나중에 후회할까 봐 걱정 돼요."),
+    Reading(answer: "I was worried that the child might be disappointed, so I didn’t tell him yet.", kor: "아이가 실망할까 봐 아직 말 못 했어요."),
+    Reading(answer: "I am worried that we might be late.", kor: "늦을까 봐 걱정이에요."),
+    Reading(answer: "I am worried that I might fail the exam.", kor: "시험에 떨어질까 봐 걱정이에요."),
+    Reading(answer: "I am worried that the traffic might be bad.", kor: "차가 막힐까 봐 걱정이에요."),
+    Reading(answer: "I took a taxi thinking that it might be faster, but I ended up being late.", kor: "택시로 가면 더 빠를까 봐 택시를 탔는데, 결국은 지각했어요."),
+    Reading(answer: "I brought an umbrella thinking that it might rain, but it’s not raining.", kor: "비가 올까 봐 우산을 가져왔는데 비가 안 오네요."),
+    Reading(answer: "I bought some coffee in case I fall asleep.", kor: "공부하다가 잠이 올까 봐 커피 사왔어요."),
+    Reading(answer: "In case you’re hungry, I bought some snacks.", kor: "배고프실까 봐 간식 사왔어요."),
+    Reading(answer: "I thought you might need this book, so I brought it.", kor: "이 책 필요하실까 봐 가져왔어요."),
+    Reading(answer: "I think maybe I should get some rest today.", kor: "오늘은 좀 쉴까 봐요."),
+    Reading(answer: "I think maybe I should ask my friends.", kor: "친구들한테 물어볼까 봐요."),
+    Reading(answer: "I am thinking maybe I should just get a refund.", kor: "그냥 환불 받을까 봐요."),
+    Reading(answer: "Maybe I should buy this one.", kor: "이걸로 살까 봐요."),
+    Reading(answer: "I am thinking maybe I should try studying Japanese.", kor: "일본어를 공부해 볼까 봐요."),
     
+
+
     Twister(answer: "She sells seashells by the seashore."),
     Twister(answer: "How many sheets could a sheet slitter slit if a sheet slitter could slit sheets?"),
     Twister(answer: "How much pot, could a pot roast roast, if a pot roast could roast pot?"),
@@ -2082,7 +2081,8 @@ var questions: [Quest] = [
     Twister(answer: "World Wide Web, World Wide Web, World Wide Web."),
     Twister(answer: "Pirates Private Property, Pirates Private Property."),
     Twister(answer: "Tiny timid toads trying to trot to town."),
-    Twister(answer: "Sick sticky skeletons, sick sticky skeletons, sick sticky skeletons.")
+    Twister(answer: "Sick sticky skeletons, sick sticky skeletons, sick sticky skeletons."),
+    Twister(answer: "I want to be a juror on a rural brewery robbery case."),
     ].shuffled()
 
 struct Quiz {
