@@ -50,11 +50,17 @@ class Quest {
         return answer == self.answer;
     }
 }
+
+enum ChoiceWithOnAbout: String {
+    case With = "with"
+    case On = "on"
+    case About = "about"
+}
 class WithOnAbout: Quest {
     init(
         phraseStart: String,
         phraseEnd: String,
-        answer: String,
+        answer: ChoiceWithOnAbout,
         kor: String
     ) {
         super.init(
@@ -63,9 +69,9 @@ class WithOnAbout: Quest {
             category: "select-withonabout",
             phraseStart: phraseStart,
             phraseEnd: phraseEnd,
-            answer: answer,
+            answer: answer.rawValue,
             kor: kor,
-            options: ["with", "on", "about"],
+            options: [ChoiceWithOnAbout.With.rawValue, ChoiceWithOnAbout.On.rawValue, ChoiceWithOnAbout.About.rawValue],
             shuffled: true
         )
     }
@@ -95,10 +101,16 @@ class AtInOn: Quest {
         )
     }
 }
+
+enum ChoiceAdjAdv: String {
+    case Adj = "adjective (형용사)"
+    case Adv = "adverb (부사)"
+    case Both = "both (형용사+부사)"
+}
 class AdjOrAdvType: Quest {
     init(
         phraseStart: String,
-        answer: String,
+        answer: ChoiceAdjAdv,
         kor: String
     ) {
         super.init(
@@ -107,9 +119,9 @@ class AdjOrAdvType: Quest {
             category: "select-adjoradvtype",
             phraseStart: phraseStart,
             phraseEnd: "",
-            answer: answer,
+            answer: answer.rawValue,
             kor: kor,
-            options: ["adjective (형용사)", "adverb (부사)", "both (형용사+부사)"],
+            options: [ChoiceAdjAdv.Adj.rawValue, ChoiceAdjAdv.Adv.rawValue, ChoiceAdjAdv.Both.rawValue],
             shuffled: true
         )
     }
@@ -1003,61 +1015,61 @@ var questions: [Quest] = [
     WithOnAbout(
         phraseStart: "May I fill out the form",
         phraseEnd: "a pencil?",
-        answer: "with",
+        answer: ChoiceWithOnAbout.With,
         kor: "이 서식을 연필로 작성해도 될까요?"
     ),
     WithOnAbout(
         phraseStart: "My final presentation is",
         phraseEnd: "American history.",
-        answer: "about",
+        answer: ChoiceWithOnAbout.About,
         kor: "제 프레젠테이션은 미국 문화에 관한 것입니다."
     ),
     WithOnAbout(
         phraseStart: "You can draw a picture",
         phraseEnd: "this piece of paper.",
-        answer: "on",
+        answer: ChoiceWithOnAbout.On,
         kor: "이 종이 위해 그림을 그리렴."
     ),
     WithOnAbout(
         phraseStart: "This font size is too small, but I can read it",
         phraseEnd: "glasses. Please make it bigger!",
-        answer: "with",
+        answer: ChoiceWithOnAbout.With,
         kor: "활자체가 너무 작아. 하지만 안경을 쓰면 읽을 수 있겠어."
     ),
     WithOnAbout(
         phraseStart: "Why don't you cut the paper",
         phraseEnd: "scissors instead of using a knife?",
-        answer: "with",
+        answer: ChoiceWithOnAbout.With,
         kor: "그 종이는 가위로 자르느 게 어때요?"
     ),
     WithOnAbout(
         phraseStart: "I think that we are definitely",
         phraseEnd: "the same page!",
-        answer: "on",
+        answer: ChoiceWithOnAbout.On,
         kor: "우린 서로 같은 생각이야!"
     ),
     WithOnAbout(
         phraseStart: "I finally got my favorite author's autograph",
         phraseEnd: "the cover of my book. I am so excited!",
-        answer: "on",
+        answer: ChoiceWithOnAbout.On,
         kor: "그 책 표지에 저자의 사인을 받았어."
     ),
     WithOnAbout(
         phraseStart: "Who wrote this beautiful poem",
         phraseEnd: "the whiteboard?",
-        answer: "on",
+        answer: ChoiceWithOnAbout.On,
         kor: "칠판에 저거 쓴 사람 누구야?"
     ),
     WithOnAbout(
         phraseStart: "What is your class report",
         phraseEnd: "? It is so complicated!",
-        answer: "about",
+        answer: ChoiceWithOnAbout.About,
         kor: "너의 논문은 무엇에 관한 거지?"
     ),
     WithOnAbout(
         phraseStart: "Today's newspaper is all",
         phraseEnd: "the Winter Olympics.",
-        answer: "about",
+        answer: ChoiceWithOnAbout.About,
         kor: "오늘 신문은 올림픽에 관한 모든 것이 실렸어."
     ),
     AdjOrAdv(
@@ -1153,107 +1165,107 @@ var questions: [Quest] = [
     ),
     AdjOrAdvType(
         phraseStart: "slowly",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "carefully",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "quickly",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "heavily",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "badly",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "suddenly",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "hungrily",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "generally",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "fully",
-        answer: "adverb (부사)",
+        answer: ChoiceAdjAdv.Adv,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "friendly",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "lonely",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "ugly",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "lovely",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "silly",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "lively",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "unlikely",
-        answer: "adjective (형용사)",
+        answer: ChoiceAdjAdv.Adj,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "daily",
-        answer: "both (형용사+부사)",
+        answer: ChoiceAdjAdv.Both,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "weekly",
-        answer: "both (형용사+부사)",
+        answer: ChoiceAdjAdv.Both,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "yearly",
-        answer: "both (형용사+부사)",
+        answer: ChoiceAdjAdv.Both,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "monthly",
-        answer: "both (형용사+부사)",
+        answer: ChoiceAdjAdv.Both,
         kor: ""
     ),
     AdjOrAdvType(
         phraseStart: "early",
-        answer: "both (형용사+부사)",
+        answer: ChoiceAdjAdv.Both,
         kor: ""
     ),
     AdvFreq(
@@ -1462,113 +1474,35 @@ var questions: [Quest] = [
     Reading(answer: "It’s delicious!", kor: "맛있어요!"),
     Reading(answer: "It was a delicious meal!", kor: "잘 먹었습니다!"),
     Reading(answer: "What time do you close?", kor: "몇시에 문 닫아요?"),
-    Reading(
-        answer: "Do you take credit cards?",
-        kor: "카드 돼요?"
-    ),
-    Reading(
-        answer: "I’d like to eat here.",
-        kor: "여기서 먹고 갈게요."
-    ),
-    Reading(
-        answer: "Please throw away my receipt",
-        kor: "영수증은 버려 주세요."
-    ),
-    Reading(
-        answer: "Do you have electrical outlets?",
-        kor: "콘센트 있어요?"
-    ),
-    Reading(
-        answer: "Where are your electrical outlets?",
-        kor: "콘센트 어디에 있어요?"
-    ),
-    Reading(
-        answer: "Please give me a receipt.",
-        kor: "영수증 주세요."
-    ),
-    Reading(
-        answer: "Please give me a discount.",
-        kor: "좀 깎아 주세요."
-    ),
-    Reading(
-        answer: "How much is it?",
-        kor: "얼마예요?"
-    ),
-    Reading(
-        answer: "Please give me a refund.",
-        kor: "환불해 주세요."
-    ),
-    Reading(
-        answer: "Please exchange this.",
-        kor: "교환해 주세요."
-    ),
-    Reading(
-        answer: "Please wrap it for me.",
-        kor: "포장해 주세요."
-    ),
-    Reading(
-        answer: "Please dry clean this for me.",
-        kor: "드라이 해 주세요."
-    ),
-    Reading(
-        answer: "Please iron this for me.",
-        kor: "다림질 해 주세요."
-    ),
-    Reading(
-        answer: "Please make this longer.",
-        kor: "기장을 늘려 주세요."
-    ),
-    Reading(
-        answer: "Please make this shorter.",
-        kor: "기장을 줄여 주세요."
-    ),
-    Reading(
-        answer: "Can you remove this stain?",
-        kor: "얼룩 뺄 수 있어요?"
-    ),
-    Reading(
-        answer: "When can I pick up my clothes?",
-        kor: "옷을 언제 받을 수 있어요?"
-    ),
-    Reading(
-        answer: "I’m here to pick up my clothes.",
-        kor: "제 옷을 찾으러 왔어요."
-    ),
+    Reading(answer: "Do you take credit cards?", kor: "카드 돼요?"),
+    Reading(answer: "I’d like to eat here.", kor: "여기서 먹고 갈게요."),
+    Reading(answer: "Please throw away my receipt", kor: "영수증은 버려 주세요."),
+    Reading(answer: "Do you have electrical outlets?", kor: "콘센트 있어요?"),
+    Reading(answer: "Where are your electrical outlets?", kor: "콘센트 어디에 있어요?"),
+    Reading(answer: "Please give me a receipt.", kor: "영수증 주세요."),
+    Reading(answer: "Please give me a discount.", kor: "좀 깎아 주세요."),
+    Reading(answer: "How much is it?", kor: "얼마예요?"),
+    Reading(answer: "Please give me a refund.", kor: "환불해 주세요."),
+    Reading(answer: "Please exchange this.",kor: "교환해 주세요."),
+    Reading(answer: "Please wrap it for me.", kor: "포장해 주세요."),
+    Reading(answer: "Please dry clean this for me.", kor: "드라이 해 주세요."),
+    Reading(answer: "Please iron this for me.", kor: "다림질 해 주세요."),
+    Reading(answer: "Please make this longer.", kor: "기장을 늘려 주세요."),
+    Reading(answer: "Please make this shorter.",kor: "기장을 줄여 주세요."),
+    Reading(answer: "Can you remove this stain?",kor: "얼룩 뺄 수 있어요?"),
+    Reading(answer: "When can I pick up my clothes?", kor: "옷을 언제 받을 수 있어요?"),
+    Reading(answer: "I’m here to pick up my clothes.", kor: "제 옷을 찾으러 왔어요."),
     Reading(answer: "How much is the total?", kor: "모두 얼마예요?"),
     Reading(answer: "I would like to open a new bank account.", kor: "통장을 만들고 싶어요."),
     Reading(answer: "I would like a check card", kor: "체크 카드를 만들고 싶어요."),
-    Reading(
-        answer: "I need to reset my password.",
-        kor: "비밀번호를 재발급 하고 싶어요."
-    ),
-    Reading(
-        answer: "Are there monthly fees?",
-        kor: "수수료 있어요?"
-    ),
-    Reading(
-        answer: "Do you need internet banking?",
-        kor: "인터넷 뱅킹 필요해요?"
-    ),
-    Reading(
-        answer: "I need to make a deposit.",
-        kor: "입금 해주세요."
-    ),
-    Reading(
-        answer: "I need to make a withdrawal.",
-        kor: "출금 해주세요."
-    ),
-    Reading(
-        answer: "How much is the wire transfer charge?",
-        kor: "송금 수수료는 얼마예요?"
-    ),
-    Reading(
-        answer: "Can I apply for a credit card?",
-        kor: "신용 카드 신청할 수 있어요?"
-    ),
-    Reading(
-        answer: "I need to see a doctor.",
-        kor: "진찰을 받고 싶어요."
-    ),
+    Reading(answer: "I need to reset my password.", kor: "비밀번호를 재발급 하고 싶어요."),
+    Reading(answer: "Are there monthly fees?", kor: "수수료 있어요?"),
+    Reading(answer: "Do you need internet banking?", kor: "인터넷 뱅킹 필요해요?"),
+    Reading(answer: "I need to make a deposit.", kor: "입금 해주세요."),
+    Reading(answer: "I need to make a withdrawal.", kor: "출금 해주세요."),
+    Reading(answer: "How much is the wire transfer charge?", kor: "송금 수수료는 얼마예요?"),
+    Reading(answer: "Can I apply for a credit card?", kor: "신용 카드 신청할 수 있어요?"),
+    Reading(answer: "I need to see a doctor.", kor: "진찰을 받고 싶어요."),
     Reading(
         answer: "I have health insurance.",
         kor: "건강 보험 있어요."
@@ -1707,14 +1641,8 @@ var questions: [Quest] = [
     ),
     Reading(answer: "I’m lost.", kor: "길을 잃어버렸어요."),
     Reading(answer: "I am lost.", kor: "길을 잃어버렸어요."),
-    Reading(
-        answer: "How far is it from here?",
-        kor: "여기에서 얼마나 걸리는지 아세요?"
-    ),
-    Reading(
-        answer: "Is it far from here?",
-        kor: "여기에서 멀어요?"
-    ),
+    Reading(answer: "How far is it from here?", kor: "여기에서 얼마나 걸리는지 아세요?"),
+    Reading(answer: "Is it far from here?", kor: "여기에서 멀어요?"),
     Reading(answer: "It’s quite far.", kor: "꽤 멀어요."),
     Reading(answer: "It is quite far.", kor: "꽤 멀어요."),
     Reading(answer: "It’s not far.", kor: "멀지 않아요."),
@@ -2040,24 +1968,32 @@ var questions: [Quest] = [
     Reading(answer: "I regret not having played enough when I was little.", kor: "어렸을 때 더 많이 놀지 않은 게 후회가 돼요."),
     Reading(answer: "I regret the fact that I even brought that up.", kor: "그 이야기를 꺼낸 것 자체가 후회스러워요."),
     Reading(answer: "I shouldn’t have told them.", kor: "말하지 말았어야 했어요."),
+    Reading(answer: "I should not have told them.", kor: "말하지 말았어야 했어요."),
     Reading(answer: "I shouldn’t have bought it.", kor: "이거 괜히 샀어요."),
+    Reading(answer: "I should not have bought it.", kor: "이거 괜히 샀어요."),
     Reading(answer: "I shouldn’t have come here.", kor: "오지 말 걸 그랬어요."),
+    Reading(answer: "I should not have come here.", kor: "오지 말 걸 그랬어요."),
     Reading(answer: "It would have been nice if we’d arrived a little earlier.", kor: "좀 더 일찍 도착했더라면 좋았을 텐데요."),
     Reading(answer: "It might have been better to just do it by ourselves.", kor: "그냥 우리끼리 하는 게 나을 뻔 했어요."),
     Reading(answer: "So I’m regretting it now.", kor: "그래서 후회 중이에요."),
     Reading(answer: "I didn’t intend to do it.", kor: "원래 그럴 생각은 없었어요."),
+    Reading(answer: "I did not intend to do it.", kor: "원래 그럴 생각은 없었어요."),
     Reading(answer: "Looking back now, I wonder why I did that back then.", kor: "지금 와서 생각해 보면, 제가 그때 왜 그랬나 싶어요."),
     Reading(answer: "I have 100 chickens in my backyard", kor: ""),
     Reading(answer: "I have 90 chickens in my backyard", kor: ""),
-    
     Reading(answer: "Since we’ve already made a public announcement, we can’t cancel it now.", kor: "이미 공식 발표를 한 이상, 이제 취소할 수는 없어요."),
+    Reading(answer: "Since we have already made a public announcement, we cannot cancel it now.", kor: "이미 공식 발표를 한 이상, 이제 취소할 수는 없어요."),
     Reading(answer: "Now that you’ve boarded the airplane, you can’t get out until you arrive.", kor: "비행기를 탄 이상, 도착할 때까지 내릴 수 없어요."),
+    Reading(answer: "Now that you have boarded the airplane, you cannot get out until you arrive.", kor: "비행기를 탄 이상, 도착할 때까지 내릴 수 없어요."),
     Reading(answer: "Once you’ve started, you can’t quit in the middle.", kor: "한번 시작한 이상, 중간에 포기할 수 없어요."),
+    Reading(answer: "Once you have started, you cannot quit in the middle.", kor: "한번 시작한 이상, 중간에 포기할 수 없어요."),
     Reading(answer: "Since you’ve come this far, don’t give up and keep working hard.", kor: "여기까지 온 이상, 포기하지 말고 열심히 하세요."),
     Reading(answer: "Once you’ve come into this room, you must play this game.", kor: "이 방에 들어온 이상, 이 게임을 꼭 해야 돼요."),
+    Reading(answer: "Once you have come into this room, you must play this game.", kor: "이 방에 들어온 이상, 이 게임을 꼭 해야 돼요."),
     Reading(answer: "Unless you take the airplane, you can’t go that fast.", kor: "비행기를 타지 않는 이상, 그렇게 빨리 갈 수가 없어요."),
     Reading(answer: "Unless I use a calculator, I can’t do such a complex calculation.", kor: "계산기를 쓰지 않는 이상, 이렇게 복잡한 계산은 못 해요."),
     Reading(answer: "Unless I’m very sick, I don’t skip classes.", kor: "아주 아프지 않은 이상, 저는 수업에 빠지지 않아요."),
+    Reading(answer: "Unless I am very sick, I don’t skip classes.", kor: "아주 아프지 않은 이상, 저는 수업에 빠지지 않아요."),
     Reading(answer: "Unless you’re a staff member here, you can’t go in.", kor: "여기 직원이 아닌 이상, 들어갈 수가 없어요."),
     Reading(answer: "Unless you are his family, it’s impossible to know such things.", kor: "가족이 아닌 이상, 그런 건 알 수가 없어요."),
     Reading(answer: "Unless it’s something important, I can’t go out at this hour.", kor: "중요한 일이 아닌 이상, 지금 이 시간에 나갈 수는 없어요."),
@@ -2111,6 +2047,71 @@ var questions: [Quest] = [
     
     AtInOn(phraseStart: "By eleven o'clock", phraseEnd: "the evening, I am in bed.", answer: ChoiceAtInOn.In),
     AtInOn(phraseStart: "What day were you born", phraseEnd: "?", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "I don't jump", phraseEnd: "the pool before testing the water temperature.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Do you like to shop", phraseEnd: "the supermarket down the street?", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "I swim in the pool", phraseEnd: "the local school campus.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "Do you live", phraseEnd: "Los Angeles?", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "My birthday will be", phraseEnd: "a few months.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Her grandmother will arrive there", phraseEnd: "half-past seven in the morning.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "Is the water", phraseEnd: "your foot warm or cold?", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "Did you grow up", phraseEnd: "Mexico or California?", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "My daughter was born", phraseEnd: "the last day of July.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "I like to put make-up", phraseEnd: "when I dress up.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "I like to swim", phraseEnd: "the beach, not just in the pool.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "At eight o'clock in the morning, I am hard", phraseEnd: "work.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "Put your big toe", phraseEnd: "the water.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "He arrived", phraseEnd: "the park two hours before the game.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "He comes to school", phraseEnd: "nine o'clock every Thursday morning.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "Your keys were", phraseEnd: "the seat of the car all the time.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "The train arrives", phraseEnd: "the station just after four o'clock in the afternoon.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "That book must be", phraseEnd: "good condition when you return it.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "We celebrate the coming new year on New Year's Eve", phraseEnd: "the end of each year.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "He shouted", phraseEnd: "me as I drove past his house.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "I like to study", phraseEnd: "the evening.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Jerry has a cut", phraseEnd: "his left knee.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "He lives", phraseEnd: "the brown house next to the restaurant.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Please place the suitcase", phraseEnd: "the back seat of my car.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "Something was cooking", phraseEnd: "the kitchen when we came home.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "His house used to be", phraseEnd: "Elm Street but he doesn't live there anymore.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "Many different roses grow", phraseEnd: "my garden.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Today I am", phraseEnd: "a very good mood. How about you?", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "There is no meat", phraseEnd: "the menu tonight.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "When I looked up, she was smiling", phraseEnd: "me.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "She dropped her keys", phraseEnd: "the sidewalk.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "It gets very cold", phraseEnd: "winter.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Betty doesn't have a job", phraseEnd: "the moment.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "The telephone and the doorbell rang", phraseEnd: "the same time.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "He flew from Japan. He's probably", phraseEnd: "Perth now.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Would you like to go out to dinner", phraseEnd: "Friday night?", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "She was tired. She's", phraseEnd: "bed now.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Goodbye! I'll see you", phraseEnd: "the morning.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "Were you", phraseEnd: "Tom's party last night?", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "I'll see you", phraseEnd: "two weeks time.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "She was born", phraseEnd: "1961.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "The doctor will see you", phraseEnd: "10:00 in the morning.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "My wife gave me a wonderful present", phraseEnd: "my birthday.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "The coffee is", phraseEnd: "the shelf.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "My pen is", phraseEnd: "my pencil case.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "He's gone to work. He's probably", phraseEnd: "at the office right now.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "He lives", phraseEnd: "Australia.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "I'll see you", phraseEnd: "Monday.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "Buy some bread and milk", phraseEnd: "your way home.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "What will you be doing", phraseEnd: "New Year's Eve?", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "The flowers", phraseEnd: "your garden are very beautiful.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "There were many cars", phraseEnd: "the road today.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "Tom and Betty always go out to dinner", phraseEnd: "their wedding aniversary.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "We got up", phraseEnd: "dawn today.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "Are you doing anything", phraseEnd: "the weekend?", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "We live", phraseEnd: "this address.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "I live", phraseEnd: "an apartment building.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "My apartment building is", phraseEnd: "the corner.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "My apartment is", phraseEnd: "the fifth floor.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "My friend lives", phraseEnd: "27 Strong Street.", answer: ChoiceAtInOn.At),
+    AtInOn(phraseStart: "He lives", phraseEnd: "apartment 501.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "I live", phraseEnd: "the top floor.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "It's the fifth door", phraseEnd: "your left.", answer: ChoiceAtInOn.On),
+    AtInOn(phraseStart: "That apartment was", phraseEnd: "the basement.", answer: ChoiceAtInOn.In),
+    AtInOn(phraseStart: "I used to live", phraseEnd: "12 Harrison Street.", answer: ChoiceAtInOn.At),
     ].shuffled()
 
 struct Quiz {
