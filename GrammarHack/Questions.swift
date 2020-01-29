@@ -234,6 +234,27 @@ class RandomQ: Quest {
     }
 }
 
+class PickTheWrong: Quest {
+    init(
+        phraseStart: String,
+        phraseEnd: String,
+        answer: String,
+        options: [String]
+    ) {
+        super.init(
+            title: "Random Question",
+            subtitle: "올바른 옵션을 선택하세요",
+            category: "select-random",
+            phraseStart: phraseStart,
+            phraseEnd: phraseEnd,
+            answer: answer,
+            kor: "",
+            options: options,
+            shuffled: true
+        )
+    }
+}
+
 class ToeicGrammar: Quest {
     init(
         phraseStart: String,
@@ -255,11 +276,22 @@ class ToeicGrammar: Quest {
     }
 }
 
+enum ChoiceFraction: String {
+    case OneHalf = "one-half"
+    case OneFifth = "one-fifth"
+    case TwoFifths = "two-fifths"
+    case ThreeFifths = "three-fifths"
+    case FourFifths = "four-fifths"
+    case OneFourth = "one-fourth"
+    case ThreeFourths = "three-fourths"
+    case OneThird = "one-third"
+    case TwoThirds = "two-thirds"
+}
 class MathFractions: Quest {
     init(
         phraseStart: String,
         phraseEnd: String,
-        answer: String,
+        answer: ChoiceFraction,
         kor: String
     ) {
         super.init(
@@ -268,13 +300,18 @@ class MathFractions: Quest {
             category: "select-mathfractions",
             phraseStart: phraseStart,
             phraseEnd: phraseEnd,
-            answer: answer,
+            answer: answer.rawValue,
             kor: kor,
             options: [
-                "one-half",
-                "one-fifth", "two-fifths", "three-fifths", "four-fifths",
-                "one-fourth", "three-fourths",
-                "one-third", "two-thirds",
+                ChoiceFraction.OneHalf.rawValue,
+                ChoiceFraction.OneFifth.rawValue,
+                ChoiceFraction.TwoFifths.rawValue,
+                ChoiceFraction.ThreeFifths.rawValue,
+                ChoiceFraction.FourFifths.rawValue,
+                ChoiceFraction.OneFourth.rawValue,
+                ChoiceFraction.ThreeFourths.rawValue,
+                ChoiceFraction.OneThird.rawValue,
+                ChoiceFraction.TwoThirds.rawValue,
             ],
             shuffled: false
         )
@@ -383,279 +420,279 @@ class AdjComp: Quest {
 
 var questions: [Quest] = [
     MathFractions(
-        phraseStart: "The pizza was divided into three slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the pizza during the party.",
-        answer: "one-third",
+        phraseStart: "The cake was divided into three slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the cake during the party.",
+        answer: ChoiceFraction.OneThird,
         kor: "(3 ➖ 2) ➗ 3 = 1/3"
     ),
     MathFractions(
-        phraseStart: "The pie was divided into three slices. During the party, we ate one slice. I believe that",
-        phraseEnd: "of the pie was left over after the party.",
-        answer: "two-thirds",
-        kor: "(3 ➖ 1) ➗ 3 = 2/3"
-    ),
-    MathFractions(
-        phraseStart: "The cake was divided into three slices. After the party, there was one slice left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "two-thirds",
-        kor: "(3 ➖ 1) ➗ 3 = 2/3"
-    ),
-    MathFractions(
-        phraseStart: "The pizza was divided into three slices. During the party, we ate two slices. I believe that",
+        phraseStart: "The pizza was divided into three slices. During the party, we ate one slice. I believe that",
         phraseEnd: "of the pizza was left over after the party.",
-        answer: "one-third",
+        answer: ChoiceFraction.TwoThirds,
+        kor: "(3 ➖ 1) ➗ 3 = 2/3"
+    ),
+    MathFractions(
+        phraseStart: "The pizza was divided into three slices. After the party, there was one slice left. We ate",
+        phraseEnd: "of the pizza during the party.",
+        answer: ChoiceFraction.TwoThirds,
+        kor: "(3 ➖ 1) ➗ 3 = 2/3"
+    ),
+    MathFractions(
+        phraseStart: "The slice was divided into three slices. During the party, we ate two slices. I believe that",
+        phraseEnd: "of the slice was left over after the party.",
+        answer: ChoiceFraction.OneThird,
         kor: "(3 ➖ 2) ➗ 3 = 1/3"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into five slices. After the party, there were four slices left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "one-fifth",
+        phraseStart: "The pie was divided into five slices. After the party, there were four slices left. We ate",
+        phraseEnd: "of the pie during the party.",
+        answer: ChoiceFraction.OneFifth,
         kor: "(5 ➖ 4) ➗ 5 = 1/5"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into five slices. During the party, we ate one slice. I believe that",
-        phraseEnd: "of the cake was left over after the party.",
-        answer: "four-fifths",
+        phraseStart: "The pizza was divided into five slices. During the party, we ate one slice. I believe that",
+        phraseEnd: "of the pizza was left over after the party.",
+        answer: ChoiceFraction.FourFifths,
         kor: "(5 ➖ 1) ➗ 5 = 4/5"
     ),
     MathFractions(
-        phraseStart: "The pizza was divided into five slices. After the party, there were three slices left. We ate",
-        phraseEnd: "of the pizza during the party.",
-        answer: "two-fifths",
-        kor: "(5 ➖ 3) ➗ 5 = 2/5"
-    ),
-    MathFractions(
-        phraseStart: "The bread was divided into five slices. During the party, we ate two slices. I believe that",
-        phraseEnd: "of the bread was left over after the party.",
-        answer: "three-fifths",
-        kor: "(5 ➖ 2) ➗ 5 = 3/5"
-    ),
-    MathFractions(
-        phraseStart: "The pizza was divided into five slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the pizza during the party.",
-        answer: "three-fifths",
-        kor: "(5 ➖ 2) ➗ 5 = 3/5"
-    ),
-    MathFractions(
-        phraseStart: "The pie was divided into five slices. During the party, we ate three slices. I believe that",
-        phraseEnd: "of the pie was left over after the party.",
-        answer: "two-fifths",
-        kor: "(5 ➖ 3) ➗ 5 = 2/5"
-    ),
-    MathFractions(
-        phraseStart: "The pie was divided into five slices. After the party, there was one slice left. We ate",
+        phraseStart: "The pie was divided into five slices. After the party, there were three slices left. We ate",
         phraseEnd: "of the pie during the party.",
-        answer: "four-fifths",
+        answer: ChoiceFraction.TwoFifths,
+        kor: "(5 ➖ 3) ➗ 5 = 2/5"
+    ),
+    MathFractions(
+        phraseStart: "The pizza was divided into five slices. During the party, we ate two slices. I believe that",
+        phraseEnd: "of the pizza was left over after the party.",
+        answer: ChoiceFraction.ThreeFifths,
+        kor: "(5 ➖ 2) ➗ 5 = 3/5"
+    ),
+    MathFractions(
+        phraseStart: "The slice was divided into five slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the slice during the party.",
+        answer: ChoiceFraction.ThreeFifths,
+        kor: "(5 ➖ 2) ➗ 5 = 3/5"
+    ),
+    MathFractions(
+        phraseStart: "The cake was divided into five slices. During the party, we ate three slices. I believe that",
+        phraseEnd: "of the cake was left over after the party.",
+        answer: ChoiceFraction.TwoFifths,
+        kor: "(5 ➖ 3) ➗ 5 = 2/5"
+    ),
+    MathFractions(
+        phraseStart: "The slice was divided into five slices. After the party, there was one slice left. We ate",
+        phraseEnd: "of the slice during the party.",
+        answer: ChoiceFraction.FourFifths,
         kor: "(5 ➖ 1) ➗ 5 = 4/5"
     ),
     MathFractions(
-        phraseStart: "The bread was divided into five slices. During the party, we ate four slices. I believe that",
-        phraseEnd: "of the bread was left over after the party.",
-        answer: "one-fifth",
+        phraseStart: "The cake was divided into five slices. During the party, we ate four slices. I believe that",
+        phraseEnd: "of the cake was left over after the party.",
+        answer: ChoiceFraction.OneFifth,
         kor: "(5 ➖ 4) ➗ 5 = 1/5"
     ),
     MathFractions(
         phraseStart: "The slice was divided into ten slices. After the party, there were eight slices left. We ate",
         phraseEnd: "of the slice during the party.",
-        answer: "one-fifth",
+        answer: ChoiceFraction.OneFifth,
         kor: "(10 ➖ 8) ➗ 10 = 1/5"
     ),
     MathFractions(
-        phraseStart: "The bread was divided into ten slices. During the party, we ate two slices. I believe that",
-        phraseEnd: "of the bread was left over after the party.",
-        answer: "four-fifths",
+        phraseStart: "The pizza was divided into ten slices. During the party, we ate two slices. I believe that",
+        phraseEnd: "of the pizza was left over after the party.",
+        answer: ChoiceFraction.FourFifths,
         kor: "(10 ➖ 2) ➗ 10 = 4/5"
     ),
     MathFractions(
-        phraseStart: "The pizza was divided into ten slices. After the party, there were six slices left. We ate",
-        phraseEnd: "of the pizza during the party.",
-        answer: "two-fifths",
+        phraseStart: "The slice was divided into ten slices. After the party, there were six slices left. We ate",
+        phraseEnd: "of the slice during the party.",
+        answer: ChoiceFraction.TwoFifths,
         kor: "(10 ➖ 6) ➗ 10 = 2/5"
     ),
     MathFractions(
-        phraseStart: "The slice was divided into ten slices. During the party, we ate four slices. I believe that",
-        phraseEnd: "of the slice was left over after the party.",
-        answer: "three-fifths",
+        phraseStart: "The cake was divided into ten slices. During the party, we ate four slices. I believe that",
+        phraseEnd: "of the cake was left over after the party.",
+        answer: ChoiceFraction.ThreeFifths,
         kor: "(10 ➖ 4) ➗ 10 = 3/5"
     ),
     MathFractions(
         phraseStart: "The cake was divided into ten slices. After the party, there were four slices left. We ate",
         phraseEnd: "of the cake during the party.",
-        answer: "three-fifths",
+        answer: ChoiceFraction.ThreeFifths,
         kor: "(10 ➖ 4) ➗ 10 = 3/5"
     ),
     MathFractions(
         phraseStart: "The pizza was divided into ten slices. During the party, we ate six slices. I believe that",
         phraseEnd: "of the pizza was left over after the party.",
-        answer: "two-fifths",
+        answer: ChoiceFraction.TwoFifths,
         kor: "(10 ➖ 6) ➗ 10 = 2/5"
     ),
     MathFractions(
-        phraseStart: "The bread was divided into ten slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the bread during the party.",
-        answer: "four-fifths",
+        phraseStart: "The cake was divided into ten slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the cake during the party.",
+        answer: ChoiceFraction.FourFifths,
         kor: "(10 ➖ 2) ➗ 10 = 4/5"
     ),
     MathFractions(
         phraseStart: "The slice was divided into ten slices. During the party, we ate eight slices. I believe that",
         phraseEnd: "of the slice was left over after the party.",
-        answer: "one-fifth",
+        answer: ChoiceFraction.OneFifth,
         kor: "(10 ➖ 8) ➗ 10 = 1/5"
     ),
     MathFractions(
-        phraseStart: "The pizza was divided into four slices. After the party, there were three slices left. We ate",
-        phraseEnd: "of the pizza during the party.",
-        answer: "one-fourth",
+        phraseStart: "The slice was divided into four slices. After the party, there were three slices left. We ate",
+        phraseEnd: "of the slice during the party.",
+        answer: ChoiceFraction.OneFourth,
         kor: "(4 ➖ 3) ➗ 4 = 1/4"
     ),
     MathFractions(
         phraseStart: "The pie was divided into four slices. During the party, we ate one slice. I believe that",
         phraseEnd: "of the pie was left over after the party.",
-        answer: "three-fourths",
+        answer: ChoiceFraction.ThreeFourths,
         kor: "(4 ➖ 1) ➗ 4 = 3/4"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into four slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "one-half",
+        phraseStart: "The bread was divided into four slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the bread during the party.",
+        answer: ChoiceFraction.OneHalf,
         kor: "(4 ➖ 2) ➗ 4 = 1/2"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into four slices. During the party, we ate two slices. I believe that",
-        phraseEnd: "of the cake was left over after the party.",
-        answer: "one-half",
+        phraseStart: "The slice was divided into four slices. During the party, we ate two slices. I believe that",
+        phraseEnd: "of the slice was left over after the party.",
+        answer: ChoiceFraction.OneHalf,
         kor: "(4 ➖ 2) ➗ 4 = 1/2"
     ),
     MathFractions(
         phraseStart: "The cake was divided into four slices. After the party, there was one slice left. We ate",
         phraseEnd: "of the cake during the party.",
-        answer: "three-fourths",
+        answer: ChoiceFraction.ThreeFourths,
         kor: "(4 ➖ 1) ➗ 4 = 3/4"
     ),
     MathFractions(
         phraseStart: "The pie was divided into four slices. During the party, we ate three slices. I believe that",
         phraseEnd: "of the pie was left over after the party.",
-        answer: "one-fourth",
+        answer: ChoiceFraction.OneFourth,
         kor: "(4 ➖ 3) ➗ 4 = 1/4"
     ),
     MathFractions(
-        phraseStart: "The bread was divided into four slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the bread during the party.",
-        answer: "one-half",
+        phraseStart: "The pizza was divided into four slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the pizza during the party.",
+        answer: ChoiceFraction.OneHalf,
         kor: "(4 ➖ 2) ➗ 4 = 1/2"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into four slices. During the party, we ate two slices. I believe that",
-        phraseEnd: "of the cake was left over after the party.",
-        answer: "one-half",
-        kor: "(4 ➖ 2) ➗ 4 = 1/2"
-    ),
-    MathFractions(
-        phraseStart: "The pie was divided into six slices. After the party, there were three slices left. We ate",
-        phraseEnd: "of the pie during the party.",
-        answer: "one-half",
-        kor: "(6 ➖ 3) ➗ 6 = 1/2"
-    ),
-    MathFractions(
-        phraseStart: "The slice was divided into six slices. During the party, we ate three slices. I believe that",
+        phraseStart: "The slice was divided into four slices. During the party, we ate two slices. I believe that",
         phraseEnd: "of the slice was left over after the party.",
-        answer: "one-half",
+        answer: ChoiceFraction.OneHalf,
+        kor: "(4 ➖ 2) ➗ 4 = 1/2"
+    ),
+    MathFractions(
+        phraseStart: "The bread was divided into six slices. After the party, there were three slices left. We ate",
+        phraseEnd: "of the bread during the party.",
+        answer: ChoiceFraction.OneHalf,
         kor: "(6 ➖ 3) ➗ 6 = 1/2"
     ),
     MathFractions(
-        phraseStart: "The slice was divided into six slices. After the party, there were four slices left. We ate",
-        phraseEnd: "of the slice during the party.",
-        answer: "one-third",
+        phraseStart: "The pie was divided into six slices. During the party, we ate three slices. I believe that",
+        phraseEnd: "of the pie was left over after the party.",
+        answer: ChoiceFraction.OneHalf,
+        kor: "(6 ➖ 3) ➗ 6 = 1/2"
+    ),
+    MathFractions(
+        phraseStart: "The pizza was divided into six slices. After the party, there were four slices left. We ate",
+        phraseEnd: "of the pizza during the party.",
+        answer: ChoiceFraction.OneThird,
         kor: "(6 ➖ 4) ➗ 6 = 1/3"
     ),
     MathFractions(
         phraseStart: "The slice was divided into six slices. During the party, we ate two slices. I believe that",
         phraseEnd: "of the slice was left over after the party.",
-        answer: "two-thirds",
+        answer: ChoiceFraction.TwoThirds,
         kor: "(6 ➖ 2) ➗ 6 = 2/3"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into six slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "two-thirds",
+        phraseStart: "The pizza was divided into six slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the pizza during the party.",
+        answer: ChoiceFraction.TwoThirds,
         kor: "(6 ➖ 2) ➗ 6 = 2/3"
     ),
     MathFractions(
-        phraseStart: "The slice was divided into six slices. During the party, we ate four slices. I believe that",
-        phraseEnd: "of the slice was left over after the party.",
-        answer: "one-third",
+        phraseStart: "The pie was divided into six slices. During the party, we ate four slices. I believe that",
+        phraseEnd: "of the pie was left over after the party.",
+        answer: ChoiceFraction.OneThird,
         kor: "(6 ➖ 4) ➗ 6 = 1/3"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into sixteen slices. After the party, there were twelve slices left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "one-fourth",
+        phraseStart: "The pie was divided into sixteen slices. After the party, there were twelve slices left. We ate",
+        phraseEnd: "of the pie during the party.",
+        answer: ChoiceFraction.OneFourth,
         kor: "(16 ➖ 12) ➗ 16 = 1/4"
     ),
     MathFractions(
         phraseStart: "The slice was divided into sixteen slices. During the party, we ate four slices. I believe that",
         phraseEnd: "of the slice was left over after the party.",
-        answer: "three-fourths",
+        answer: ChoiceFraction.ThreeFourths,
         kor: "(16 ➖ 4) ➗ 16 = 3/4"
     ),
     MathFractions(
         phraseStart: "The pizza was divided into sixteen slices. After the party, there were eight slices left. We ate",
         phraseEnd: "of the pizza during the party.",
-        answer: "one-half",
+        answer: ChoiceFraction.OneHalf,
         kor: "(16 ➖ 8) ➗ 16 = 1/2"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into sixteen slices. During the party, we ate eight slices. I believe that",
-        phraseEnd: "of the cake was left over after the party.",
-        answer: "one-half",
+        phraseStart: "The pie was divided into sixteen slices. During the party, we ate eight slices. I believe that",
+        phraseEnd: "of the pie was left over after the party.",
+        answer: ChoiceFraction.OneHalf,
         kor: "(16 ➖ 8) ➗ 16 = 1/2"
     ),
     MathFractions(
-        phraseStart: "The bread was divided into sixteen slices. After the party, there were four slices left. We ate",
-        phraseEnd: "of the bread during the party.",
-        answer: "three-fourths",
+        phraseStart: "The cake was divided into sixteen slices. After the party, there were four slices left. We ate",
+        phraseEnd: "of the cake during the party.",
+        answer: ChoiceFraction.ThreeFourths,
         kor: "(16 ➖ 4) ➗ 16 = 3/4"
     ),
     MathFractions(
-        phraseStart: "The pie was divided into sixteen slices. During the party, we ate twelve slices. I believe that",
-        phraseEnd: "of the pie was left over after the party.",
-        answer: "one-fourth",
+        phraseStart: "The cake was divided into sixteen slices. During the party, we ate twelve slices. I believe that",
+        phraseEnd: "of the cake was left over after the party.",
+        answer: ChoiceFraction.OneFourth,
         kor: "(16 ➖ 12) ➗ 16 = 1/4"
     ),
     MathFractions(
-        phraseStart: "The cake was divided into eight slices. After the party, there were six slices left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "one-fourth",
+        phraseStart: "The bread was divided into eight slices. After the party, there were six slices left. We ate",
+        phraseEnd: "of the bread during the party.",
+        answer: ChoiceFraction.OneFourth,
         kor: "(8 ➖ 6) ➗ 8 = 1/4"
     ),
     MathFractions(
-        phraseStart: "The bread was divided into eight slices. During the party, we ate two slices. I believe that",
-        phraseEnd: "of the bread was left over after the party.",
-        answer: "three-fourths",
-        kor: "(8 ➖ 2) ➗ 8 = 3/4"
-    ),
-    MathFractions(
-        phraseStart: "The bread was divided into eight slices. After the party, there were four slices left. We ate",
-        phraseEnd: "of the bread during the party.",
-        answer: "one-half",
-        kor: "(8 ➖ 4) ➗ 8 = 1/2"
-    ),
-    MathFractions(
-        phraseStart: "The bread was divided into eight slices. During the party, we ate four slices. I believe that",
-        phraseEnd: "of the bread was left over after the party.",
-        answer: "one-half",
-        kor: "(8 ➖ 4) ➗ 8 = 1/2"
-    ),
-    MathFractions(
-        phraseStart: "The cake was divided into eight slices. After the party, there were two slices left. We ate",
-        phraseEnd: "of the cake during the party.",
-        answer: "three-fourths",
-        kor: "(8 ➖ 2) ➗ 8 = 3/4"
-    ),
-    MathFractions(
-        phraseStart: "The pie was divided into eight slices. During the party, we ate six slices. I believe that",
+        phraseStart: "The pie was divided into eight slices. During the party, we ate two slices. I believe that",
         phraseEnd: "of the pie was left over after the party.",
-        answer: "one-fourth",
+        answer: ChoiceFraction.ThreeFourths,
+        kor: "(8 ➖ 2) ➗ 8 = 3/4"
+    ),
+    MathFractions(
+        phraseStart: "The pizza was divided into eight slices. After the party, there were four slices left. We ate",
+        phraseEnd: "of the pizza during the party.",
+        answer: ChoiceFraction.OneHalf,
+        kor: "(8 ➖ 4) ➗ 8 = 1/2"
+    ),
+    MathFractions(
+        phraseStart: "The cake was divided into eight slices. During the party, we ate four slices. I believe that",
+        phraseEnd: "of the cake was left over after the party.",
+        answer: ChoiceFraction.OneHalf,
+        kor: "(8 ➖ 4) ➗ 8 = 1/2"
+    ),
+    MathFractions(
+        phraseStart: "The bread was divided into eight slices. After the party, there were two slices left. We ate",
+        phraseEnd: "of the bread during the party.",
+        answer: ChoiceFraction.ThreeFourths,
+        kor: "(8 ➖ 2) ➗ 8 = 3/4"
+    ),
+    MathFractions(
+        phraseStart: "The bread was divided into eight slices. During the party, we ate six slices. I believe that",
+        phraseEnd: "of the bread was left over after the party.",
+        answer: ChoiceFraction.OneFourth,
         kor: "(8 ➖ 6) ➗ 8 = 1/4"
     ),
     
@@ -1503,82 +1540,31 @@ var questions: [Quest] = [
     Reading(answer: "How much is the wire transfer charge?", kor: "송금 수수료는 얼마예요?"),
     Reading(answer: "Can I apply for a credit card?", kor: "신용 카드 신청할 수 있어요?"),
     Reading(answer: "I need to see a doctor.", kor: "진찰을 받고 싶어요."),
-    Reading(
-        answer: "I have health insurance.",
-        kor: "건강 보험 있어요."
-    ),
-    Reading(
-        answer: "I have a sore throat.",
-        kor: "목이 아파요."
-    ),
-    Reading(
-        answer: "I have indigestion",
-        kor: "소화불량 체했어요."
-    ),
-    Reading(
-        answer: "My nose is stuffy.",
-        kor: "코가 막혔어요."
-    ),
-    Reading(
-        answer: "My nose is runny.",
-        kor: "자꾸 콧물이 나요."
-    ),
-    Reading(
-        answer: "Where can I get this prescription filled?",
-        kor: "어디에서 약을 조제할 수 있어요?"
-    ),
-    Reading(
-        answer: "I have a prescription to fill.",
-        kor: "처방전을 받아 왔어요."
-    ),
-    Reading(
-        answer: "I have a cold.",
-        kor: "감기에 걸렸어요."
-    ),
+    Reading(answer: "I have health insurance.", kor: "건강 보험 있어요."),
+    Reading(answer: "I have a sore throat.", kor: "목이 아파요."),
+    Reading(answer: "I have indigestion", kor: "소화불량 체했어요."),
+    Reading(answer: "My nose is stuffy.", kor: "코가 막혔어요."),
+    Reading(answer: "My nose is runny.", kor: "자꾸 콧물이 나요."),
+    Reading(answer: "Where can I get this prescription filled?", kor: "어디에서 약을 조제할 수 있어요?"),
+    Reading(answer: "I have a prescription to fill.", kor: "처방전을 받아 왔어요."),
+    Reading(answer: "I have a cold.", kor: "감기에 걸렸어요."),
     Reading(answer: "I don’t have any allergies.", kor: "알레르기가 없어요."),
     Reading(answer: "I do not have any allergies.", kor: "알레르기가 없어요."),
     Reading(answer: "I’m here to make an appointment.", kor: "예약하려고 왔는데요."),
     Reading(answer: "I am here to make an appointment.", kor: "예약하려고 왔는데요."),
-    Reading(
-        answer: "How long do I have to wait?",
-        kor: "얼마나 기다려야해요?"
-    ),
-    Reading(
-        answer: "I am here for a cleaning.",
-        kor: "스케일링 하러 왔어요."
-    ),
+    Reading(answer: "How long do I have to wait?", kor: "얼마나 기다려야해요?"),
+    Reading(answer: "I am here for a cleaning.", kor: "스케일링 하러 왔어요."),
     Reading(answer: "I'm here for a dental checkup.", kor: "치과 검진 하러 왔어요."),
     Reading(answer: "I am here for a dental checkup.", kor: "치과 검진 하러 왔어요."),
-    Reading(
-        answer: "My upper tooth hurts.",
-        kor: "윗니가 아파요."
-    ),
-    Reading(
-        answer: "My lower tooth is sensitive.",
-        kor: "아랫니가 시려요."
-    ),
-    Reading(
-        answer: "My gums hurt.",
-        kor: "잇몸이 아파요."
-    ),
-    Reading(
-        answer: "I think I have a cavity.",
-        kor: "충치가 생긴 것 같아요."
-    ),
+    Reading(answer: "My upper tooth hurts.", kor: "윗니가 아파요."),
+    Reading(answer: "My lower tooth is sensitive.", kor: "아랫니가 시려요."),
+    Reading(answer: "My gums hurt.", kor: "잇몸이 아파요."),
+    Reading(answer: "I think I have a cavity.", kor: "충치가 생긴 것 같아요."),
     Reading(answer: "I don’t have dental insurance.", kor: "치과 보험 없어요."),
     Reading(answer: "I do not have dental insurance.", kor: "치과 보험 없어요."),
-    Reading(
-        answer: "I have dental insurance.",
-        kor: "치과 보험 있어요."
-    ),
-    Reading(
-        answer: "Please give me a haircut.",
-        kor: "커트 해주세요."
-    ),
-    Reading(
-        answer: "How much does a haircut cost?",
-        kor: "머리 커트 얼마예요?"
-    ),
+    Reading(answer: "I have dental insurance.", kor: "치과 보험 있어요."),
+    Reading(answer: "Please give me a haircut.", kor: "커트 해주세요."),
+    Reading(answer: "How much does a haircut cost?", kor: "머리 커트 얼마예요?"),
     Reading(
         answer: "How long will it take?",
         kor: "시간 얼마나 걸려요?"
@@ -2012,6 +1998,7 @@ var questions: [Quest] = [
     Reading(answer: "I am thinking maybe I should just get a refund.", kor: "그냥 환불 받을까 봐요."),
     Reading(answer: "Maybe I should buy this one.", kor: "이걸로 살까 봐요."),
     Reading(answer: "I am thinking maybe I should try studying Japanese.", kor: "일본어를 공부해 볼까 봐요."),
+    Reading(answer: "Drive forwards slowly please.", kor: "앞으로 천천히 진입해 주세요"),
     
 
 
@@ -2112,6 +2099,10 @@ var questions: [Quest] = [
     AtInOn(phraseStart: "It's the fifth door", phraseEnd: "your left.", answer: ChoiceAtInOn.On),
     AtInOn(phraseStart: "That apartment was", phraseEnd: "the basement.", answer: ChoiceAtInOn.In),
     AtInOn(phraseStart: "I used to live", phraseEnd: "12 Harrison Street.", answer: ChoiceAtInOn.At),
+    
+    // pool, pull, full, fool
+    // feel, fill, peel, pill
+    // bag, back, beg
     ].shuffled()
 
 struct Quiz {
