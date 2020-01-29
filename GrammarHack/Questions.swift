@@ -631,11 +631,11 @@ var questions: [Quest] = [
     ToeicGrammar(phraseStart: "Early results indicate that", phraseEnd: "candidate was successful in the election.", answer: "neither", options: ["each", "both", "either", "neither"]),
     ToeicGrammar(phraseStart: "As there is", phraseEnd: "capable of maintaining this machine, we cannot use it.", answer: "nobody", options: ["nobody", "anybody", "everybody", "somebody"]),
     ToeicGrammar(phraseStart: "The more details that emerge about the sponsorship deal, the", phraseEnd: "I like it.", answer: "xxx", options: ["less", "fewer", "lower", "least"]),
-    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
-    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
-    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
-    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
-    ToeicGrammar(phraseStart: "xxx", phraseEnd: "xxx", answer: "xxx", options: []),
+    ToeicGrammar(phraseStart: "Try and be a little more cheerful because if you don't bear", phraseEnd: "soon, you'll make everyone else miserable.", answer: "up", options: ["through", "along", "up", "to"]),
+    ToeicGrammar(phraseStart: "We were in a small rowing boat and were terrified that the steamer hadn't seen us as it was bearing", phraseEnd: "on us.", answer: "down", options: ["down", "across", "over", "under"]),
+    ToeicGrammar(phraseStart: "I fully understand your comments and bearing those in", phraseEnd: ", I have made the appropriate decision.", answer: "mind", options: ["brain", "mind", "thought", "sense"]),
+    ToeicGrammar(phraseStart: "I hope you can be patient for a little longer and bear", phraseEnd: "me while I try and solve the problem.", answer: "with", options: ["by", "on", "at", "with"]),
+    ToeicGrammar(phraseStart: "The judge dismissed the new evidence completely because it had no bearing", phraseEnd: "the trial.", answer: "on", options: ["to", "on", "into", "by"]),
     
     
     RandomQ(
