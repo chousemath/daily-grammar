@@ -232,9 +232,8 @@ class ViewController: UIViewController {
     }
     
     func navigateTo(_ pageName: String) {
-        print(pageName)
-        //        let vc = sboard.instantiateViewController(withIdentifier: pageName)
-        //        present(vc, animated: true, completion: nil)
+        let vc = sboard.instantiateViewController(withIdentifier: pageName)
+        present(vc, animated: true, completion: nil)
     }
     
     func setScore() {
@@ -260,13 +259,13 @@ class ViewController: UIViewController {
     
     struct SettingsOption {
         let title: String
-        let pageName: String
+        let pageName: String?
     }
     let settingsOptions: [SettingsOption] = [
-        SettingsOption(title: "질문 설정을 편집하기", pageName: "questSettings"),
-        SettingsOption(title: "사용/개인 정보 약관", pageName: "terms"),
-        SettingsOption(title: "모바일 앱 정보", pageName: "appInfo"),
-        SettingsOption(title: "기능을 요청하기", pageName: "featureAsk"),
+        SettingsOption(title: "질문 설정을 편집하기", pageName: "SettingsViewController"),
+        SettingsOption(title: "사용/개인 정보 약관", pageName: nil),
+        SettingsOption(title: "모바일 앱 정보", pageName: nil),
+        SettingsOption(title: "기능을 요청하기", pageName: nil),
     ]
     
     @IBAction func handleSettingsPress(_ sender: UIButton) {
@@ -281,7 +280,10 @@ class ViewController: UIViewController {
                 title: opt.title,
                 style: .default,
                 handler: { action in
-                    self.navigateTo(opt.pageName)
+                    guard let pname = opt.pageName else {
+                        return
+                    }
+                    self.navigateTo(pname)
             }
             ))
         }

@@ -16,6 +16,7 @@
 		C8A7254E23DE845900960FA8 /* QuizSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A7254D23DE845900960FA8 /* QuizSuccess.swift */; };
 		C8B64CDE23DBB5A900D0A500 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B64CDD23DBB5A900D0A500 /* Questions.swift */; };
 		C8B64CE023DBBB0300D0A500 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B64CDF23DBBB0300D0A500 /* Sounds.swift */; };
+		C8CAE3AE23E2A8A600B9D7E6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CAE3AD23E2A8A600B9D7E6 /* SettingsViewController.swift */; };
 		C8D5798723D9731300546868 /* cheer01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798623D9731300546868 /* cheer01.mp3 */; };
 		C8D5798E23D9775300546868 /* msgBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798923D9775300546868 /* msgBlock.mp3 */; };
 		C8D5799123D9775300546868 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798C23D9775300546868 /* coin.mp3 */; };
@@ -34,6 +35,7 @@
 		C8A7254D23DE845900960FA8 /* QuizSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSuccess.swift; sourceTree = "<group>"; };
 		C8B64CDD23DBB5A900D0A500 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		C8B64CDF23DBBB0300D0A500 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		C8CAE3AD23E2A8A600B9D7E6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C8D5798623D9731300546868 /* cheer01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheer01.mp3; sourceTree = "<group>"; };
 		C8D5798923D9775300546868 /* msgBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msgBlock.mp3; sourceTree = "<group>"; };
 		C8D5798C23D9775300546868 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				C8B64CDD23DBB5A900D0A500 /* Questions.swift */,
 				C8B64CDF23DBBB0300D0A500 /* Sounds.swift */,
 				C8A7254D23DE845900960FA8 /* QuizSuccess.swift */,
+				C8CAE3AD23E2A8A600B9D7E6 /* SettingsViewController.swift */,
 			);
 			path = GrammarHack;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			files = (
 				C85D58E523D3DAEE007967AF /* ViewController.swift in Sources */,
 				C8B64CDE23DBB5A900D0A500 /* Questions.swift in Sources */,
+				C8CAE3AE23E2A8A600B9D7E6 /* SettingsViewController.swift in Sources */,
 				C8A7254E23DE845900960FA8 /* QuizSuccess.swift in Sources */,
 				C8B64CE023DBBB0300D0A500 /* Sounds.swift in Sources */,
 				C85D58E123D3DAEE007967AF /* AppDelegate.swift in Sources */,
@@ -313,7 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 732CHTQLH9;
 				INFOPLIST_FILE = GrammarHack/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -321,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chousemath.GrammarHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -334,7 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 732CHTQLH9;
 				INFOPLIST_FILE = GrammarHack/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -342,7 +346,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chousemath.GrammarHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
