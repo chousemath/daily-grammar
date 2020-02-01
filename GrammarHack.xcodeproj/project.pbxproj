@@ -12,6 +12,8 @@
 		C800002A23E515620093F294 /* FeatureRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800002923E515620093F294 /* FeatureRequestViewController.swift */; };
 		C800002C23E517360093F294 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800002B23E517360093F294 /* AppInfoViewController.swift */; };
 		C800002E23E529620093F294 /* EncouragementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800002D23E529620093F294 /* EncouragementViewController.swift */; };
+		C800003123E546C80093F294 /* GrammarHack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C800002F23E546C80093F294 /* GrammarHack.xcdatamodeld */; };
+		C800003323E5696F0093F294 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800003223E5696F0093F294 /* DataService.swift */; };
 		C85D58E123D3DAEE007967AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D58E023D3DAEE007967AF /* AppDelegate.swift */; };
 		C85D58E323D3DAEE007967AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D58E223D3DAEE007967AF /* SceneDelegate.swift */; };
 		C85D58E523D3DAEE007967AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D58E423D3DAEE007967AF /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 		C800002923E515620093F294 /* FeatureRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRequestViewController.swift; sourceTree = "<group>"; };
 		C800002B23E517360093F294 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		C800002D23E529620093F294 /* EncouragementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementViewController.swift; sourceTree = "<group>"; };
+		C800003023E546C80093F294 /* Settings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Settings.xcdatamodel; sourceTree = "<group>"; };
+		C800003223E5696F0093F294 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C85D58DD23D3DAEE007967AF /* GrammarHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrammarHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85D58E023D3DAEE007967AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C85D58E223D3DAEE007967AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				C800002923E515620093F294 /* FeatureRequestViewController.swift */,
 				C800002B23E517360093F294 /* AppInfoViewController.swift */,
 				C800002D23E529620093F294 /* EncouragementViewController.swift */,
+				C800002F23E546C80093F294 /* GrammarHack.xcdatamodeld */,
+				C800003223E5696F0093F294 /* DataService.swift */,
 			);
 			path = GrammarHack;
 			sourceTree = "<group>";
@@ -182,12 +188,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C85D58E523D3DAEE007967AF /* ViewController.swift in Sources */,
+				C800003323E5696F0093F294 /* DataService.swift in Sources */,
 				C800002623E467630093F294 /* TeacherViewController.swift in Sources */,
 				C8B64CDE23DBB5A900D0A500 /* Questions.swift in Sources */,
 				C8CAE3AE23E2A8A600B9D7E6 /* SettingsViewController.swift in Sources */,
 				C800002E23E529620093F294 /* EncouragementViewController.swift in Sources */,
 				C800002823E50A6D0093F294 /* TermsViewController.swift in Sources */,
 				C800002A23E515620093F294 /* FeatureRequestViewController.swift in Sources */,
+				C800003123E546C80093F294 /* GrammarHack.xcdatamodeld in Sources */,
 				C800002C23E517360093F294 /* AppInfoViewController.swift in Sources */,
 				C8A7254E23DE845900960FA8 /* QuizSuccess.swift in Sources */,
 				C8B64CE023DBBB0300D0A500 /* Sounds.swift in Sources */,
@@ -396,6 +404,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C800002F23E546C80093F294 /* GrammarHack.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C800003023E546C80093F294 /* Settings.xcdatamodel */,
+			);
+			currentVersion = C800003023E546C80093F294 /* Settings.xcdatamodel */;
+			path = GrammarHack.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C85D58D523D3DAED007967AF /* Project object */;
 }

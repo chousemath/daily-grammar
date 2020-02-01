@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Settings" representedClassName="Settings" syncable="YES" codeGenerationType="class">
+        <attribute name="adjAdvType" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="adjAdvVal" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="adjComp" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="advFreq" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="atInOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="futureGoingTo" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="mathFractions" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pronunciation" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="timePronunciation" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timeTongueTwisters" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="toeicGrammar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="tongueTwisters" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="withOnAbout" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="wordPos" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Settings" positionX="-63" positionY="-18" width="128" height="253"/>
+    </elements>
+</model>

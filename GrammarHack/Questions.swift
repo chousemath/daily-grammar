@@ -116,7 +116,7 @@ class AdjOrAdvType: Quest {
         super.init(
             title: "형용사/부사", // Adjectives and Adverbs
             subtitle: "Ending with -ly",
-            category: "select-adjoradvtype",
+            category: "select-adjoradvval",
             phraseStart: phraseStart,
             phraseEnd: "",
             answer: answer.rawValue,
@@ -138,7 +138,7 @@ class AdjOrAdv: Quest {
         super.init(
             title: "형용사/부사",
             subtitle: "형용사 또는 부사",
-            category: "select-adjoradv",
+            category: "select-adjoradvtype",
             phraseStart: phraseStart,
             phraseEnd: phraseEnd,
             answer: answer,
@@ -1808,7 +1808,7 @@ var questions: [Quest] = [
     Reading(answer: "I burned my tongue while I was tasting the food.", kor: "맛을 보다가 혀를 데었어요."),
     Reading(answer: "Yesterday, I watched a movie with my friend.", kor: "어제 친구랑 영화를 봤어요."),
     Reading(answer: "The more I see it, the more I like it.", kor: "보면 볼수록 마음에 들어요."),
-
+    
     Reading(answer: "I haven’t become accustomed to the work yet, so it takes me a long time.", kor: "아직 일이 손에 익지 않아서, 시간이 오래 걸려요."),
     Reading(answer: "I have not become accustomed to the work yet, so it takes me a long time.", kor: "아직 일이 손에 익지 않아서, 시간이 오래 걸려요."),
     Reading(answer: "It’s been a long time since I quit doing that.", kor: " 저는 그 일에서 손 씻은 지 오래 됐어요."),
@@ -1904,8 +1904,8 @@ var questions: [Quest] = [
     Reading(answer: "A lot of people went out of their way to help us.", kor: "많은 사람들이 우리를 돕기 위해서 발 벗고 나서 줬어요."),
     Reading(answer: "I ran to get on the train before the door closed, but I fell a step behind.", kor: "지하철 문이 닫히기 전에 타려고 뛰었는데 한 발 늦었어요."),
     Reading(answer: "This is nothing compared to what happened last time.", kor: "이번 일에 비하면 지난 번 일은 정말 새 발의 피예요."),
-
-
+    
+    
     Reading(answer: "I have a favor to ask.", kor: "부탁이 하나 있어요."),
     Reading(answer: "Let me ask you a favor.", kor: "부탁 하나만 할게요."),
     Reading(answer: "Can you do me a favor?", kor: "제 부탁 하나만 들어 줄 수 있어요?"),
@@ -2000,8 +2000,8 @@ var questions: [Quest] = [
     Reading(answer: "I am thinking maybe I should try studying Japanese.", kor: "일본어를 공부해 볼까 봐요."),
     Reading(answer: "Drive forwards slowly please.", kor: "앞으로 천천히 진입해 주세요"),
     
-
-
+    
+    
     Twister(answer: "She sells seashells by the seashore."),
     Twister(answer: "How many sheets could a sheet slitter slit if a sheet slitter could slit sheets?"),
     Twister(answer: "How much pot, could a pot roast roast, if a pot roast could roast pot?"),
@@ -2103,7 +2103,7 @@ var questions: [Quest] = [
     // pool, pull, full, fool
     // feel, fill, peel, pill
     // bag, back, beg
-    ].shuffled()
+]
 
 struct Quiz {
     var quests: [Quest] = questions
@@ -2125,6 +2125,82 @@ struct Quiz {
         get {
             return quests[index]
         }
+    }
+    
+    mutating func applyFilters() {
+        guard let currentSetting = getSettings() else {
+            return
+        }
+        if let withOnAbout = currentSetting.value(forKey: "withOnAbout") as? Bool {
+            if !withOnAbout {
+                quests = quests.filter {$0.category != "select-withonabout"}
+            }
+        }
+        if let atInOn = currentSetting.value(forKey: "atInOn") as? Bool {
+            if !atInOn {
+                quests = quests.filter {$0.category != "select-atinon"}
+            }
+        }
+        if let adjAdvType = currentSetting.value(forKey: "adjAdvType") as? Bool {
+            if !adjAdvType {
+                quests = quests.filter {$0.category != "select-adjoradvtype"}
+            }
+        }
+        if let adjAdvVal = currentSetting.value(forKey: "adjAdvVal") as? Bool {
+            if !adjAdvVal {
+                quests = quests.filter {$0.category != "select-adjoradvval"}
+            }
+        }
+        if let futureGoingTo = currentSetting.value(forKey: "futureGoingTo") as? Bool {
+            if !futureGoingTo {
+                quests = quests.filter {$0.category != "select-futuregoingto"}
+            }
+        }
+        if let toeicGrammar = currentSetting.value(forKey: "toeicGrammar") as? Bool {
+            if !toeicGrammar {
+                quests = quests.filter {$0.category != "select-toeicgrammar"}
+            }
+        }
+        if let mathFractions = currentSetting.value(forKey: "mathFractions") as? Bool {
+            if !mathFractions {
+                quests = quests.filter {$0.category != "select-mathfractions"}
+            }
+        }
+        if let advFreq = currentSetting.value(forKey: "advFreq") as? Bool {
+            if !advFreq {
+                quests = quests.filter {$0.category != "select-advfreq"}
+            }
+        }
+        if let adjComp = currentSetting.value(forKey: "adjComp") as? Bool {
+            if !adjComp {
+                quests = quests.filter {$0.category != "select-adjcomp"}
+            }
+        }
+        if let wordPos = currentSetting.value(forKey: "wordPos") as? Bool {
+            if !wordPos {
+                quests = quests.filter {$0.category != "select-position"}
+            }
+        }
+        if let pronunciation = currentSetting.value(forKey: "pronunciation") as? Bool {
+            if !pronunciation {
+                quests = quests.filter {$0.category != "reading"}
+            }
+        }
+        if let tongueTwisters = currentSetting.value(forKey: "tongueTwisters") as? Bool {
+            if !tongueTwisters {
+                quests = quests.filter {$0.category != "reading-tonguetwister"}
+            }
+        }
+        if let timePronunciation = currentSetting.value(forKey: "timePronunciation") as? Int8 {
+            delayReadRegular = Double(timePronunciation)
+        }
+        if let timeTongueTwisters = currentSetting.value(forKey: "timeTongueTwisters") as? Int8 {
+            delayReadTwister = Double(timeTongueTwisters)
+        }
+        
+        index = 0
+        limitQuest = quests.count - 1
+        quests.shuffle()
     }
     
     mutating func streakReset() {
@@ -2149,17 +2225,6 @@ struct Quiz {
     
     mutating func setDelayRead(_ delay: Double) {
         delayRead = delay
-    }
-    
-    mutating func setDelayReadByCat(_ category: String) {
-        switch category {
-        case "reading":
-            setDelayRead(delayReadRegular)
-        case "reading-tonguetwister":
-            setDelayRead(delayReadTwister)
-        default:
-            setDelayRead(delayReadRegular)
-        }
     }
     
     mutating func scoreReset() {

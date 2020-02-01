@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         responseBody.text = ""
         
         // pick a random question to begin with
+        quiz.applyFilters()
         setQuestion()
         setScore()
         
@@ -213,7 +214,6 @@ class ViewController: UIViewController {
             phraseStart.text = q.answer
             phraseEnd.text = q.kor
             readAnswer = normalize(text: q.answer)
-            quiz.setDelayReadByCat(q.category)
             recordButton.isEnabled = true
             recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
             recordButton.backgroundColor = .systemBlue
@@ -259,6 +259,7 @@ class ViewController: UIViewController {
             present(vc, animated: true, completion: nil)
             vc.labelAcc.text = "\(quiz.score)/\(quiz.attempts)"
             quiz.scoreReset()
+            quiz.streakReset()
             quiz.attemptsReset()
         }
         score.text = "\(quiz.score)/\(quiz.limitScore)"
