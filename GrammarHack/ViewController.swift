@@ -263,9 +263,10 @@ class ViewController: UIViewController {
     }
     let settingsOptions: [SettingsOption] = [
         SettingsOption(title: "질문 설정을 편집하기", pageName: "SettingsViewController"),
-        SettingsOption(title: "사용/개인 정보 약관", pageName: nil),
-        SettingsOption(title: "모바일 앱 정보", pageName: nil),
-        SettingsOption(title: "기능을 요청하기", pageName: nil),
+        SettingsOption(title: "영어 교사 설정을 편집하기", pageName: "TeacherViewController"),
+        SettingsOption(title: "사용/개인 정보 약관", pageName: "TermsViewController"),
+        SettingsOption(title: "모바일 앱 정보", pageName: "AppInfoViewController"),
+        SettingsOption(title: "기능을 요청하기", pageName: "FeatureRequestViewController"),
     ]
     
     @IBAction func handleSettingsPress(_ sender: UIButton) {
