@@ -10,30 +10,8 @@ import UIKit
 
 class QuizSuccess: UIViewController {
     let congrats: [String] = [
-        "🐟 You’ve got it made!",
-        "🐟 Sensational!",
-        "🐟 You’re doing fine!",
-        "🐟 Super!",
-        "🐟 Good going!",
-        "🐟 That’s good!",
-        "🐡 Excellent!",
-        "🐡 Wonderful!",
-        "🐡 Good work!",
-        "🐡 You're the best!",
-        "🐡 Superb!",
-        "🦈 You did well today!",
-        "🦈 That’s it!",
-        "🦈 Keep it up!",
-        "🦈 Fine!",
-        "🦈 Outstanding!",
-        "🍣 Great!",
-        "🍣 Nice going!",
-        "🍣 You’re really improving!",
-        "🍣 I knew you could do it!",
-        "🍣 Fantastic!",
-        "🍣 You are learning a lot!",
-        "🍣 Congratulations!",
-        "🍣 Tremendous!",
+        "나는 마침내 남극으로 돌아갈 수 있습니다!",
+        "드디어 고국으로 돌아갈 수 있어요!",
     ]
     
     @IBOutlet var labelCongrats: UILabel!

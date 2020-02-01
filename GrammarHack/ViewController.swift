@@ -117,6 +117,7 @@ class ViewController: UIViewController {
         self.timer.invalidate()
         progressRead.progress = 0
         self.quiz.timeReadReset()
+        self.quiz.streakReset()
         self.stopRecording()
         self.readCount += 1
         self.responseTitle.textColor = UIColor.red
@@ -164,6 +165,7 @@ class ViewController: UIViewController {
                         self.progressRead.progress = 0
                         self.quiz.timeReadReset()
                         self.quiz.scoreInc()
+                        self.encourage()
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.setScore()
@@ -236,6 +238,18 @@ class ViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    let streakMilestones = [5, 10, 15]
+    func encourage() {
+        if !streakMilestones.contains(quiz.streak) {
+            return
+        }
+        guard let vc = sboard.instantiateViewController(withIdentifier: "EncouragementViewController") as? EncouragementViewController else {
+            return
+        }
+        present(vc, animated: true, completion: nil)
+        vc.messageLabel.text = "\(quiz.streak) in a row!"
+    }
+    
     func setScore() {
         if quiz.score >= quiz.limitScore {
             playSound(fileName: "cheer01")
@@ -243,11 +257,11 @@ class ViewController: UIViewController {
                 return
             }
             present(vc, animated: true, completion: nil)
-            vc.labelAcc.text = "🐠 \(quiz.score)/\(quiz.attempts)"
+            vc.labelAcc.text = "\(quiz.score)/\(quiz.attempts)"
             quiz.scoreReset()
             quiz.attemptsReset()
         }
-        score.text = "🐟 \(quiz.score)/\(quiz.limitScore)"
+        score.text = "\(quiz.score)/\(quiz.limitScore)"
     }
     
     @objc func advanceQuestion() -> () {
@@ -331,6 +345,7 @@ class ViewController: UIViewController {
                     let q = self.quiz.current
                     if q.match(answer: opt) {
                         self.quiz.scoreInc()
+                        self.encourage()
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
@@ -348,6 +363,7 @@ class ViewController: UIViewController {
                             repeats: false
                         )
                     } else {
+                        self.quiz.streakReset()
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"

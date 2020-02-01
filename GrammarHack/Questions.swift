@@ -64,7 +64,7 @@ class WithOnAbout: Quest {
         kor: String
     ) {
         super.init(
-            title: "Prepositions (전치사)",
+            title: "전치사", // Prepositions
             subtitle: "with / on / about",
             category: "select-withonabout",
             phraseStart: phraseStart,
@@ -89,7 +89,7 @@ class AtInOn: Quest {
         answer: ChoiceAtInOn
     ) {
         super.init(
-            title: "Prepositions (전치사)",
+            title: "전치사", // Prepositions
             subtitle: "at / in / on",
             category: "select-atinon",
             phraseStart: phraseStart,
@@ -114,7 +114,7 @@ class AdjOrAdvType: Quest {
         kor: String
     ) {
         super.init(
-            title: "Adjectives/Adverbs",
+            title: "형용사/부사", // Adjectives and Adverbs
             subtitle: "Ending with -ly",
             category: "select-adjoradvtype",
             phraseStart: phraseStart,
@@ -136,7 +136,7 @@ class AdjOrAdv: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Adjective or Adverb",
+            title: "형용사/부사",
             subtitle: "형용사 또는 부사",
             category: "select-adjoradv",
             phraseStart: phraseStart,
@@ -158,7 +158,7 @@ class FutureGoingTo: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Positive Statements",
+            title: "미래시제", // Positive Statements (Future Tense)
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-futuregoingto",
             phraseStart: phraseStart,
@@ -179,7 +179,7 @@ class WhoAreCelebrities: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Who are celebrities?",
+            title: "상황별 구절", // Who are celebrities
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-celebrities",
             phraseStart: phraseStart,
@@ -200,7 +200,7 @@ class FreeTimeTrends: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Free Time Trends",
+            title: "상황별 구절", // Free Time Trends
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-freetimetrends",
             phraseStart: phraseStart,
@@ -221,7 +221,7 @@ class RandomQ: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Random Question",
+            title: "무작위", // Random Question
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-random",
             phraseStart: phraseStart,
@@ -242,9 +242,9 @@ class PickTheWrong: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Random Question",
+            title: "잘못된 단어", // pick the wrong word
             subtitle: "올바른 옵션을 선택하세요",
-            category: "select-random",
+            category: "select-pickthewrong",
             phraseStart: phraseStart,
             phraseEnd: phraseEnd,
             answer: answer,
@@ -295,7 +295,7 @@ class MathFractions: Quest {
         kor: String
     ) {
         super.init(
-            title: "Math: Fractions",
+            title: "분수", // Math Fractions
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-mathfractions",
             phraseStart: phraseStart,
@@ -327,7 +327,7 @@ class AdvFreq: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Adverbs of Frequency",
+            title: "빈도부사", // "Adverbs of Frequency",
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-advfreq",
             phraseStart: phraseStart,
@@ -351,7 +351,7 @@ class QuestPos: Quest {
         assert(count > 1, "count value is too small")
         let options = (1...count).map { "Position (\($0))" }
         super.init(
-            title: "Word Position",
+            title: "단어 위치", // "Word Position",
             subtitle: "단어의 올바른 위치를 선택하세요",
             category: "select-position",
             phraseStart: phraseStart,
@@ -405,7 +405,7 @@ class AdjComp: Quest {
         options: [String]
     ) {
         super.init(
-            title: "Adjective Comparison",
+            title: "비교의 형용사", // "Adjective Comparison",
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-adjcomp",
             phraseStart: phraseStart,
@@ -2111,6 +2111,7 @@ struct Quiz {
     var limitScore = 20
     var limitQuest: Int = questions.count - 1
     var limitRead: Int = 3
+    var streak: Int = 0
     
     var delayRead: Double = 5 // time limit for reading
     var delayReadRegular: Double = 7 // time limit for reading regular pronunciation exercises
@@ -2124,6 +2125,10 @@ struct Quiz {
         get {
             return quests[index]
         }
+    }
+    
+    mutating func streakReset() {
+        streak = 0
     }
     
     mutating func attemptsInc() {
@@ -2163,6 +2168,7 @@ struct Quiz {
     
     mutating func scoreInc() {
         score += 1
+        streak += 1
     }
     
     mutating func next() {
