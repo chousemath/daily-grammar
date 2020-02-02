@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         UIImage(named: "peng-good-job.jpg")
     ]
     
-    let nums = ["0":"zero","1":"one","2":"two","3":"three","4":"four","5":"five","6":"six","7":"seven","8":"eight","9":"nine","10":"ten","11":"eleven","12":"twelve","13":"thirteen","14":"fourteen","15":"fifteen","16":"sixteen","17":"seventeen","18":"eighteen","19":"nineteen","20":"twenty","21":"twenty-one","22":"twenty-two","23":"twenty-three","24":"twenty-four","25":"twenty-five","26":"twenty-six","27":"twenty-seven","28":"twenty-eight","29":"twenty-nine","30":"thirty","31":"thirty-one","32":"thirty-two","33":"thirty-three","34":"thirty-four","35":"thirty-five","36":"thirty-six","37":"thirty-seven","38":"thirty-eight","39":"thirty-nine","40":"forty","41":"forty-one","42":"forty-two","43":"forty-three","44":"forty-four","45":"forty-five","46":"forty-six","47":"forty-seven","48":"forty-eight","49":"forty-nine","50":"fifty","51":"fifty-one","52":"fifty-two","53":"fifty-three","54":"fifty-four","55":"fifty-five","56":"fifty-six","57":"fifty-seven","58":"fifty-eight","59":"fifty-nine","60":"sixty","61":"sixty-one","62":"sixty-two","63":"sixty-three","64":"sixty-four","65":"sixty-five","66":"sixty-six","67":"sixty-seven","68":"sixty-eight","69":"sixty-nine","70":"seventy","71":"seventy-one","72":"seventy-two","73":"seventy-three","74":"seventy-four","75":"seventy-five","76":"seventy-six","77":"seventy-seven","78":"seventy-eight","79":"seventy-nine","80":"eighty","81":"eighty-one","82":"eighty-two","83":"eighty-three","84":"eighty-four","85":"eighty-five","86":"eighty-six","87":"eighty-seven","88":"eighty-eight","89":"eighty-nine","90":"ninety","91":"ninety-one","92":"ninety-two","93":"ninety-three","94":"ninety-four","95":"ninety-five","96":"ninety-six","97":"ninety-seven","98":"ninety-eight","99":"ninety-nine","100":"one hundred"
+    let nums = ["0":"zero","1":"one","2":"two","3":"three","4":"four","5":"five","6":"six","7":"seven","8":"eight","9":"nine","10":"ten","11":"eleven","12":"twelve","13":"thirteen","14":"fourteen","15":"fifteen","16":"sixteen","17":"seventeen","18":"eighteen","19":"nineteen","20":"twenty","21":"twenty-one","22":"twenty-two","23":"twenty-three","24":"twenty-four","25":"twenty-five","26":"twenty-six","27":"twenty-seven","28":"twenty-eight","29":"twenty-nine","30":"thirty","31":"thirty-one","32":"thirty-two","33":"thirty-three","34":"thirty-four","35":"thirty-five","36":"thirty-six","37":"thirty-seven","38":"thirty-eight","39":"thirty-nine","40":"forty","41":"forty-one","42":"forty-two","43":"forty-three","44":"forty-four","45":"forty-five","46":"forty-six","47":"forty-seven","48":"forty-eight","49":"forty-nine","50":"fifty","51":"fifty-one","52":"fifty-two","53":"fifty-three","54":"fifty-four","55":"fifty-five","56":"fifty-six","57":"fifty-seven","58":"fifty-eight","59":"fifty-nine","60":"sixty","61":"sixty-one","62":"sixty-two","63":"sixty-three","64":"sixty-four","65":"sixty-five","66":"sixty-six","67":"sixty-seven","68":"sixty-eight","69":"sixty-nine","70":"seventy","71":"seventy-one","72":"seventy-two","73":"seventy-three","74":"seventy-four","75":"seventy-five","76":"seventy-six","77":"seventy-seven","78":"seventy-eight","79":"seventy-nine","80":"eighty","81":"eighty-one","82":"eighty-two","83":"eighty-three","84":"eighty-four","85":"eighty-five","86":"eighty-six","87":"eighty-seven","88":"eighty-eight","89":"eighty-nine","90":"ninety","91":"ninety-one","92":"ninety-two","93":"ninety-three","94":"ninety-four","95":"ninety-five","96":"ninety-six","97":"ninety-seven","98":"ninety-eight","99":"ninety-nine","100":"one hundred", "OK": "okay", "ok": "okay", "Ok": "okay"
     ]
     
     func numReplace(_ input: String) -> String {
@@ -145,7 +145,7 @@ class ViewController: UIViewController {
             )
         } else {
             self.recordButton.isEnabled = true
-            self.recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
+            self.recordButton.setTitle("🎙️ 녹음하기", for: .normal)
             self.recordButton.backgroundColor = .systemBlue
         }
     }
@@ -219,12 +219,12 @@ class ViewController: UIViewController {
             responseTitle.text = ""
             responseBody.text = ""
             exerciseTitle.text = "> \(q.title)"
-            exerciseSubtitle.text = ">>> \(q.subtitle)"
+            exerciseSubtitle.text = ">> \(q.subtitle)"
             phraseStart.text = "🎙️ \(q.answer)"
             phraseEnd.text = "🇰🇷 \(q.kor)"
             readAnswer = normalize(text: q.answer)
             recordButton.isEnabled = true
-            recordButton.setTitle("🎙️ 목소리 녹음하기", for: .normal)
+            recordButton.setTitle("🎙️ 녹음하기", for: .normal)
             recordButton.backgroundColor = .systemBlue
             recordButton.isHidden = false
             optionButton.isHidden = true
@@ -237,7 +237,7 @@ class ViewController: UIViewController {
         responseTitle.text = ""
         responseBody.text = ""
         exerciseTitle.text = "> \(q.title)"
-        exerciseSubtitle.text = ">>> \(q.subtitle)"
+        exerciseSubtitle.text = ">> \(q.subtitle)"
         phraseStart.text = q.phraseStart
         phraseEnd.text = q.phraseEnd
     }
@@ -264,7 +264,6 @@ class ViewController: UIViewController {
     
     func setScore() {
         if quiz.score >= quiz.limitScore {
-            playSound(fileName: "cheer01")
             guard let vc = sboard.instantiateViewController(withIdentifier: "QuizSuccess") as? QuizSuccess else {
                 return
             }
@@ -273,6 +272,8 @@ class ViewController: UIViewController {
             let attempts = quiz.attempts
             let textWrong = quiz.questsWrongText
             let htmlWrong = quiz.questsWrongHtml
+            print("Score: \(score)")
+            print("Attempts: \(attempts)")
             vc.labelAcc.text = "\(score)/\(attempts)"
             
             quiz.scoreReset()
@@ -281,6 +282,13 @@ class ViewController: UIViewController {
             quiz.questsWrongReset()
             
             guard let settings = getSettings() else {
+                return
+            }
+            if let sendToTeacher = settings.value(forKey: "sendToTeacher") as? Bool {
+                if !sendToTeacher {
+                    return
+                }
+            } else {
                 return
             }
             guard let email = settings.value(forKey: "teacherEmail") as? String else {
@@ -332,11 +340,11 @@ class ViewController: UIViewController {
         let pageName: String?
     }
     let settingsOptions: [SettingsOption] = [
-        SettingsOption(title: "질문 설정을 편집하기", pageName: "SettingsViewController"),
-        SettingsOption(title: "영어 교사 설정을 편집하기", pageName: "TeacherViewController"),
+        SettingsOption(title: "질문 설정편집", pageName: "SettingsViewController"),
+        SettingsOption(title: "선생님 설정편집", pageName: "TeacherViewController"),
         SettingsOption(title: "사용/개인 정보 약관", pageName: "TermsViewController"),
         SettingsOption(title: "모바일 앱 정보", pageName: "AppInfoViewController"),
-        SettingsOption(title: "기능을 요청하기", pageName: "FeatureRequestViewController"),
+        SettingsOption(title: "추가 기능 요청하기", pageName: "FeatureRequestViewController"),
     ]
     
     @IBAction func handleSettingsPress(_ sender: UIButton) {
@@ -376,8 +384,8 @@ class ViewController: UIViewController {
     
     @IBAction func selectorPressed(_ sender: UIButton) {
         let aSheet = UIAlertController(
-            title: "가능한 답변입니다",
-            message: "아래 답변 중 하나를 선택하세요",
+            title: "문장 완성하기",
+            message: "아래의 보기 중 한가지를 선택하세요",
             preferredStyle: .actionSheet
         )
         let cancel = UIAlertAction(
@@ -424,8 +432,8 @@ class ViewController: UIViewController {
                         self.quiz.streakReset()
                         self.quiz.appendWrongQuest()
                         self.responseTitle.textColor = UIColor.red
-                        self.responseTitle.text = "응답이 올바르지 않습니다~"
-                        self.responseBody.text = "다시 시도해보세요!"
+                        self.responseTitle.text = "정답이 아닙니다"
+                        self.responseBody.text = "다시 한번 생각해보세요"
                         playFailureSound()
                         Timer.scheduledTimer(
                             timeInterval: 1.0,

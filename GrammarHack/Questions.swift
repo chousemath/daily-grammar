@@ -38,7 +38,7 @@ class Quest {
         self.phraseEnd = phraseEnd;
         self.answer = answer;
         self.noKor = kor.isEmpty
-        self.kor = self.noKor ? "한국어 버전은 아직 없습니다" : kor;
+        self.kor = self.noKor ? "번역 준비중" : kor;
         if shuffled {
             self.options = options?.shuffled();
         } else if options != nil {
@@ -2212,7 +2212,6 @@ var questions: [Quest] = [
     Reading(answer: "They say this person is a very famous person.", kor: "이 사람 정말 유명한 사람이래요."),
     Reading(answer: "He says he doesn’t know where it is.", kor: "어딘지 모른대요."),
     Twister(answer: "She sells seashells by the seashore."),
-    Twister(answer: "How many sheets could a sheet slitter slit if a sheet slitter could slit sheets?"),
     Twister(answer: "How much pot, could a pot roast roast, if a pot roast could roast pot?"),
     Twister(answer: "How much wood would a woodchuck chuck if a woodchuck could chuck wood?"),
     Twister(answer: "How can a clam cram in a clean cream can?"),

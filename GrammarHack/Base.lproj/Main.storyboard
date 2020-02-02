@@ -117,7 +117,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="Z7r-Ui-pE5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="🎤 목소리 녹음하기">
+                                        <state key="normal" title="🎙️ 녹음하기">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -588,7 +588,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Cn5-CV-bC8">
-                                <rect key="frame" x="24" y="68" width="366" height="355.33333333333331"/>
+                                <rect key="frame" x="24" y="68" width="366" height="335"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어 교사 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-yB-kXS">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="33.666666666666664"/>
@@ -601,7 +601,6 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름 또는 ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-2Z-igR">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
-                                                <color key="backgroundColor" white="0.97130065639999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -612,21 +611,19 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="영어선생님의 이메일 주소" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8f-gO-WQL">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
-                                                <color key="backgroundColor" white="0.97130065639269392" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6B-0p-4VB">
-                                        <rect key="frame" x="0.0" y="149.66666666666666" width="366" height="101.66666666666666"/>
-                                        <string key="text">위의 선생님의 이메일 주소를 저장하고 아래 스위치를 활성화한 경우, 선생님은 각 퀴즈가 완료될 때마다 자동으로 성적표를 받게 됩니다. 만약 당신의 선생님이 이메일을 찾을 수 없다면, 그 혹은 그녀에게 그들의 받은 편지함의 스팸 부분을 확인하도록 요청하세요.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선생님 정보를 저장하고 아래의 스위치를 활성화한 경우, 각 퀴즈가 완료될 때마다 선생님에게 성적표를 보낼 수 있습니다. 이메일 수신이 불가한 경우 스팸설정 확인을 요청드립니다!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6B-0p-4VB">
+                                        <rect key="frame" x="0.0" y="149.66666666666666" width="366" height="81.333333333333343"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qHc-Bh-chD">
-                                        <rect key="frame" x="0.0" y="267.33333333333331" width="366" height="31"/>
+                                        <rect key="frame" x="0.0" y="247" width="366" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="퀴즈 결과를 자동으로 보내기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsa-lf-IhE">
                                                 <rect key="frame" x="0.0" y="0.0" width="309" height="31"/>
@@ -640,7 +637,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYH-JV-scG">
-                                        <rect key="frame" x="0.0" y="314.33333333333331" width="366" height="41"/>
+                                        <rect key="frame" x="0.0" y="294" width="366" height="41"/>
                                         <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="저장하기">
