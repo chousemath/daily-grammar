@@ -11,6 +11,7 @@ import UIKit
 class EncouragementViewController: UIViewController {
     
     @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var bgImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

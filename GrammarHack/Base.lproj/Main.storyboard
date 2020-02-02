@@ -577,6 +577,7 @@
                         <viewLayoutGuide key="safeArea" id="PJm-lq-bgo"/>
                     </view>
                     <connections>
+                        <outlet property="bgImage" destination="cqp-ve-Pmh" id="8NG-3Y-5Ar"/>
                         <outlet property="messageLabel" destination="Eak-zF-nsA" id="tBp-3l-oRf"/>
                     </connections>
                 </viewController>
@@ -619,7 +620,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
                                                 <color key="backgroundColor" white="0.97130065639269392" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -676,6 +677,7 @@
                         <viewLayoutGuide key="safeArea" id="Xwq-vE-tNh"/>
                     </view>
                     <connections>
+                        <outlet property="btnSave" destination="vYH-JV-scG" id="MGQ-TZ-Yuo"/>
                         <outlet property="labelName" destination="YDI-2Z-igR" id="5LL-5U-cvz"/>
                         <outlet property="labelTeacherEmail" destination="b8f-gO-WQL" id="D78-xb-jac"/>
                         <outlet property="switchSendToTeacher" destination="beQ-5E-HeW" id="siF-aP-Nr2"/>

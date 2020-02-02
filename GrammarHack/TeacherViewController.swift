@@ -17,27 +17,22 @@ class TeacherViewController: UIViewController {
     @IBOutlet var labelName: UITextField!
     @IBOutlet var labelTeacherEmail: UITextField!
     @IBOutlet var switchSendToTeacher: UISwitch!
+    @IBOutlet var btnSave: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnSave.layer.cornerRadius = 8
         guard let nsObj = getSettings() else {
-            print("no nsObj (teacher view)")
             return
         }
         currentSetting = nsObj
-        if let withOnAbout = currentSetting?.value(forKey: "withOnAbout") as? Bool {
-            print("withOnAbout: \(withOnAbout)")
-        }
         if let name = currentSetting?.value(forKey: "name") as? String {
-            print("Name: \(name)")
             labelName.text = name
         }
         if let teacherEmail = currentSetting?.value(forKey: "teacherEmail") as? String {
-            print("Teacher: \(teacherEmail)")
             labelTeacherEmail.text = teacherEmail
         }
         if let sendToTeacher = currentSetting?.value(forKey: "sendToTeacher") as? Bool {
-            print("sendToTeacher: \(sendToTeacher)")
             switchSendToTeacher.isOn = sendToTeacher
         }
     }
@@ -106,13 +101,13 @@ class TeacherViewController: UIViewController {
             timeTongueTwisters: timeTongueTwisters
         )
         if let name = labelName.text {
-            s.name = name
+            s.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
             s.name = ""
         }
         
         if let teacherEmail = labelTeacherEmail.text {
-            s.teacherEmail = teacherEmail
+            s.teacherEmail = teacherEmail.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
             s.teacherEmail = ""
         }

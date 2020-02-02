@@ -36,7 +36,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         buttonSave.layer.cornerRadius = 8
         guard let nsObj = getSettings() else {
-            print("no nsObj")
             return
         }
         currentSetting = nsObj

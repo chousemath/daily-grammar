@@ -8,7 +8,7 @@
 
 import UIKit
 import Speech
-
+import SendGrid
 
 class ViewController: UIViewController {
     let sboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -34,6 +34,15 @@ class ViewController: UIViewController {
     @IBOutlet var score: UILabel!
     @IBOutlet var recordButton: UIButton!
     @IBOutlet var progressRead: UIProgressView!
+    
+    let encouragementImages = [
+        UIImage(named: "peng-cool.jpg"),
+        UIImage(named: "peng-glass.jpg"),
+        UIImage(named: "peng-guitar.jpg"),
+        UIImage(named: "peng-korean.jpg"),
+        UIImage(named: "peng-lov.jpg"),
+        UIImage(named: "peng-good-job.jpg")
+    ]
     
     let nums = ["0":"zero","1":"one","2":"two","3":"three","4":"four","5":"five","6":"six","7":"seven","8":"eight","9":"nine","10":"ten","11":"eleven","12":"twelve","13":"thirteen","14":"fourteen","15":"fifteen","16":"sixteen","17":"seventeen","18":"eighteen","19":"nineteen","20":"twenty","21":"twenty-one","22":"twenty-two","23":"twenty-three","24":"twenty-four","25":"twenty-five","26":"twenty-six","27":"twenty-seven","28":"twenty-eight","29":"twenty-nine","30":"thirty","31":"thirty-one","32":"thirty-two","33":"thirty-three","34":"thirty-four","35":"thirty-five","36":"thirty-six","37":"thirty-seven","38":"thirty-eight","39":"thirty-nine","40":"forty","41":"forty-one","42":"forty-two","43":"forty-three","44":"forty-four","45":"forty-five","46":"forty-six","47":"forty-seven","48":"forty-eight","49":"forty-nine","50":"fifty","51":"fifty-one","52":"fifty-two","53":"fifty-three","54":"fifty-four","55":"fifty-five","56":"fifty-six","57":"fifty-seven","58":"fifty-eight","59":"fifty-nine","60":"sixty","61":"sixty-one","62":"sixty-two","63":"sixty-three","64":"sixty-four","65":"sixty-five","66":"sixty-six","67":"sixty-seven","68":"sixty-eight","69":"sixty-nine","70":"seventy","71":"seventy-one","72":"seventy-two","73":"seventy-three","74":"seventy-four","75":"seventy-five","76":"seventy-six","77":"seventy-seven","78":"seventy-eight","79":"seventy-nine","80":"eighty","81":"eighty-one","82":"eighty-two","83":"eighty-three","84":"eighty-four","85":"eighty-five","86":"eighty-six","87":"eighty-seven","88":"eighty-eight","89":"eighty-nine","90":"ninety","91":"ninety-one","92":"ninety-two","93":"ninety-three","94":"ninety-four","95":"ninety-five","96":"ninety-six","97":"ninety-seven","98":"ninety-eight","99":"ninety-nine","100":"one hundred"
     ]
@@ -119,6 +128,7 @@ class ViewController: UIViewController {
         progressRead.progress = 0
         self.quiz.timeReadReset()
         self.quiz.streakReset()
+        self.quiz.appendWrongQuest()
         self.stopRecording()
         self.readCount += 1
         self.responseTitle.textColor = UIColor.red
@@ -247,6 +257,9 @@ class ViewController: UIViewController {
             return
         }
         present(vc, animated: true, completion: nil)
+        if let bg = encouragementImages.randomElement() {
+            vc.bgImage.image = bg
+        }
         vc.messageLabel.text = "\(quiz.streak) in a row!"
     }
     
@@ -257,10 +270,53 @@ class ViewController: UIViewController {
                 return
             }
             present(vc, animated: true, completion: nil)
-            vc.labelAcc.text = "\(quiz.score)/\(quiz.attempts)"
+            let score = quiz.score
+            let attempts = quiz.attempts
+            let textWrong = quiz.questsWrongText
+            let htmlWrong = quiz.questsWrongHtml
+            vc.labelAcc.text = "\(score)/\(attempts)"
+            
             quiz.scoreReset()
             quiz.streakReset()
             quiz.attemptsReset()
+            quiz.questsWrongReset()
+            
+            guard let settings = getSettings() else {
+                return
+            }
+            guard let email = settings.value(forKey: "teacherEmail") as? String else {
+                return
+            }
+            
+            var studentName = ""
+            if let name = settings.value(forKey: "name") as? String {
+                studentName = name
+            } else if let uuid = UIDevice.current.identifierForVendor {
+                studentName = "Student-\(uuid.uuidString)"
+            } else {
+                studentName = "Unnamed Student"
+            }
+            let session = Session()
+            session.authentication = Authentication.apiKey(SendGridKey)
+            let personalization = Personalization(recipients: email)
+            let plainText = Content(contentType: ContentType.plainText, value: "Summary\nYour student, \(studentName), has just completed a quiz with a score of \(score) correct answers out of a total of \(attempts) attempts.\(textWrong)")
+            let htmlText = Content(contentType: ContentType.htmlText, value: "<h1>Summary</h1><p>Your student, <b>\(studentName)</b>, has just completed a quiz with a score of <b>\(score)</b> correct answers out of a total of <b>\(attempts)</b> attempts.</p>\(htmlWrong)")
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            dateFormatter.locale = Locale.current
+            let emailObj = Email(
+                personalizations: [personalization],
+                from: "jo@paw-kitchen.com",
+                content: [plainText, htmlText],
+                subject: "DailyGram Quiz Report :: \(studentName) :: \(dateFormatter.string(from: date))"
+            )
+            do {
+                try session.send(request: emailObj)
+            } catch {
+                print(error)
+            }
         }
         score.text = "\(quiz.score)/\(quiz.limitScore)"
     }
@@ -365,6 +421,7 @@ class ViewController: UIViewController {
                         )
                     } else {
                         self.quiz.streakReset()
+                        self.quiz.appendWrongQuest()
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
                         self.responseBody.text = "Please try again!"

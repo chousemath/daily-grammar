@@ -2022,7 +2022,6 @@ var questions: [Quest] = [
     Twister(answer: "Supposed to be pistachio, supposed to be pistachio."),
     Twister(answer: "The queen in green screamed."),
     Twister(answer: "Rolling Red Wagons, Rolling Red Wagons."),
-    Twister(answer: "You cuss, I cuss, we all cuss, for asparagus!"),
     Twister(answer: "Round the rough and rugged rock the ragged rascal rudely ran."),
     Twister(answer: "She sees cheese, She sees cheese."),
     Twister(answer: "Black Background, Brown Background, Black Background, Brown Background."),
@@ -2112,6 +2111,17 @@ struct Quiz {
     var limitQuest: Int = questions.count - 1
     var limitRead: Int = 3
     var streak: Int = 0
+    var questsWrong: [String] = []
+    var questsWrongText: String {
+        let phrases = Set(questsWrong.map {"* \($0)"})
+        let lines = phrases.joined(separator: "\n")
+        return "Questions the student got wrong\n\(lines)"
+    }
+    var questsWrongHtml: String {
+        let phrases = Set(questsWrong.map {"<li>\($0)</li>"})
+        let lines = phrases.joined()
+        return "<h1>Questions the student got wrong</h1><ul>\(lines)</ul>"
+    }
     
     var delayRead: Double = 5 // time limit for reading
     var delayReadRegular: Double = 7 // time limit for reading regular pronunciation exercises
@@ -2150,6 +2160,21 @@ struct Quiz {
         AttrCat("tongueTwisters", "reading-tonguetwister"),
     ]
     
+    let categoryMap = [
+        "select-withonabout": "With / On / About",
+        "select-atinon": "At / In / On",
+        "select-adjoradvtype": "Adjective or Adverb?",
+        "select-adjoradvval": "Correct Adjective/Adverb Selection",
+        "select-futuregoingto": "Future Tense: Going To",
+        "select-toeicgrammar": "TOEIC: Grammar",
+        "select-mathfractions": "Math Vocabulary: Fractions",
+        "select-advfreq": "Adverbs of Frequency",
+        "select-adjcomp": "Adjectives of Comparison",
+        "select-position": "Correct Word Position",
+        "reading": "Pronunciation: General",
+        "reading-tonguetwister": "Pronunciation: Tongue Twister",
+    ]
+    
     mutating func applyFilters() {
         guard let currentSetting = getSettings() else {
             return
@@ -2172,40 +2197,30 @@ struct Quiz {
         limitQuest = quests.count - 1
         quests.shuffle()
     }
-    
-    mutating func streakReset() {
-        streak = 0
+    mutating func appendWrongQuest() {
+        let q = current
+        let _phraseStart = q.phraseStart == "" ? "" : "\(q.phraseStart) "
+        let _answer = q.answer == "" ? "" : "\(q.answer) "
+        let _phraseEnd = q.phraseEnd == "" ? "" : "\(q.phraseEnd) "
+        var _category = ""
+        if let cat = categoryMap[q.category] {
+            _category = " (\(cat))"
+        }
+        let qStr = _phraseStart + _answer + _phraseEnd + _category
+        questsWrong.append(qStr)
     }
-    
-    mutating func attemptsInc() {
-        attempts += 1
-    }
-    
-    mutating func attemptsReset() {
-        attempts = 0
-    }
-    
-    mutating func timeReadInc() {
-        timeRead += 1
-    }
-    
-    mutating func timeReadReset() {
-        timeRead = 0
-    }
-    
-    mutating func setDelayRead(_ delay: Double) {
-        delayRead = delay
-    }
-    
-    mutating func scoreReset() {
-        score = 0
-    }
-    
+    mutating func questsWrongReset() {questsWrong.removeAll()}
+    mutating func streakReset() {streak = 0}
+    mutating func attemptsInc() {attempts += 1}
+    mutating func attemptsReset() {attempts = 0}
+    mutating func timeReadInc() {timeRead += 1}
+    mutating func timeReadReset() {timeRead = 0}
+    mutating func setDelayRead(_ delay: Double) {delayRead = delay}
+    mutating func scoreReset() {score = 0}
     mutating func scoreInc() {
         score += 1
         streak += 1
     }
-    
     mutating func next() {
         if index < limitQuest {
             index += 1
