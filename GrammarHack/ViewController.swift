@@ -351,9 +351,9 @@ class ViewController: UIViewController {
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
                         /*
-                         in the case where the score limit is reached, I still want the user
-                         to briefly see that he/she has reached that limit before resetting to 0
-                         */
+                                     in the case where the score limit is reached, I still want the user
+                                     to briefly see that he/she has reached that limit before resetting to 0
+                                   */
                         self.setScore()
                         playSuccessSound()
                         Timer.scheduledTimer(

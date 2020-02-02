@@ -21,8 +21,11 @@ class Setting {
     var wordPos: Bool
     var pronunciation: Bool
     var tongueTwisters: Bool
+    var sendToTeacher: Bool
     var timePronunciation: Int
     var timeTongueTwisters: Int
+    var name: String
+    var teacherEmail: String
     
     init(
         withOnAbout: Bool = true,
@@ -37,8 +40,11 @@ class Setting {
         wordPos: Bool = true,
         pronunciation: Bool = true,
         tongueTwisters: Bool = true,
+        sendToTeacher: Bool = true,
         timePronunciation: Int = 8,
-        timeTongueTwisters: Int = 10
+        timeTongueTwisters: Int = 10,
+        name: String = "",
+        teacherEmail: String = ""
     ) {
         self.withOnAbout = withOnAbout
         self.atInOn = atInOn
@@ -52,8 +58,11 @@ class Setting {
         self.wordPos = wordPos
         self.pronunciation = pronunciation
         self.tongueTwisters = tongueTwisters
+        self.sendToTeacher = sendToTeacher
         self.timePronunciation = timePronunciation
         self.timeTongueTwisters = timeTongueTwisters
+        self.name = name
+        self.teacherEmail = teacherEmail
     }
 }
 
@@ -100,13 +109,34 @@ func saveSettings(_ setting: Setting) -> NSManagedObject? {
     s.setValue(setting.wordPos, forKeyPath: "wordPos")
     s.setValue(setting.pronunciation, forKeyPath: "pronunciation")
     s.setValue(setting.tongueTwisters, forKeyPath: "tongueTwisters")
+    s.setValue(setting.sendToTeacher, forKeyPath: "sendToTeacher")
     s.setValue(setting.timePronunciation, forKeyPath: "timePronunciation")
     s.setValue(setting.timeTongueTwisters, forKeyPath: "timeTongueTwisters")
+    s.setValue(setting.name, forKeyPath: "name")
+    s.setValue(setting.teacherEmail, forKeyPath: "teacherEmail")
     do {
         try managedContext.save()
         return s
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
         return nil
+    }
+}
+
+func resetAllRecords() -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        return false
+    }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    
+    let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+    do {
+        try managedContext.execute(deleteRequest)
+        try managedContext.save()
+        return true
+    } catch {
+        print ("There was an error")
+        return false
     }
 }

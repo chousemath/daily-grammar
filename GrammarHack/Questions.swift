@@ -2127,68 +2127,39 @@ struct Quiz {
         }
     }
     
+    struct AttrCat {
+        var attribute: String
+        var category: String
+        init(_ attribute: String, _ category: String) {
+            self.attribute = attribute
+            self.category = category
+        }
+    }
+    let attrCats = [
+        AttrCat("withOnAbout", "select-withonabout"),
+        AttrCat("atInOn", "select-atinon"),
+        AttrCat("adjAdvType", "select-adjoradvtype"),
+        AttrCat("adjAdvVal", "select-adjoradvval"),
+        AttrCat("futureGoingTo", "select-futuregoingto"),
+        AttrCat("toeicGrammar", "select-toeicgrammar"),
+        AttrCat("mathFractions", "select-mathfractions"),
+        AttrCat("advFreq", "select-advfreq"),
+        AttrCat("adjComp", "select-adjcomp"),
+        AttrCat("wordPos", "select-position"),
+        AttrCat("pronunciation", "reading"),
+        AttrCat("tongueTwisters", "reading-tonguetwister"),
+    ]
+    
     mutating func applyFilters() {
         guard let currentSetting = getSettings() else {
             return
         }
-        if let withOnAbout = currentSetting.value(forKey: "withOnAbout") as? Bool {
-            if !withOnAbout {
-                quests = quests.filter {$0.category != "select-withonabout"}
-            }
-        }
-        if let atInOn = currentSetting.value(forKey: "atInOn") as? Bool {
-            if !atInOn {
-                quests = quests.filter {$0.category != "select-atinon"}
-            }
-        }
-        if let adjAdvType = currentSetting.value(forKey: "adjAdvType") as? Bool {
-            if !adjAdvType {
-                quests = quests.filter {$0.category != "select-adjoradvtype"}
-            }
-        }
-        if let adjAdvVal = currentSetting.value(forKey: "adjAdvVal") as? Bool {
-            if !adjAdvVal {
-                quests = quests.filter {$0.category != "select-adjoradvval"}
-            }
-        }
-        if let futureGoingTo = currentSetting.value(forKey: "futureGoingTo") as? Bool {
-            if !futureGoingTo {
-                quests = quests.filter {$0.category != "select-futuregoingto"}
-            }
-        }
-        if let toeicGrammar = currentSetting.value(forKey: "toeicGrammar") as? Bool {
-            if !toeicGrammar {
-                quests = quests.filter {$0.category != "select-toeicgrammar"}
-            }
-        }
-        if let mathFractions = currentSetting.value(forKey: "mathFractions") as? Bool {
-            if !mathFractions {
-                quests = quests.filter {$0.category != "select-mathfractions"}
-            }
-        }
-        if let advFreq = currentSetting.value(forKey: "advFreq") as? Bool {
-            if !advFreq {
-                quests = quests.filter {$0.category != "select-advfreq"}
-            }
-        }
-        if let adjComp = currentSetting.value(forKey: "adjComp") as? Bool {
-            if !adjComp {
-                quests = quests.filter {$0.category != "select-adjcomp"}
-            }
-        }
-        if let wordPos = currentSetting.value(forKey: "wordPos") as? Bool {
-            if !wordPos {
-                quests = quests.filter {$0.category != "select-position"}
-            }
-        }
-        if let pronunciation = currentSetting.value(forKey: "pronunciation") as? Bool {
-            if !pronunciation {
-                quests = quests.filter {$0.category != "reading"}
-            }
-        }
-        if let tongueTwisters = currentSetting.value(forKey: "tongueTwisters") as? Bool {
-            if !tongueTwisters {
-                quests = quests.filter {$0.category != "reading-tonguetwister"}
+        quests = questions
+        for attrCat in attrCats {
+            if let val = currentSetting.value(forKey: attrCat.attribute) as? Bool {
+                if !val {
+                    quests = quests.filter {$0.category != attrCat.category}
+                }
             }
         }
         if let timePronunciation = currentSetting.value(forKey: "timePronunciation") as? Int8 {
@@ -2197,7 +2168,6 @@ struct Quiz {
         if let timeTongueTwisters = currentSetting.value(forKey: "timeTongueTwisters") as? Int8 {
             delayReadTwister = Double(timeTongueTwisters)
         }
-        
         index = 0
         limitQuest = quests.count - 1
         quests.shuffle()

@@ -593,10 +593,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Cn5-CV-bC8">
-                                <rect key="frame" x="24" y="68" width="366" height="257.66666666666669"/>
+                                <rect key="frame" x="24" y="68" width="366" height="314.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어 교사 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-yB-kXS">
-                                        <rect key="frame" x="0.0" y="0.0" width="346" height="33.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="33.666666666666664"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -605,34 +605,26 @@
                                         <rect key="frame" x="0.0" y="49.666666666666671" width="366" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름 또는 ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDI-2Z-igR">
-                                                <rect key="frame" x="0.0" y="0.0" width="306" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
                                                 <color key="backgroundColor" white="0.97130065639999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTz-ED-6LF">
-                                                <rect key="frame" x="314" y="0.0" width="52" height="34"/>
-                                                <state key="normal" title="저장하기"/>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="urn-k7-aG5">
                                         <rect key="frame" x="0.0" y="99.666666666666657" width="366" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="영어선생님의 이메일 주소" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8f-gO-WQL">
-                                                <rect key="frame" x="0.0" y="0.0" width="306" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
                                                 <color key="backgroundColor" white="0.97130065639269392" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gth-ba-M8w">
-                                                <rect key="frame" x="314" y="0.0" width="52" height="34"/>
-                                                <state key="normal" title="저장하기"/>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당신의 선생님은 당신의 퀴즈 결과를 검토할 책임이 있습니다. 퀴즈 결과를 선생님에게 보내려고 시도하기 전에 선생님이 당신의 요청을 확인하도록 하세요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6B-0p-4VB">
-                                        <rect key="frame" x="0.0" y="149.66666666666666" width="353" height="61"/>
+                                        <rect key="frame" x="0.0" y="149.66666666666666" width="366" height="61"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -651,12 +643,27 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYH-JV-scG">
+                                        <rect key="frame" x="0.0" y="273.66666666666669" width="366" height="41"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="저장하기">
+                                            <color key="titleColor" white="0.97130065639999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleSavePress:" destination="ok2-dC-cmD" eventType="touchUpInside" id="OEW-as-kJX"/>
+                                            <action selector="handleSavePress:" destination="9Wh-UC-dRi" eventType="touchUpInside" id="eA3-Mb-B0s"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="NbW-yB-kXS" secondAttribute="trailing" constant="20" symbolic="YES" id="WbZ-F0-WjG"/>
+                                    <constraint firstAttribute="trailing" secondItem="vYH-JV-scG" secondAttribute="trailing" id="R6q-e5-mPE"/>
+                                    <constraint firstAttribute="trailing" secondItem="NbW-yB-kXS" secondAttribute="trailing" id="WbZ-F0-WjG"/>
                                     <constraint firstAttribute="trailing" secondItem="LU9-nP-BUf" secondAttribute="trailing" id="eZ1-3v-ekV"/>
+                                    <constraint firstItem="vYH-JV-scG" firstAttribute="leading" secondItem="Cn5-CV-bC8" secondAttribute="leading" id="fJu-iO-pAT"/>
                                     <constraint firstAttribute="trailing" secondItem="urn-k7-aG5" secondAttribute="trailing" id="jsf-tC-C2a"/>
                                     <constraint firstAttribute="trailing" secondItem="qHc-Bh-chD" secondAttribute="trailing" id="msA-vH-vPs"/>
+                                    <constraint firstAttribute="trailing" secondItem="o6B-0p-4VB" secondAttribute="trailing" id="sMc-Xw-TOe"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -668,6 +675,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xwq-vE-tNh"/>
                     </view>
+                    <connections>
+                        <outlet property="labelName" destination="YDI-2Z-igR" id="5LL-5U-cvz"/>
+                        <outlet property="labelTeacherEmail" destination="b8f-gO-WQL" id="D78-xb-jac"/>
+                        <outlet property="switchSendToTeacher" destination="beQ-5E-HeW" id="siF-aP-Nr2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2M-VZ-kGt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

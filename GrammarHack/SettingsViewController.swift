@@ -36,6 +36,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         buttonSave.layer.cornerRadius = 8
         guard let nsObj = getSettings() else {
+            print("no nsObj")
             return
         }
         currentSetting = nsObj
@@ -85,26 +86,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    
-    func resetAllRecords() -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return false
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        do {
-            try managedContext.execute(deleteRequest)
-            try managedContext.save()
-            return true
-        } catch {
-            print ("There was an error")
-            return false
-        }
-    }
-    
-    
     @IBAction func handleSliderChange(_ sender: UISlider) {
         let val = Int(sender.value)
         switch sender.tag {
@@ -121,6 +102,22 @@ class SettingsViewController: UIViewController {
         if !resetAllRecords() {
             return
         }
+        
+        var sendToTeacher = false
+        if let _sendToTeacher = currentSetting?.value(forKey: "sendToTeacher") as? Bool {
+            sendToTeacher = _sendToTeacher
+        }
+        
+        var name = ""
+        if let _name = currentSetting?.value(forKey: "name") as? String {
+            name = _name
+        }
+        
+        var teacherEmail = ""
+        if let _teacherEmail = currentSetting?.value(forKey: "teacherEmail") as? String {
+            teacherEmail = _teacherEmail
+        }
+        
         let s = Setting(
             withOnAbout: switchWithOnAbout.isOn,
             atInOn: switchAtInOn.isOn,
@@ -133,7 +130,10 @@ class SettingsViewController: UIViewController {
             adjComp: switchAdjComp.isOn,
             wordPos: switchWordPos.isOn,
             pronunciation: switchPronunciation.isOn,
-            tongueTwisters: switchTongueTwisters.isOn
+            tongueTwisters: switchTongueTwisters.isOn,
+            sendToTeacher: sendToTeacher,
+            name: name,
+            teacherEmail: teacherEmail
         )
         
         if let timePronunciation = sliderTimePronunciation?.value {

@@ -8,7 +8,10 @@
         <attribute name="atInOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="futureGoingTo" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="mathFractions" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="pronunciation" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sendToTeacher" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="teacherEmail" optional="YES" attributeType="String"/>
         <attribute name="timePronunciation" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timeTongueTwisters" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="toeicGrammar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -17,6 +20,6 @@
         <attribute name="wordPos" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Settings" positionX="-63" positionY="-18" width="128" height="253"/>
+        <element name="Settings" positionX="-63" positionY="-18" width="128" height="298"/>
     </elements>
 </model>
