@@ -36,11 +36,10 @@ class ViewController: UIViewController {
     @IBOutlet var progressRead: UIProgressView!
     
     let encouragementImages = [
-        UIImage(named: "peng-cool.jpg"),
         UIImage(named: "peng-glass.jpg"),
         UIImage(named: "peng-guitar.jpg"),
         UIImage(named: "peng-korean.jpg"),
-        UIImage(named: "peng-lov.jpg"),
+        UIImage(named: "peng-love.jpg"),
         UIImage(named: "peng-good-job.jpg")
     ]
     
