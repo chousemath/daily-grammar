@@ -1,0 +1,6 @@
+framework module Pods_GrammarHack {
+  umbrella header "Pods-GrammarHack-umbrella.h"
+
+  export *
+  module * { export * }
+}

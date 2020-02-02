@@ -28,9 +28,11 @@
 		C8D5798E23D9775300546868 /* msgBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798923D9775300546868 /* msgBlock.mp3 */; };
 		C8D5799123D9775300546868 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798C23D9775300546868 /* coin.mp3 */; };
 		C8D5799323D97B5C00546868 /* peng01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5799223D97B5C00546868 /* peng01.mp3 */; };
+		CC824BFDC486CD43184F9596 /* Pods_GrammarHack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90C2F8C5204EDA153FF4FB8 /* Pods_GrammarHack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D17BAFB4C6A693328C86F37 /* Pods-GrammarHack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrammarHack.debug.xcconfig"; path = "Target Support Files/Pods-GrammarHack/Pods-GrammarHack.debug.xcconfig"; sourceTree = "<group>"; };
 		C800002523E467630093F294 /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
 		C800002723E50A6D0093F294 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		C800002923E515620093F294 /* FeatureRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureRequestViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		C8D5798923D9775300546868 /* msgBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msgBlock.mp3; sourceTree = "<group>"; };
 		C8D5798C23D9775300546868 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
 		C8D5799223D97B5C00546868 /* peng01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = peng01.mp3; sourceTree = "<group>"; };
+		D86BEA37B0CE5C727AF2DB0F /* Pods-GrammarHack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrammarHack.release.xcconfig"; path = "Target Support Files/Pods-GrammarHack/Pods-GrammarHack.release.xcconfig"; sourceTree = "<group>"; };
+		F90C2F8C5204EDA153FF4FB8 /* Pods_GrammarHack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrammarHack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +65,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC824BFDC486CD43184F9596 /* Pods_GrammarHack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9572F9533673965C91BAF0E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F90C2F8C5204EDA153FF4FB8 /* Pods_GrammarHack.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFFA4C14316C2A7233A3368F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D17BAFB4C6A693328C86F37 /* Pods-GrammarHack.debug.xcconfig */,
+				D86BEA37B0CE5C727AF2DB0F /* Pods-GrammarHack.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C85D58D423D3DAED007967AF = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +99,8 @@
 				C8D5798623D9731300546868 /* cheer01.mp3 */,
 				C85D58DF23D3DAEE007967AF /* GrammarHack */,
 				C85D58DE23D3DAEE007967AF /* Products */,
+				BFFA4C14316C2A7233A3368F /* Pods */,
+				9572F9533673965C91BAF0E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C85D58F123D3DAF2007967AF /* Build configuration list for PBXNativeTarget "GrammarHack" */;
 			buildPhases = (
+				894187B37EAB0E8053761E0C /* [CP] Check Pods Manifest.lock */,
 				C85D58D923D3DAEE007967AF /* Sources */,
 				C85D58DA23D3DAEE007967AF /* Frameworks */,
 				C85D58DB23D3DAEE007967AF /* Resources */,
+				FBE8393EF6272D228876234B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +208,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		894187B37EAB0E8053761E0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GrammarHack-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBE8393EF6272D228876234B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GrammarHack/Pods-GrammarHack-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GrammarHack/Pods-GrammarHack-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GrammarHack/Pods-GrammarHack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C85D58D923D3DAEE007967AF /* Sources */ = {
@@ -342,6 +411,7 @@
 		};
 		C85D58F223D3DAF2007967AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D17BAFB4C6A693328C86F37 /* Pods-GrammarHack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -363,6 +433,7 @@
 		};
 		C85D58F323D3DAF2007967AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D86BEA37B0CE5C727AF2DB0F /* Pods-GrammarHack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

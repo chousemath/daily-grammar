@@ -1,0 +1,21 @@
+PODS:
+  - SendGrid (2.2.1)
+
+DEPENDENCIES:
+  - SendGrid (from `https://github.com/scottkawai/sendgrid-swift.git`)
+
+EXTERNAL SOURCES:
+  SendGrid:
+    :git: https://github.com/scottkawai/sendgrid-swift.git
+
+CHECKOUT OPTIONS:
+  SendGrid:
+    :commit: 74934cafe4f9d202ee223113e56f0ad300754d14
+    :git: https://github.com/scottkawai/sendgrid-swift.git
+
+SPEC CHECKSUMS:
+  SendGrid: 75853f4d9e7a9d6e6891a29e109ef39f9910e2a5
+
+PODFILE CHECKSUM: ff5b76eea235f8cc673a0b9e133f9f983b289300
+
+COCOAPODS: 1.8.4
