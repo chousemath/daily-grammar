@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
@@ -218,13 +218,13 @@ class ViewController: UIViewController {
         if q.category == "reading" || q.category == "reading-tonguetwister" {
             responseTitle.text = ""
             responseBody.text = ""
-            exerciseTitle.text = q.title
-            exerciseSubtitle.text = q.subtitle
-            phraseStart.text = q.answer
-            phraseEnd.text = q.kor
+            exerciseTitle.text = "> \(q.title)"
+            exerciseSubtitle.text = ">>> \(q.subtitle)"
+            phraseStart.text = "🎙️ \(q.answer)"
+            phraseEnd.text = "🇰🇷 \(q.kor)"
             readAnswer = normalize(text: q.answer)
             recordButton.isEnabled = true
-            recordButton.setTitle("🎤 목소리 녹음하기", for: .normal)
+            recordButton.setTitle("🎙️ 목소리 녹음하기", for: .normal)
             recordButton.backgroundColor = .systemBlue
             recordButton.isHidden = false
             optionButton.isHidden = true
@@ -236,8 +236,8 @@ class ViewController: UIViewController {
         recordButton.isHidden = true
         responseTitle.text = ""
         responseBody.text = ""
-        exerciseTitle.text = q.title
-        exerciseSubtitle.text = q.subtitle
+        exerciseTitle.text = "> \(q.title)"
+        exerciseSubtitle.text = ">>> \(q.subtitle)"
         phraseStart.text = q.phraseStart
         phraseEnd.text = q.phraseEnd
     }
@@ -401,7 +401,9 @@ class ViewController: UIViewController {
                     let q = self.quiz.current
                     if q.match(answer: opt) {
                         self.quiz.scoreInc()
-                        self.encourage()
+                        if self.quiz.score != self.quiz.limitScore {
+                            self.encourage()
+                        }
                         self.responseTitle.textColor = UIColor.green
                         self.responseTitle.text = "정답입니다!"
                         self.responseBody.text = q.kor
@@ -423,7 +425,7 @@ class ViewController: UIViewController {
                         self.quiz.appendWrongQuest()
                         self.responseTitle.textColor = UIColor.red
                         self.responseTitle.text = "응답이 올바르지 않습니다~"
-                        self.responseBody.text = "Please try again!"
+                        self.responseBody.text = "다시 시도해보세요!"
                         playFailureSound()
                         Timer.scheduledTimer(
                             timeInterval: 1.0,

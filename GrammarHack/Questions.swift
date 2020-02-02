@@ -38,7 +38,7 @@ class Quest {
         self.phraseEnd = phraseEnd;
         self.answer = answer;
         self.noKor = kor.isEmpty
-        self.kor = self.noKor ? "*한국어 버전은 아직 없습니다*" : kor;
+        self.kor = self.noKor ? "한국어 버전은 아직 없습니다" : kor;
         if shuffled {
             self.options = options?.shuffled();
         } else if options != nil {
@@ -115,7 +115,7 @@ class AdjOrAdvType: Quest {
     ) {
         super.init(
             title: "형용사/부사", // Adjectives and Adverbs
-            subtitle: "Ending with -ly",
+            subtitle: "\"ly\"로 끝나는 단어",
             category: "select-adjoradvval",
             phraseStart: phraseStart,
             phraseEnd: "",
@@ -295,7 +295,7 @@ class MathFractions: Quest {
         kor: String
     ) {
         super.init(
-            title: "분수", // Math Fractions
+            title: "수학적 어휘: 분수", // Math Fractions
             subtitle: "올바른 옵션을 선택하세요",
             category: "select-mathfractions",
             phraseStart: phraseStart,
@@ -368,7 +368,7 @@ class Reading: Quest {
     init(answer: String, kor: String) {
         super.init(
             title: "영어 발음 연습",
-            subtitle: "아래의 영어 문장을 읽어보십시오.",
+            subtitle: "아래의 영어 문장을 읽어보십시오",
             category: "reading",
             phraseStart: "",
             phraseEnd: "",
@@ -384,7 +384,7 @@ class Twister: Quest {
     init(answer: String) {
         super.init(
             title: "영어 발음 연습",
-            subtitle: "아래의 영어 문장을 읽어보십시오.",
+            subtitle: "아래의 영어 문장을 읽어보십시오",
             category: "reading-tonguetwister",
             phraseStart: "",
             phraseEnd: "",
@@ -2023,7 +2023,6 @@ var questions: [Quest] = [
     Reading(answer: "I don’t know either.", kor: "저도 잘 모르겠네요."),
     Reading(answer: "I am not from around here either, so I don’t know.", kor: "저도 여기 사람이 아니라서 잘 모르겠네요."),
     Reading(answer: "Go this way and ask someone one more time.", kor: "이쪽으로 가셔서 다시 한 번 물어보세요."),
-    Reading(answer: "If you go one hundered meters this way and turn left, it will be there.", kor: "이쪽으로 100미터 정도 가셔서 왼쪽으로 가면 있어요."),
     Reading(answer: "It’s a bit of a distance to walk from here. You’ll need to take a bus.", kor: "여기서 걸어가기에는 거리가 좀 있어요. 버스 타셔야 될 거예요."),
     Reading(answer: "I heard you were going to move next month.", kor: "다음 달에 이사간다면서요?"),
     Reading(answer: "I heard it’s already over. Is that right?", kor: "벌써 다 끝났다면서요?"),
@@ -2156,9 +2155,6 @@ var questions: [Quest] = [
     Reading(answer: "My friend says she’s moving tomorrow.", kor: "친구가 내일 이사 간대요."),
     Reading(answer: "They say this person is a very famous person.", kor: "이 사람 정말 유명한 사람이래요."),
     Reading(answer: "He says he doesn’t know where it is.", kor: "어딘지 모른대요."),
-    
-    
-    
     Twister(answer: "She sells seashells by the seashore."),
     Twister(answer: "How many sheets could a sheet slitter slit if a sheet slitter could slit sheets?"),
     Twister(answer: "How much pot, could a pot roast roast, if a pot roast could roast pot?"),
