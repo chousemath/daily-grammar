@@ -342,7 +342,7 @@ class ViewController: UIViewController {
     @IBAction func handleSettingsPress(_ sender: UIButton) {
         let aSheet = UIAlertController(
             title: "설정",
-            message: "운명을 선택하세요",
+            message: "",
             preferredStyle: .actionSheet
         )
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)

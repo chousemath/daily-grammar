@@ -712,6 +712,62 @@ var questions: [Quest] = [
     ToeicGrammar(phraseStart: "The judge dismissed the new evidence completely because it had no bearing", phraseEnd: "the trial.", answer: "on", options: ["to", "on", "into", "by"]),
     
     
+    
+    
+    ToeicGrammar(
+        phraseStart: "When the client",
+        phraseEnd: "arrives",
+        answer: ", ask her to speak to me.",
+        options: ["arrived", "arrive", "arriving", "arrives"]
+    ),
+    ToeicGrammar(
+        phraseStart: "The biggest problem with this system is",
+        phraseEnd: "frequent",
+        answer: "difficulty with the email.",
+        options: ["often", "sometimes", "very", "frequent"]
+    ),
+    ToeicGrammar(
+        phraseStart: "If the flight arrives early, please look",
+        phraseEnd: "for",
+        answer: "Bill Johnson around the gate.",
+        options: ["at", "on", "for", "about"]
+    ),
+    ToeicGrammar(
+        phraseStart: "In case the shipping manager cannot handle the task, customer service",
+        phraseEnd: "can",
+        answer: "help.",
+        options: ["can", "has", "are", "about"]
+    ),
+    ToeicGrammar(
+        phraseStart: "The company picnic",
+        phraseEnd: "was called off",
+        answer: "because rain was predicted for the weekend.",
+        options: ["was called", "had called off", "was calling", "was called off"]
+    ),
+    ToeicGrammar(
+        phraseStart: "Janitors must",
+        phraseEnd: "sign in",
+        answer: "before beginning work in the morning.",
+        options: ["register", "sign up", "sign in", "write up"]
+    ),
+    ToeicGrammar(
+        phraseStart: "The technical manager",
+        phraseEnd: "went",
+        answer: "to the convention in Las Vegas for 3 days.",
+        options: ["left", "went", "going", "goes"]
+    ),
+    ToeicGrammar(
+        phraseStart: "Her appointment with the CEO was changed from 9:00",
+        phraseEnd: "to",
+        answer: "7:30.",
+        options: ["until", "at", "too", "to"]
+    ),
+    ToeicGrammar(
+        phraseStart: "The clerk locked the cabinet",
+        phraseEnd: "after",
+        answer: "getting various supplies for his desk.",
+        options: ["after", "before", "while", "because"]
+    ),
     RandomQ(
         phraseStart: "It takes Matt four hours to mow two lawns. He can mow",
         phraseEnd: "lawns in ten hours.",
