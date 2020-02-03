@@ -8,6 +8,30 @@
 import UIKit
 import CoreData
 
+extension Date {
+    static var currentTimestamp: Int64 {
+        return Int64(Date().timeIntervalSince1970)
+    }
+}
+
+class QuizResult {
+    var attempts: Int
+    var score: Int
+    var timestampStart: Int64
+    var timestampEnd: Int64
+    
+    init(
+        attempts: Int,
+        score: Int,
+        timestampStart: Int64
+    ) {
+        self.attempts = attempts
+        self.score = score
+        self.timestampStart = timestampStart
+        self.timestampEnd = Date.currentTimestamp
+    }
+}
+
 class Setting {
     var withOnAbout: Bool
     var atInOn: Bool
@@ -66,6 +90,22 @@ class Setting {
     }
 }
 
+func getResults() -> [NSManagedObject] {
+    var results: [NSManagedObject] = []
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        return results
+    }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "QuizResults")
+    do {
+        results = try managedContext.fetch(fetchRequest)
+        return results
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+        return []
+    }
+}
+
 func getSettings() -> NSManagedObject? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
         return nil
@@ -87,6 +127,26 @@ func getSettings() -> NSManagedObject? {
     } catch let error as NSError {
         print("Could not fetch. \(error), \(error.userInfo)")
         return nil
+    }
+}
+
+func saveResult(_ result: QuizResult) -> Bool {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        return false
+    }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let entity = NSEntityDescription.entity(forEntityName: "QuizResults", in: managedContext)!
+    let s = NSManagedObject(entity: entity, insertInto: managedContext)
+    s.setValue(result.attempts, forKeyPath: "attempts")
+    s.setValue(result.score, forKeyPath: "score")
+    s.setValue(result.timestampStart, forKeyPath: "timestampStart")
+    s.setValue(result.timestampEnd, forKeyPath: "timestampEnd")
+    do {
+        try managedContext.save()
+        return true
+    } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+        return false
     }
 }
 
@@ -123,13 +183,13 @@ func saveSettings(_ setting: Setting) -> NSManagedObject? {
     }
 }
 
-func resetAllRecords() -> Bool {
+func resetAllRecords(_ entityName: String) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
         return false
     }
     let managedContext = appDelegate.persistentContainer.viewContext
     
-    let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
+    let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
     do {
         try managedContext.execute(deleteRequest)

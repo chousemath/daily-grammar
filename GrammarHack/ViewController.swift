@@ -11,6 +11,7 @@ import Speech
 import SendGrid
 
 class ViewController: UIViewController {
+    let timestampStart = Date.currentTimestamp
     let sboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     var speechEnabled: Bool = false
     var transcript: String = ""
@@ -274,6 +275,11 @@ class ViewController: UIViewController {
             let htmlWrong = quiz.questsWrongHtml
             print("Score: \(score)")
             print("Attempts: \(attempts)")
+            _ = saveResult(QuizResult(
+                attempts: attempts,
+                score: score,
+                timestampStart: timestampStart
+            ))
             vc.labelAcc.text = "\(score)/\(attempts)"
             
             quiz.scoreReset()

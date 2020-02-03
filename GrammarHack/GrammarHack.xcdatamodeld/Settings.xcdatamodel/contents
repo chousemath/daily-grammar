@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="QuizResults" representedClassName="QuizResults" syncable="YES" codeGenerationType="class">
+        <attribute name="attempts" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timestampEnd" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timestampStart" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Settings" representedClassName="Settings" syncable="YES" codeGenerationType="class">
         <attribute name="adjAdvType" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="adjAdvVal" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -21,5 +27,6 @@
     </entity>
     <elements>
         <element name="Settings" positionX="-63" positionY="-18" width="128" height="298"/>
+        <element name="QuizResults" positionX="-63" positionY="108" width="128" height="103"/>
     </elements>
 </model>

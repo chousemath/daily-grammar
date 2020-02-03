@@ -80,7 +80,7 @@ class TeacherViewController: UIViewController {
         guard let timeTongueTwisters = currentSetting?.value(forKey: "timeTongueTwisters") as? Int else {
             return
         }
-        if !resetAllRecords() {
+        if !resetAllRecords("Settings") {
             return
         }
         let s = Setting(

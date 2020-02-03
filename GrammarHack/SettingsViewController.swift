@@ -98,7 +98,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func handleSavePress(_ sender: UIButton) {
-        if !resetAllRecords() {
+        if !resetAllRecords("Settings") {
             return
         }
         
