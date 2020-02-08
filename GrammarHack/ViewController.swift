@@ -351,12 +351,15 @@ class ViewController: UIViewController {
         SettingsOption(title: "사용/개인 정보 약관", pageName: "TermsViewController"),
         SettingsOption(title: "모바일 앱 정보", pageName: "AppInfoViewController"),
         SettingsOption(title: "추가 기능 요청하기", pageName: "FeatureRequestViewController"),
+        SettingsOption(title: "영어일기 (coming soon!)", pageName: nil),
+        SettingsOption(title: "이야기를 만들기 (coming soon!)", pageName: nil),
+        SettingsOption(title: "활동 로그 (coming soon!)", pageName: nil),
     ]
     
     @IBAction func handleSettingsPress(_ sender: UIButton) {
         let aSheet = UIAlertController(
-            title: "설정",
-            message: "",
+            title: nil,
+            message: nil,
             preferredStyle: .actionSheet
         )
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -366,6 +369,9 @@ class ViewController: UIViewController {
                 style: .default,
                 handler: { action in
                     guard let pname = opt.pageName else {
+                        let alert = UIAlertController(title: "진행 중", message: "우리는 여전히 이 기능을 구축하고 있습니다.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "네, 좋아요", style: .default, handler: nil))
+                        self.present(alert, animated: true)
                         return
                     }
                     self.navigateTo(pname)
