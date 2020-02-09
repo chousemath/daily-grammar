@@ -243,9 +243,17 @@ class ViewController: UIViewController {
         phraseEnd.text = q.phraseEnd
     }
     
-    func navigateTo(_ pageName: String) {
-        let vc = sboard.instantiateViewController(withIdentifier: pageName)
-        present(vc, animated: true, completion: nil)
+    func navigateTo(pageName: String, pageURL: String?) {
+        if let pURL = pageURL {
+            guard let vc = sboard.instantiateViewController(withIdentifier: pageName) as? WebViewController else {
+                return
+            }
+            present(vc, animated: true, completion: nil)
+            vc.loadPage(pURL)
+        } else {
+            let vc = sboard.instantiateViewController(withIdentifier: pageName)
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     let streakMilestones = [5, 10, 15]
@@ -344,16 +352,18 @@ class ViewController: UIViewController {
     struct SettingsOption {
         let title: String
         let pageName: String?
+        let url: String?
     }
     let settingsOptions: [SettingsOption] = [
-        SettingsOption(title: "질문 설정편집", pageName: "SettingsViewController"),
-        SettingsOption(title: "선생님 설정편집", pageName: "TeacherViewController"),
-        SettingsOption(title: "사용/개인 정보 약관", pageName: "TermsViewController"),
-        SettingsOption(title: "모바일 앱 정보", pageName: "AppInfoViewController"),
-        SettingsOption(title: "추가 기능 요청하기", pageName: "FeatureRequestViewController"),
-        SettingsOption(title: "영어일기 (coming soon!)", pageName: nil),
-        SettingsOption(title: "이야기를 만들기 (coming soon!)", pageName: nil),
-        SettingsOption(title: "활동 로그 (coming soon!)", pageName: nil),
+        SettingsOption(title: "질문 설정편집", pageName: "SettingsViewController", url: nil),
+        SettingsOption(title: "선생님 설정편집", pageName: "TeacherViewController", url: nil),
+        SettingsOption(title: "사용/개인 정보 약관", pageName: "WebViewController", url: "https://chousemath.github.io/GrammarHack-terms"),
+        SettingsOption(title: "모바일 앱 정보", pageName: "AppInfoViewController", url: nil),
+        SettingsOption(title: "추가 기능 요청하기", pageName: "WebViewController", url: "https://docs.google.com/forms/d/e/1FAIpQLSdTKKpdL_t3M0BOvNFqAxln_QI9WZNOxb2ePFOlvuCtMU7Ikg/viewform?embedded=true"),
+        SettingsOption(title: "영어일기 (coming soon!)", pageName: nil, url: nil),
+        SettingsOption(title: "이야기를 만들기 (coming soon!)", pageName: nil, url: nil),
+        SettingsOption(title: "활동 로그 (coming soon!)", pageName: nil, url: nil),
+        SettingsOption(title: "개발자 로그", pageName: "WebViewController", url: "https://www.notion.so/DailyGram-Developer-Notes-225f64d555a14b3fbb7a081bbcc44756"),
     ]
     
     @IBAction func handleSettingsPress(_ sender: UIButton) {
@@ -374,7 +384,7 @@ class ViewController: UIViewController {
                         self.present(alert, animated: true)
                         return
                     }
-                    self.navigateTo(pname)
+                    self.navigateTo(pageName: pname, pageURL: opt.url)
             }
             ))
         }
