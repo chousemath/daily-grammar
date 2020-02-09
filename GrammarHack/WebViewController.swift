@@ -9,7 +9,6 @@
 import UIKit
 import WebKit
 
-var activityIndicator: UIActivityIndicatorView!
 class WebViewController: UIViewController, WKUIDelegate {
     let webView = WKWebView()
     
