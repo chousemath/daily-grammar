@@ -230,6 +230,7 @@ class ViewController: UIViewController {
             recordButton.isHidden = false
             optionButton.isHidden = true
             progressRead.isHidden = false
+            quiz.delayRead = q.category == "reading" ? quiz.delayReadRegular : quiz.delayReadTwister
             return
         }
         optionButton.isHidden = false
@@ -362,7 +363,7 @@ class ViewController: UIViewController {
         SettingsOption(title: "추가 기능 요청하기", pageName: "WebViewController", url: "https://docs.google.com/forms/d/e/1FAIpQLSdTKKpdL_t3M0BOvNFqAxln_QI9WZNOxb2ePFOlvuCtMU7Ikg/viewform?embedded=true"),
         SettingsOption(title: "영어일기 (coming soon!)", pageName: nil, url: nil),
         SettingsOption(title: "이야기를 만들기 (coming soon!)", pageName: nil, url: nil),
-        SettingsOption(title: "활동 로그 (coming soon!)", pageName: nil, url: nil),
+        SettingsOption(title: "활동 로그", pageName: "HistoryTableViewController", url: nil),
         SettingsOption(title: "개발자 로그", pageName: "WebViewController", url: "https://www.notion.so/DailyGram-Developer-Notes-225f64d555a14b3fbb7a081bbcc44756"),
     ]
     

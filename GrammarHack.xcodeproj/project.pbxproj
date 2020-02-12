@@ -24,6 +24,7 @@
 		C8B64CDE23DBB5A900D0A500 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B64CDD23DBB5A900D0A500 /* Questions.swift */; };
 		C8B64CE023DBBB0300D0A500 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B64CDF23DBBB0300D0A500 /* Sounds.swift */; };
 		C8CAE3AE23E2A8A600B9D7E6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CAE3AD23E2A8A600B9D7E6 /* SettingsViewController.swift */; };
+		C8D35B3F23F37E5B00159726 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D35B3E23F37E5B00159726 /* HistoryTableViewController.swift */; };
 		C8D5798723D9731300546868 /* cheer01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798623D9731300546868 /* cheer01.mp3 */; };
 		C8D5798E23D9775300546868 /* msgBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798923D9775300546868 /* msgBlock.mp3 */; };
 		C8D5799123D9775300546868 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C8D5798C23D9775300546868 /* coin.mp3 */; };
@@ -52,6 +53,7 @@
 		C8B64CDD23DBB5A900D0A500 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		C8B64CDF23DBBB0300D0A500 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		C8CAE3AD23E2A8A600B9D7E6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C8D35B3E23F37E5B00159726 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C8D5798623D9731300546868 /* cheer01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheer01.mp3; sourceTree = "<group>"; };
 		C8D5798923D9775300546868 /* msgBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msgBlock.mp3; sourceTree = "<group>"; };
 		C8D5798C23D9775300546868 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				C800003223E5696F0093F294 /* DataService.swift */,
 				C82E491223E65BB600966908 /* Environment.swift */,
 				C83CB41723F021FF00F83118 /* WebViewController.swift */,
+				C8D35B3E23F37E5B00159726 /* HistoryTableViewController.swift */,
 			);
 			path = GrammarHack;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				C8B64CE023DBBB0300D0A500 /* Sounds.swift in Sources */,
 				C85D58E123D3DAEE007967AF /* AppDelegate.swift in Sources */,
 				C85D58E323D3DAEE007967AF /* SceneDelegate.swift in Sources */,
+				C8D35B3F23F37E5B00159726 /* HistoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +426,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.04;
+				MARKETING_VERSION = 1.08;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chousemath.GrammarHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -444,7 +448,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.04;
+				MARKETING_VERSION = 1.08;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chousemath.GrammarHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
